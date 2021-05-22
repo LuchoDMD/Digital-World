@@ -101,7 +101,7 @@ public abstract class Digimon
         return tecnicas.get(index).toString();
     }
 
-    public int stab(Tecnica t)
+    public int stab(Tecnica t)/*Es para el calculo: revisa si la familia tecnica pertenece a la misma familia del digimon*/
     {
         if(t.getFamilia().equals(familia))
         {

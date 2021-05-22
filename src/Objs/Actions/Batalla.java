@@ -23,17 +23,34 @@ public class Batalla
         /*print con partnerHUD+enemyHUD+"\n"+turno*/
         compa.setVida(compa.getHp()); compa.setMana(compa.getMp());
         int vidaEnemigo=enemigo.getHp(); int manaEnemigo=enemigo.getMp();
+        int dmg=-1;
         while(vidaEnemigo>0&&compa.getVida()>0)
         {
-
+            if(enemigo.getSpd()>compa.getSpd())
+            {
+                dmg=enemigo.atacar((int)Math.random()*2);
+                if(enemigo.esquivar()>compa.esquivar()&&((int)Math.random()*1)==0)
+                {
+                    compa.setVida(dmg-compa.defender());
+                }
+            }else
+                {
+                    dmg=compa.atacar(compa.seleccionarTecnica());
+                    if(compa.esquivar()<compa.esquivar()&&((int)Math.random()*1)==0)
+                    {
+                        vidaEnemigo=dmg-enemigo.defender();
+                    }
+                }
         }
-    }
+    }/*Falta agregar dos metodos que resten y agreguen mp al esquivar asi se recarga la
+        energia para seguir atacando*/
 
     private String partnerHUD()
     {
         return ">"+compa.getNombre()+"=> HP: "+compa.getVida()+"/"+compa.getHp()+
                 "- MP: "+compa.getMana()+"/"+compa.getMp();
     }
+
     private String enemyHUD(int vidaEnemigo, int manaEnemigo)
     {
         return ">"+enemigo+"=> HP: "+vidaEnemigo+"/"+enemigo.getHp()+
