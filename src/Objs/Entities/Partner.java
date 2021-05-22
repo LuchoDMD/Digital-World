@@ -5,13 +5,13 @@ import Objs.Actions.Combate;
 public class Partner extends Digimon implements Combate
 {
     private String nombre;
-    private int peso, vida, mana, xp;
+    private int vida, mana, xp;
 
-    public Partner(String especie, String familia, String atributo, String etapa, int nivel, int hp, int mp, int atk, int def, int spd, int peso)
+    public Partner(String especie,String familia,String atributo,String etapa,int peso,int nivel,int hp,int mp,int atk,int def,int spd)
     {
-        super(especie, familia, atributo, etapa, nivel, hp, mp, atk, def, spd);
+        super(especie,familia,atributo,etapa,peso,nivel,hp,mp,atk,def,spd);
         this.nombre=especie;
-        this.peso=peso;
+
     }
 
     public String getNombre()
@@ -21,14 +21,6 @@ public class Partner extends Digimon implements Combate
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
-    }
-    public int getPeso()
-    {
-        return peso;
-    }
-    public void setPeso(int peso)
-    {
-        this.peso = peso;
     }
     public int getVida()
     {
@@ -67,18 +59,18 @@ public class Partner extends Digimon implements Combate
     }
 
     @Override
-    public int atacar() {
-        return 0;
+    public int atacar(int index) {
+        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/(((int)Math.random()*2)*100);
     }
 
     @Override
     public int defender() {
-        return 0;
+        return (def * (peso / spd)) / (((int) Math.random()*2) * 100);
     }
 
     @Override
     public int esquivar() {
-        return 0;
+        return spd*((int)Math.random()*2)/(peso*(5/2));
     }
 }
 

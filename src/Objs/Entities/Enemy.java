@@ -6,9 +6,9 @@ public class Enemy extends Digimon implements Combate
 {
     private String terreno;
 
-    public Enemy(String especie, String familia, String atributo, String etapa, int nivel, int hp, int mp, int atk, int def, int spd, String terreno)
+    public Enemy(String especie,String familia,String atributo,String etapa,int peso,int nivel,int hp,int mp,int atk,int def,int spd,String terreno)
     {
-        super(especie, familia, atributo, etapa, nivel, hp, mp, atk, def, spd);
+        super(especie,familia,atributo,etapa,peso,nivel,hp,mp,atk,def,spd);
         this.terreno=terreno;
     }
 
@@ -34,17 +34,20 @@ public class Enemy extends Digimon implements Combate
     }
 
     @Override
-    public int atacar() {
-        return 0;
+    public int atacar(int index)
+    {
+        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/(((int)Math.random()*2)*100);
     }
 
     @Override
-    public int defender() {
-        return 0;
+    public int defender()
+    {
+        return (def * (peso / spd)) / (((int) Math.random()*2) * 100);
     }
 
     @Override
-    public int esquivar() {
-        return 0;
+    public int esquivar()
+    {
+        return spd*((int)Math.random()*2)/(peso*(5/2));
     }
 }

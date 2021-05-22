@@ -9,7 +9,6 @@ public class Batalla
 {
     private Partner compa;
     private Enemy enemigo;
-    private int vidaEnemigo, manaEnemigo;
     private List<Turno> turnos;
 
     public Batalla(Partner compa, Enemy enemigo)
@@ -21,9 +20,9 @@ public class Batalla
 
     public void comenzarBatalla()
     {
-        System.out.println(primeHUD());
+        /*print con partnerHUD+enemyHUD+"\n"+turno*/
         compa.setVida(compa.getHp()); compa.setMana(compa.getMp());
-        vidaEnemigo=enemigo.getHp(); manaEnemigo=enemigo.getMp();
+        int vidaEnemigo=enemigo.getHp(); int manaEnemigo=enemigo.getMp();
         while(vidaEnemigo>0&&compa.getVida()>0)
         {
 
@@ -35,14 +34,11 @@ public class Batalla
         return ">"+compa.getNombre()+"=> HP: "+compa.getVida()+"/"+compa.getHp()+
                 "- MP: "+compa.getMana()+"/"+compa.getMp();
     }
-    private String enemyHUD()
+    private String enemyHUD(int vidaEnemigo, int manaEnemigo)
     {
         return ">"+enemigo+"=> HP: "+vidaEnemigo+"/"+enemigo.getHp()+
                 "- MP: "+manaEnemigo+"/"+enemigo.getMp();
     }
-    public String primeHUD()
-    {
-        return partnerHUD()+"\n"+enemyHUD();
-    }
-
 }
+
+/*ACA ME FALTA LA "INTELIGENCIA ARTIFICIAL" DE LOS DIGIMONS(COMPA Y ENEMIGO)*/

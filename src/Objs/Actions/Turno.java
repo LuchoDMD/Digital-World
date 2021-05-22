@@ -1,5 +1,7 @@
 package Objs.Actions;
 
+import Objs.Items.Tecnica;
+
 public class Turno
 {
     private String digimon1, digimon2, accion;

@@ -7,16 +7,17 @@ import java.util.List;
 public abstract class Digimon
 {
     protected String especie, familia, atributo, etapa;
-    protected int nivel,hp,mp,atk,def,spd;
+    protected int peso,nivel,hp,mp,atk,def,spd;
     protected List<Tecnica> tecnicas; /*SOLO HASTA 3(PODRIAN SER CUATRO)*/
 
-    public Digimon(String especie, String familia, String atributo, String etapa, int nivel, int hp, int mp, int atk, int def, int spd)
+    public Digimon(String especie, String familia, String atributo, String etapa, int peso,int nivel, int hp, int mp, int atk, int def, int spd)
     {
         this.especie = especie;
         this.familia = familia;
         this.atributo = atributo;
         this.etapa = etapa;
         this.nivel = nivel;
+        this.peso = peso;
         this.hp = hp;
         this.mp = mp;
         this.atk = atk;
@@ -39,14 +40,20 @@ public abstract class Digimon
     public String getEtapa() {
         return etapa;
     }
-
+    public int getPeso()
+    {
+        return peso;
+    }
+    public void setPeso(int peso)
+    {
+        this.peso = peso;
+    }
     public int getNivel() {
         return nivel;
     }
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
-
     public int getHp() {
         return hp;
     }
@@ -92,6 +99,15 @@ public abstract class Digimon
     public String getTecnica(int index)
     {
         return tecnicas.get(index).toString();
+    }
+
+    public int stab(Tecnica t)
+    {
+        if(t.getFamilia().equals(familia))
+        {
+            return 2;
+        }
+        return 1;
     }
 
     @Override
