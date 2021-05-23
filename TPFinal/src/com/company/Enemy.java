@@ -1,5 +1,8 @@
 package com.company;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public class Enemy extends Digimon implements Combate {
     /*ATRIBUTOS*/
@@ -13,9 +16,9 @@ public class Enemy extends Digimon implements Combate {
     /*Tendria una lista de Items Dropeables()*/
 
     /*CONSTRUCTOR*/
-    public Enemy(int nivel, int hp, int mp, int atk, int def, int spd,  int dinero, String name)
+    public Enemy(int nivel, int hp, int mp, int atk, int def, int spd,  int dinero, String name, Map abilityMap, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd);
+        super(nivel, hp, mp, atk, def, spd, abilityMap, keys);
         //this.terreno = terreno;
         this.name = name;
         this.dinero = dinero;
@@ -70,6 +73,11 @@ public class Enemy extends Digimon implements Combate {
     public int defender() {
         setStatus(1);
         setDef(getDef() + 10); //aumenta la defensa en 10
+        return 0;
+    }
+
+    @Override
+    public int skillAttack(Ability ability){
         return 0;
     }
 

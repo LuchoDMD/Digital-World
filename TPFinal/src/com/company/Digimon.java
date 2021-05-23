@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Digimon {
     /*ATRIBUTOS*/
     /*
@@ -15,7 +18,7 @@ public class Digimon {
     protected int atk;/*ATAQUE*/
     protected int def;/*DEFENSA*/
     protected int spd;/*VELOCIDAD*/ //poder de ataque
-    //private Ability[] abilities;
+    public Ability[] abilities;
 
     //private int peso;
 
@@ -38,14 +41,21 @@ public class Digimon {
     }
     */
 
-    public Digimon(int nivel, int hp, int mp, int atk, int def, int spd /*Ability[] abilities*/) {
+    public Digimon(int nivel, int hp, int mp, int atk, int def, int spd, Map abilityMap, int[] keys) {
         this.nivel = nivel;
         this.hp = hp;
         this.mp = mp;
         this.atk = atk;
         this.def = def;
         this.spd = spd;
-        //this.abilities = abilities;    //los pokemons solo pueden tener 4 habilidades
+        this.abilities = new Ability[4];    //los digimon solo pueden tener 4 habilidades
+        loadSkills(abilityMap, keys);
+    }
+
+    public void loadSkills(Map abilityMap, int[] keys){
+        for (int i = 0 ; i < 4 ; i++){
+            abilities[i] = (Ability) abilityMap.get(keys[i]);
+        }
     }
 
 
@@ -99,5 +109,13 @@ public class Digimon {
 
     public void setSpd(int spd) {
         this.spd = spd;
+    }
+
+    public Ability[] getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Ability[] abilities) {
+        this.abilities = abilities;
     }
 }

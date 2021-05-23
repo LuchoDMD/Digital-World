@@ -1,5 +1,8 @@
 package com.company;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class Partner extends Digimon implements Combate {
     /*ATRIBUTOS*/
@@ -11,9 +14,9 @@ public class Partner extends Digimon implements Combate {
     //private int aptitud;
 
 
-    public Partner(int nivel, int hp, int mp, int atk, int def, int spd /*List<String> tecnicas,*/, String nombre)
+    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, Map abilityMap, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd);
+        super(nivel, hp, mp, atk, def, spd, abilityMap, keys);
         this.vida = hp;
         this.mana = mp;
         this.exp = 0;
@@ -65,6 +68,17 @@ public class Partner extends Digimon implements Combate {
         setDef(getDef() + 10); //aumenta la defensa en 10
         return 0;
     }
+
+    @Override
+    public int skillAttack(Ability ability){
+        setMana(getMana() - ability.getMPcost());
+        Random random = new Random();
+        if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
+            return ability.getDamage();
+        }
+        return 0;
+    }
+
     @Override
     public int esquivar()
     {

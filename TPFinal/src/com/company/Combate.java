@@ -5,4 +5,6 @@ public interface Combate {
     int defender();
     int esquivar();
     int getDmg(int dmg);
+    int skillAttack(Ability ability);
+
 }

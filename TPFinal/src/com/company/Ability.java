@@ -2,9 +2,17 @@ package com.company;
 
 public class Ability {
     private int damage;
-    private int precision;
+    private int precision; // 0 - 100
     private int MPcost;
-    private String element;
+    private String name;
+
+    public Ability(int damage, int precision, int MPcost, String name) {
+        this.damage = damage;
+        this.precision = precision;
+        this.MPcost = MPcost;
+        this.name = name;
+    }
+    //private String element;
 
     public int getDamage() {
         return damage;
@@ -30,6 +38,7 @@ public class Ability {
         this.MPcost = MPcost;
     }
 
+    /*
     public String getElement() {
         return element;
     }
@@ -38,13 +47,25 @@ public class Ability {
         this.element = element;
     }
 
+     */
+
+
     @Override
     public String toString() {
-        return "Ability{" +
+        return "Name='" + name + '\'' +
                 "damage=" + damage +
                 ", precision=" + precision +
                 ", MPcost=" + MPcost +
-                ", element='" + element + '\'' +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
+
+

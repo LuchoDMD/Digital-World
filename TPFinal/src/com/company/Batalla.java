@@ -44,7 +44,13 @@ public class Batalla
                     case 3:
                         compa.esquivar();
                         break;
+                    case 4:
+                        int action = menuSkills();
+                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])));
+                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])), turno, compa.abilities[action-1].getName()));
+                        break;
                 }
+                clearSrc();
                 clearEnemyStatus();
                 switch (botEnemy()){
                     case 0:
@@ -93,10 +99,17 @@ public class Batalla
                     case 3:
                         compa.esquivar();
                         break;
+                    case 4:
+                        int action = menuSkills();
+                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])));
+                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])), turno, compa.abilities[action-1].getName()));
+                        break;
                 }
+
             }
             turno++;
         }
+        clearSrc();
         System.out.println(printLog());
 
 
@@ -111,6 +124,15 @@ public class Batalla
     }
 
     public int botEnemy(){  //bot actúa semi aleatorio
+        /* COMANDOS DEL BOT:
+        0 : Ataca
+        1 : Defiende
+        2 : Esquiva
+        3 : Habilidad 1
+        4 : Habilidad 2
+        5 : Habilidad 3
+        6 : habilidad 4
+         */
         Random random = new Random();
         if(compa.getVida() < compa.getVida() / 3){  //el bot ataca cuando el player tiene menos de 1/3 de vida
             return 0; //full tryhard se pone el bot
@@ -131,12 +153,33 @@ public class Batalla
 
     public int MenuCombate(){      //
         int input = -1; //variable de control
-        while(input != 1 && input != 2 && input != 3){
+        while(input != 1 && input != 2 && input != 3 && input != 4){
             imprimirMenuCombate();
             Scanner scan = new Scanner(System.in);
             input = scan.nextInt();
         }
         return input;
+    }
+
+    //MenuCombate y menuSkills es distinto ya que MenuCombate va a tener más opciones en un futuro
+    //mientras que menuSkills siempre va a ser del 1 al 4
+
+    public int menuSkills(){
+        int input = -1; //variable de control
+        while(input != 1 && input != 2 && input != 3 && input != 4){
+            printMenuSkills();
+            Scanner scan = new Scanner(System.in);
+            input = scan.nextInt();
+        }
+        return input;
+    }
+
+    public void printMenuSkills(){
+        System.out.println("1 :" + compa.abilities[0].toString());
+        System.out.println("2 :" + compa.abilities[1].toString());
+        System.out.println("3 :" + compa.abilities[2].toString());
+        System.out.println("4 :" + compa.abilities[3].toString());
+        System.out.print("Seleccione habilidad para lanzar: ");
     }
 
     public void clearEnemyStatus(){    //método que se usa al terminar el turno para remover los status
@@ -157,6 +200,14 @@ public class Batalla
         System.out.println("presione 1 para Atacar");
         System.out.println("presione 2 para Defender");
         System.out.println("presione 3 para Esquivar");
+        System.out.println("presione 4 para ver Habilidades");
+
+    }
+
+    public static void clearSrc(){
+        for(int i = 0; i < 50 ; i++){
+            System.out.println(" ");
+        }
     }
 
     /*METODOS*/
