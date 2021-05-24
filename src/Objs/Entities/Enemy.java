@@ -17,7 +17,8 @@ public class Enemy extends Digimon implements Combate
     }
 
     @Override
-    public String toString() {
+    public String toString() /*CAMBIARLO*/
+    {
         return "Enemy{" +
                 "especie='" + especie + '\'' +
                 ", familia='" + familia + '\'' +

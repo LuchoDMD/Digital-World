@@ -1,7 +1,6 @@
 package Objs.Entities;
 
 import Objs.Items.Tecnica;
-
 import java.util.List;
 
 public abstract class Digimon
@@ -96,9 +95,9 @@ public abstract class Digimon
         }
     }
 
-    public String getTecnica(int index)
+    public String getNombreTecnica(int index)
     {
-        return tecnicas.get(index).toString();
+        return tecnicas.get(index).getNombre();
     }
 
     public int stab(Tecnica t)/*Es para el calculo: revisa si la familia tecnica pertenece a la misma familia del digimon*/
@@ -111,7 +110,8 @@ public abstract class Digimon
     }
 
     @Override
-    public String toString() {
+    public String toString()/*CAMBIARLO*/
+    {
         return "especie='" + especie + '\'' +
                 ", familia='" + familia + '\'' +
                 ", atributo='" + atributo + '\'' +

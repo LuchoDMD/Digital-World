@@ -1,7 +1,6 @@
 package Objs.Entities;
 
 import Objs.Actions.Combate;
-
 import java.util.Scanner;
 
 public class Partner extends Digimon implements Combate
@@ -13,7 +12,6 @@ public class Partner extends Digimon implements Combate
     {
         super(especie,familia,atributo,etapa,peso,nivel,hp,mp,atk,def,spd);
         this.nombre=especie;
-
     }
 
     public String getNombre()
@@ -50,7 +48,8 @@ public class Partner extends Digimon implements Combate
     }
 
     @Override
-    public String toString() {
+    public String toString()/*CAMBIARLO*/
+    {
         return "Partner{"+super.toString()+
                 "nombre='" + nombre + '\'' +
                 ", peso=" + peso +
@@ -73,6 +72,23 @@ public class Partner extends Digimon implements Combate
         rta=s.nextInt();
         return rta;
     }
+
+    private int expRank()/*Formula de Rango de experiencia de siguiente nivel*/
+    {
+        return (nivel*(atk+def+spd))/100;
+    }
+
+    private void levelUp()/*Subida de Nivel*/
+    {
+        if(xp==expRank())
+        {
+            setXp(0);
+            setNivel(getNivel()+1);
+            /*Podria haber un metodo que suba stadisticas y a medida que suba de nivel sube 1 o 0 las stats*/
+        }
+    }
+
+
 
     @Override
     public int atacar(int index)
