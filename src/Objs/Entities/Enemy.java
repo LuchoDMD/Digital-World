@@ -19,19 +19,12 @@ public class Enemy extends Digimon implements Combate
     @Override
     public String toString() /*CAMBIARLO*/
     {
-        return "Enemy{" +
-                "especie='" + especie + '\'' +
-                ", familia='" + familia + '\'' +
-                ", atributo='" + atributo + '\'' +
-                ", etapa='" + etapa + '\'' +
-                ", nivel=" + nivel +
-                ", hp=" + hp +
-                ", mp=" + mp +
-                ", atk=" + atk +
-                ", def=" + def +
-                ", spd=" + spd +
-                ", terreno='" + terreno + '\'' +
-                '}';
+        return super.toString()+
+                "\n>HP: "+hp+
+                ".\n>MP: "+mp+
+                ".\n>ATK: "+atk+
+                ".\n>DEF: "+def+
+                ".\n>SPD: "+spd+".";
     }
 
     @Override

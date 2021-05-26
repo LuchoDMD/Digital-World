@@ -112,16 +112,11 @@ public abstract class Digimon
     @Override
     public String toString()/*CAMBIARLO*/
     {
-        return "especie='" + especie + '\'' +
-                ", familia='" + familia + '\'' +
-                ", atributo='" + atributo + '\'' +
-                ", etapa='" + etapa + '\'' +
-                ", nivel=" + nivel +
-                ", hp=" + hp +
-                ", mp=" + mp +
-                ", atk=" + atk +
-                ", def=" + def +
-                ", spd=" + spd +
-                '}';
+        return  "\n>Especie:" +especie+
+                ".\n>Familia: " +familia+
+                ".\n>Atributo: " +atributo+
+                ".\n>Etapa: " +etapa+
+                ".\n>Nivel=" +nivel+".";
     }
 }
+//*Pense en hacer otra herencia en la que tenga una string digievoluciona de(prox) y a(sig(singular y plural))*/

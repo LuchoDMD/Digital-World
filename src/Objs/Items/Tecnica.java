@@ -4,7 +4,7 @@ public class Tecnica
 {
     private String nombre, familia;
     private int potencia, precision, costoMP;
-
+    /*Pensar como agregar el efecto si posee y crear unos metodos que los apliquen*/
     public Tecnica(String nombre, String familia, int potencia, int precision, int costoMP)
     {
         this.nombre = nombre;
@@ -35,12 +35,10 @@ public class Tecnica
 
     @Override
     public String toString() {
-        return "Tecnica{" +
-                "nombre='" + nombre + '\'' +
-                ", familia='" + familia + '\'' +
-                ", potencia=" + potencia +
-                ", precision=" + precision +
-                ", costoMP=" + costoMP +
-                '}';
+        return  ">Nombre: " +nombre +
+                ".\n>Familia: "+familia +
+                ".\n>Potencia: "+potencia +
+                ".\n>Precision: "+precision+
+                ".\n>CostoMP: " +costoMP+".";
     }
 }

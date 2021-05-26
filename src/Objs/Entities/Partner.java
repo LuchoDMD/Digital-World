@@ -50,13 +50,12 @@ public class Partner extends Digimon implements Combate
     @Override
     public String toString()/*CAMBIARLO*/
     {
-        return "Partner{"+super.toString()+
-                "nombre='" + nombre + '\'' +
-                ", peso=" + peso +
-                ", vida=" + vida +
-                ", mana=" + mana +
-                ", xp=" + xp +
-                '}';
+        return ">"+nombre+":\n"+super.toString()+
+                "\n>HP: "+hp+
+                ".\n>MP: "+mp+
+                ".\n>ATK: "+atk+
+                ".\n>DEF: "+def+
+                ".\n>SPD: "+spd+".";
     }
 
     public int seleccionarTecnica() /*El metodo solo existe para provar cosas*/
@@ -84,11 +83,11 @@ public class Partner extends Digimon implements Combate
         {
             setXp(0);
             setNivel(getNivel()+1);
-            /*Podria haber un metodo que suba stadisticas y a medida que suba de nivel sube 1 o 0 las stats*/
+            /*subeStats(int porcentaje);*/
         }
     }
 
-
+    /*Podria haber un metodo que suba stadisticas y a medida que suba de nivel sube 1 o 0 las stats*/
 
     @Override
     public int atacar(int index)
@@ -107,4 +106,4 @@ public class Partner extends Digimon implements Combate
     }
 }
 
-/*PLANTEAR EL CALCULO DEL ESQUIVAR Y DEFENDER PARA QUE PUEDAN REALIZARSE EN COMBATE*/
+/*Revisar si los calculos satisfacen el concepto de combate*/
