@@ -10,18 +10,16 @@ public class Partner extends Digimon implements Combate {
     private int vida;/*Vida actual del Digimon*/
     private int mana;/*Mana actual del Digimon*/
     private int exp;/*Experiencia*/
-    private int status;
     //private int aptitud;
 
 
-    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, Map abilityMap, int[] keys)
+    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd, abilityMap, keys);
+        super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
         this.vida = hp;
         this.mana = mp;
         this.exp = 0;
         this.nombre = nombre;
-        this.status = 0;
     }
 
     /*GETTERS AND SETTERS*/
@@ -49,18 +47,14 @@ public class Partner extends Digimon implements Combate {
     public void setExp(int exp) {
         this.exp = exp;
     }
-    public int getStatus() {
-        return status;
-    }
-    public void setStatus(int status) {
-        this.status = status;
-    }
+
 
     @Override
     public int atacar()
     {
         return getAtk();
     }
+
     @Override
     public int defender()
     {
@@ -70,8 +64,33 @@ public class Partner extends Digimon implements Combate {
     }
 
     @Override
+    public boolean checkMana(Ability ability){
+        if (this.getMana() > ability.getMPcost()){
+            return true;
+        }
+        return false;
+    }
+
+    //este método recibe el daño real y determina si es el último hit o no
+    @Override
+    public boolean killingBlow(int dmg){
+        if(this.getVida() > dmg){ //se puede conviertir en un método.
+            this.setVida(this.getVida() - dmg);
+            return false;
+        }
+        else{
+            this.setVida(0);
+            return true;
+        }
+    }
+
+    @Override
+    public void mpRegen(){
+        setMana(getMana() + 10);
+    }
+
+    @Override
     public int skillAttack(Ability ability){
-        setMana(getMana() - ability.getMPcost());
         Random random = new Random();
         if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
             return ability.getDamage();
@@ -80,13 +99,24 @@ public class Partner extends Digimon implements Combate {
     }
 
     @Override
-    public int esquivar()
+    public boolean esquivar()
     {
-        return 0;
+        int aux= (int) (Math.random()*100);
+        if (aux<=getSpd()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+
     @Override
     public int getDmg(int dañoRecibido){
         //formula
+        if (dañoRecibido-getDef() < 0){
+            return 0;
+        }
+
         return dañoRecibido-getDef();
     }
 }

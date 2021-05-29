@@ -15,10 +15,12 @@ public class Main {
         abilities.put(5, new Ability(185, 85, 40, "Tormenta de Fuego"));
         abilities.put(6, new Ability(200, 65, 30, "Tormenta Eléctrica"));
         abilities.put(7, new Ability(300, 65, 50, "Descarga Eléctrica"));
-        int[] charizardSkills = {2, 3, 4, 5};
-        int[] pikachuSkills = {1, 4, 6, 7};
-        Enemy charizard = new Enemy(5, 500,200,50,25,100, 100, "charizard", abilities, charizardSkills);
-        Partner pikachu = new Partner(5,300,500,100,10,150, "pikachu", (HashMap) abilities, pikachuSkills);
+        abilities.put(8, new Ability(40, 100, 0, "Ataque Básico"));
+        int[] charizardSkills = {8, 3, 4, 5};
+        int[] pikachuSkills = {8, 4, 6, 7};
+        //replantear map
+        Enemy charizard = new Enemy(5, 500,200,50,25,100, 100, "charizard", 100, abilities, charizardSkills);
+        Partner pikachu = new Partner(5,300,500,100,10,150, "pikachu", 15, abilities, pikachuSkills);
 
 
         Batalla battle1 = new Batalla(pikachu, charizard);

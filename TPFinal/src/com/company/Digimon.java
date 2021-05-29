@@ -3,7 +3,7 @@ package com.company;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Digimon {
+public abstract class Digimon {
     /*ATRIBUTOS*/
     /*
     protected String especie;
@@ -12,42 +12,26 @@ public class Digimon {
     protected String etapa; //Bebe - Novato - Campeon - Adulto - Perfecto
      */
 
-    protected int nivel;
-    protected int hp;/*VIDA*/
-    protected int mp;/*MANA*/
-    protected int atk;/*ATAQUE*/
-    protected int def;/*DEFENSA*/
-    protected int spd;/*VELOCIDAD*/ //poder de ataque
+    private int nivel;
+    private int hp;/*VIDA*/
+    private int mp;/*MANA*/
+    private int atk;/*ATAQUE*/
+    private int def;/*DEFENSA*/
+    private int spd;/*VELOCIDAD*/ //poder de ataque
+    private int status;
+    private int peso;
     public Ability[] abilities;
 
-    //private int peso;
 
-    /*CONSTRUTOR
-    public Digimon(String especie, String familia, String atributo, String etapa, int nivel, int hp, int mp, int atk, int def, int spd)
-    {
-
-        this.especie = especie;
-        this.familia = familia;
-        this.atributo = atributo;
-        this.etapa = etapa;
-
-
+    public Digimon(int nivel, int hp, int mp, int atk, int def, int spd, int peso, Map abilityMap, int[] keys) {
         this.nivel = nivel;
+        this.peso = peso;
         this.hp = hp;
         this.mp = mp;
         this.atk = atk;
         this.def = def;
         this.spd = spd;
-    }
-    */
-
-    public Digimon(int nivel, int hp, int mp, int atk, int def, int spd, Map abilityMap, int[] keys) {
-        this.nivel = nivel;
-        this.hp = hp;
-        this.mp = mp;
-        this.atk = atk;
-        this.def = def;
-        this.spd = spd;
+        this.status = 0;
         this.abilities = new Ability[4];    //los digimon solo pueden tener 4 habilidades
         loadSkills(abilityMap, keys);
     }
@@ -55,6 +39,21 @@ public class Digimon {
     public void loadSkills(Map abilityMap, int[] keys){
         for (int i = 0 ; i < 4 ; i++){
             abilities[i] = (Ability) abilityMap.get(keys[i]);
+        }
+    }
+
+    //método para saber si el hit va a ser el que remate o no (para evitar dejarlo con vida negativa)
+    public abstract boolean killingBlow(int dmg);
+
+    //check para saber si tiene mana suficiente para lanzar el skill
+    public abstract boolean checkMana(Ability ability);
+
+
+
+    public void clearStatus(){    //método que se usa al terminar el turno para remover los status
+        if (this.getStatus() == 1){
+            this.setDef(this.getDef() - 10);
+            this.setStatus(0);
         }
     }
 
@@ -118,4 +117,13 @@ public class Digimon {
     public void setAbilities(Ability[] abilities) {
         this.abilities = abilities;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }
+

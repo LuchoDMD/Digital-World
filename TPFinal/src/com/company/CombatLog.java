@@ -12,7 +12,7 @@ public class CombatLog {
         this.defensor = defensor;
         this.damage = damage;
         this.turno = turno;
-        this.ataque = "ataque básico";
+        this.ataque = "Ataque Básico";
     }
 
     //este constructor obtiene el nombre de la habilidad lanzada

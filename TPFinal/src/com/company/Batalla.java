@@ -30,88 +30,147 @@ public class Batalla
 
     public void comenzarBatalla(){      //Método donde se realizará el bucle de combate
         int turno = 1;
+        printMenuStatus();
         while ((enemigo.getHp() > 0 ) && (compa.getVida() > 0)){    //Cuando alguno de los dos tenga 0 o menos de vida, termina el combate
-            if(isFaster()){
-                clearPartnerStatus();
-                switch (MenuCombate()){
+            if(isFaster()){     //si el player es más rápido, ataca primero
+                compa.clearStatus();
+                switch (MenuCombate()){     //TURNO PLAYER
                     case 1:
-                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.atacar()));
-                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.atacar()), turno));
+                        boolean flag = false;   //variable de control para el MP
+                        while(!flag){       //bucle para poder volver a elegir en caso de no tener suficiente MP para lanzar el hechizo
+                            int action = menuSkills();
+                            int dmg = enemigo.getDmg(compa.skillAttack(compa.abilities[action-1]));
+                            if (compa.checkMana(compa.abilities[action-1])){ //checkea que tenga mana suficiente
+                                compa.setMana(compa.getMana() - compa.abilities[action - 1].getMPcost());   //resta el mana
+                                enemigo.killingBlow(dmg); //método que resta la vida al enemigo (tambien checkea si es el último hit para ponerle la vida en 0)
+                                flag = true;
+                            }
+                            else{
+                                System.out.println("MP insuficiente");
+                            }
+                            if (flag){  //lo metí adentro del bucle porque si no no me toma las variables dmg y action
+                                log.add(new CombatLog(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action-1].getName()));
+                                clearSrc();
+                                System.out.println("Has lanzado " + compa.abilities[action - 1]);
+                            }
+                            if (action == 1){       //si el ataque es un básico, se regenera MP
+                                compa.mpRegen();
+                            }
+                        }
                         break;
                     case 2:
                         compa.defender();
+                        compa.mpRegen();
                         break;
                     case 3:
                         compa.esquivar();
+                        compa.mpRegen();
                         break;
                     case 4:
-                        int action = menuSkills();
-                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])));
-                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])), turno, compa.abilities[action-1].getName()));
                         break;
+
                 }
-                clearSrc();
-                clearEnemyStatus();
-                switch (botEnemy()){
-                    case 0:
-                        System.out.println("EL BOT ATACA");
-                        compa.setVida(compa.getVida() - compa.getDmg(enemigo.atacar()));
-                        log.add(new CombatLog(enemigo.getName(), compa.getNombre(), compa.getDmg(enemigo.atacar()), turno));
-                        break;
-                    case 1:
-                        enemigo.defender();
-                        System.out.println("EL BOT se prepara para defender");
-                        break;
-                    case 2:
-                        System.out.println("EL BOT se prepara para esquivar");
-                        enemigo.esquivar();
-                        break;
+                if(enemigo.getHp() >= 0){
+
+                    enemigo.clearStatus();
+                    int action = botEnemy();
+                    switch (action){        //TURNO BOT
+                        case 0: case 1: case 2: case 3:
+                            System.out.println("EL BOT LANZA" + enemigo.abilities[action]);
+                            int dmg = compa.getDmg(enemigo.skillAttack(enemigo.abilities[action]));
+                            enemigo.setMp(enemigo.getMp() - enemigo.abilities[action].getMPcost());   //resta el mana
+                            compa.killingBlow(dmg);
+                            log.add(new CombatLog(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
+                            if(action == 0){        //si el ataque es un básico, se regenera MP
+                                enemigo.mpRegen();
+                            }
+                            break;
+                        case 4:
+                            enemigo.defender();
+                            System.out.println("EL BOT se prepara para defender");
+                            enemigo.mpRegen();
+                            break;
+                        case 5:
+                            System.out.println("EL BOT se prepara para esquivar");
+                            enemigo.mpRegen();
+                            enemigo.esquivar();
+                            break;
+                    }
+                    printMenuStatus();
                 }
-                printMenuStatus();
+
             }
-            else{
-                clearEnemyStatus();
-                switch (botEnemy()){
-                    case 0:
+
+            else{           //si el bot es más rápido ataca primero
+                enemigo.clearStatus();
+                int action = botEnemy();
+                switch (action){        //TURNO BOT
+                    case 0: case 1: case 2: case 3:
                         System.out.println("EL BOT ATACA");
-                        compa.setVida(compa.getVida() - compa.getDmg(enemigo.atacar()));
-                        log.add(new CombatLog(enemigo.getName(), compa.getNombre(), compa.getDmg(enemigo.atacar()), turno));
+                        int dmg = compa.getDmg(enemigo.skillAttack(enemigo.abilities[action]));
+                        enemigo.setMp(enemigo.getMp() - enemigo.abilities[action].getMPcost());   //resta el mana
+                        compa.killingBlow(dmg);
+                        log.add(new CombatLog(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
+                        if(action == 0){    //si el ataque es un básico, se regenera MP
+                            enemigo.mpRegen();
+                        }
                         break;
-                    case 1:
+                    case 4:
                         enemigo.defender();
+                        enemigo.mpRegen();
                         System.out.println("EL BOT se prepara para defender");
                         break;
-                    case 2:
-                        enemigo.esquivar();
+                    case 5:
                         System.out.println("EL BOT se prepara para esquivar");
+                        enemigo.mpRegen();
+                        enemigo.esquivar();
                         break;
                 }
                 printMenuStatus();
-                clearPartnerStatus();
-                switch (MenuCombate()){
+                compa.clearStatus();
+                switch (MenuCombate()){     //TURNO PLAYER
                     case 1:
-                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.atacar()));
-                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.atacar()), turno));
+                        boolean flag = false;   //variable de control para el MP
+                        while(!flag){       //bucle para poder volver a elegir en caso de no tener suficiente MP para lanzar el hechizo
+                            int action2 = menuSkills();
+                            int dmg = enemigo.getDmg(compa.skillAttack(compa.abilities[action2-1]));
+                            if (compa.checkMana(compa.abilities[action2-1])){ //checkea que tenga mana suficiente
+                                compa.setMana(compa.getMana() - compa.abilities[action2 - 1].getMPcost());   //resta el mana
+                                enemigo.killingBlow(dmg); //método que resta la vida al enemigo (tambien checkea si es el último hit para ponerle la vida en 0)
+                                flag = true;
+                            }
+                            else{
+                                System.out.println("MP insuficiente");
+                            }
+                            if (flag){  //lo metí adentro del bucle porque si no no me toma las variables dmg y action
+                                log.add(new CombatLog(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action2-1].getName()));
+                                clearSrc();
+                                System.out.println("Has lanzado " + compa.abilities[action2 - 1]);
+                            }
+                            if (action2 == 1){       //si el ataque es un básico, se regenera MP
+                                compa.mpRegen();
+                            }
+                        }
                         break;
                     case 2:
                         compa.defender();
+                        compa.mpRegen();
                         break;
                     case 3:
                         compa.esquivar();
+                        compa.mpRegen();
                         break;
                     case 4:
-                        int action = menuSkills();
-                        enemigo.setHp(enemigo.getHp() - enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])));
-                        log.add(new CombatLog(compa.getNombre(), enemigo.getName(), enemigo.getDmg(compa.skillAttack(compa.abilities[action-1])), turno, compa.abilities[action-1].getName()));
                         break;
+
                 }
 
             }
             turno++;
         }
         clearSrc();
+        printMenuStatus();
         System.out.println(printLog());
-
 
     }
 
@@ -125,31 +184,27 @@ public class Batalla
 
     public int botEnemy(){  //bot actúa semi aleatorio
         /* COMANDOS DEL BOT:
-        0 : Ataca
-        1 : Defiende
-        2 : Esquiva
-        3 : Habilidad 1
-        4 : Habilidad 2
-        5 : Habilidad 3
-        6 : habilidad 4
+        0 : Habilidad 1 //ataque básico
+        1 : Habilidad 2
+        2 : Habilidad 3
+        3 : habilidad 4
+        4 : Defiende
+        5 : Esquiva
          */
         Random random = new Random();
-        if(compa.getVida() < compa.getVida() / 3){  //el bot ataca cuando el player tiene menos de 1/3 de vida
-            return 0; //full tryhard se pone el bot
+        int action = random.nextInt(6); // 0, 1 , 2, 3, 4, 5
+        if(action <= 3){
+            if (enemigo.checkMana(enemigo.abilities[action])){
+                    return action;
+            }
+            else {
+                return 0;
+            }
         }
-        if (compa.getStatus() == 1 && isFaster()){  //si el jugador se defiende primero, el BOT tambien
-            return 1;
-        }
-        else{
-            int action = random.nextInt(3); // 0, 1 , 2
             return action;
         }
-    }
 
-    public void printMenuStatus(){
-        System.out.println("Enemy:                      Player:");
-        System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
-    }
+
 
     public int MenuCombate(){      //
         int input = -1; //variable de control
@@ -174,34 +229,14 @@ public class Batalla
         return input;
     }
 
-    public void printMenuSkills(){
-        System.out.println("1 :" + compa.abilities[0].toString());
-        System.out.println("2 :" + compa.abilities[1].toString());
-        System.out.println("3 :" + compa.abilities[2].toString());
-        System.out.println("4 :" + compa.abilities[3].toString());
-        System.out.print("Seleccione habilidad para lanzar: ");
-    }
 
-    public void clearEnemyStatus(){    //método que se usa al terminar el turno para remover los status
-        if (enemigo.getStatus() == 1){
-            enemigo.setDef(enemigo.getDef() - 10);
-            enemigo.setStatus(0);
-        }
-    }
 
-    public void clearPartnerStatus(){    //método que se usa al terminar el turno para remover los status
-        if (compa.getStatus() == 1){
-            compa.setDef(compa.getDef() - 10);
-            compa.setStatus(0);
-        }
-    }
 
-    public void imprimirMenuCombate(){
-        System.out.println("presione 1 para Atacar");
-        System.out.println("presione 2 para Defender");
-        System.out.println("presione 3 para Esquivar");
-        System.out.println("presione 4 para ver Habilidades");
-
+    /*PRINTS*/
+    public void printMenuStatus(){
+        System.out.println("Enemy:                      Player:");
+        System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
+        System.out.println("MP: " + enemigo.getMp() + "                     MP: " + compa.getMana());
     }
 
     public static void clearSrc(){
@@ -210,6 +245,20 @@ public class Batalla
         }
     }
 
-    /*METODOS*/
+    public void imprimirMenuCombate(){
+        System.out.println("presione 1 para Atacar");
+        System.out.println("presione 2 para Defender");
+        System.out.println("presione 3 para Esquivar");
+        System.out.println("presione 4 para ver Inventario");
+
+    }
+
+    public void printMenuSkills(){
+        System.out.println("1 :" + compa.abilities[0].toString());
+        System.out.println("2 :" + compa.abilities[1].toString());
+        System.out.println("3 :" + compa.abilities[2].toString());
+        System.out.println("4 :" + compa.abilities[3].toString());
+        System.out.print("Seleccione habilidad para lanzar: ");
+    }
 
 }
