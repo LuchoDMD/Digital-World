@@ -26,9 +26,6 @@ public class Tecnica
     public int getPrecision() {
         return precision;
     }
-    public void setPrecision(int precision) {
-        this.precision = precision;
-    }
     public int getCostoMP() {
         return costoMP;
     }

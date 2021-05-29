@@ -2,12 +2,13 @@ package Objs.Entities;
 
 import Objs.Items.Tecnica;
 import java.util.List;
+import java.util.Vector;
 
 public abstract class Digimon
 {
     protected String especie, familia, atributo, etapa;
     protected int peso,nivel,hp,mp,atk,def,spd;
-    protected List<Tecnica> tecnicas; /*SOLO HASTA 3(PODRIAN SER CUATRO)*/
+    protected List<Tecnica>tecnicas; /*SOLO HASTA 3(PODRIAN SER CUATRO)*/
 
     public Digimon(String especie, String familia, String atributo, String etapa, int peso,int nivel, int hp, int mp, int atk, int def, int spd)
     {
@@ -22,7 +23,7 @@ public abstract class Digimon
         this.atk = atk;
         this.def = def;
         this.spd = spd;
-        this.tecnicas = tecnicas;
+        this.tecnicas = new Vector(4);
     }
 
     public String getEspecie()

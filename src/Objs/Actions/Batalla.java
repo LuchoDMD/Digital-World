@@ -1,11 +1,6 @@
 package Objs.Actions;
 
-import Objs.Entities.Digimon;
-import Objs.Entities.Enemy;
-import Objs.Entities.Partner;
-import Objs.Items.Tecnica;
-import com.sun.security.jgss.GSSUtil;
-
+import Objs.Entities.*;
 import java.util.List;
 import java.util.Vector;
 
@@ -27,7 +22,7 @@ public class Batalla
         /*print con partnerHUD+enemyHUD+"\n"+turno*/
         compa.setVida(compa.getHp()); compa.setMana(compa.getMp());
         int vidaEnemigo=enemigo.getHp(); int manaEnemigo=enemigo.getMp();
-        int dmg=-1, tecnica=0; Turno t;
+        int dmg, tecnica; Turno t;
         while(vidaEnemigo>0&&compa.getVida()>0)
         {
             System.out.println(partnerHUD()+" "+enemyHUD(vidaEnemigo,manaEnemigo));
@@ -52,7 +47,6 @@ public class Batalla
                                 compa.setMana(compa.getMp());
                             }
                     }
-                    System.out.println(t);
             }else
                 {
                     tecnica=compa.seleccionarTecnica();
@@ -74,8 +68,8 @@ public class Batalla
                                 manaEnemigo=compa.getMp();
                             }
                         }
-                    System.out.println(t);
                 }
+            System.out.println(t);
         }
 
         /*FALTARIA UNA ULTIMA COMPROBACION DE SI ALGUNO QUEDO DEBILITADO SI QUEDA
