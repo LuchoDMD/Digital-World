@@ -85,9 +85,9 @@ public abstract class Digimon
         this.spd = spd;
     }
 
-    public void agregarTecnica(Tecnica t, int limit)
+    public void agregarTecnica(Tecnica t)
     {
-        if(tecnicas.size()<limit)
+        if(tecnicas.size()<4)
         {
             if(!tecnicas.contains(t))
             {

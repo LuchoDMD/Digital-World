@@ -30,13 +30,13 @@ public class Enemy extends Digimon implements Combate
     @Override
     public int atacar(int index)
     {
-        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/(((int)Math.random()*2)*100);
+        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/100;
     }
 
     @Override
     public int defender()
     {
-        return (def * (peso / spd)) / (((int) Math.random()*2) * 100);
+        return (def * (peso / spd)) /10;
     }
 
     @Override

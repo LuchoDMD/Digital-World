@@ -1,19 +1,9 @@
 package Objs.Actions;
 
-import Objs.Items.Tecnica;
-
 public class Turno
 {
     private String digimon1, digimon2, accion;
     private int dmg;
-
-    public Turno()
-    {
-        this.digimon1="";
-        this.digimon2="";
-        this.accion="";
-        this.dmg=0;
-    }
 
     public Turno(String digimon1, String digimon2, String accion, int dmg)
     {
@@ -22,6 +12,8 @@ public class Turno
         this.accion = accion;
         this.dmg = dmg;
     }
+
+    /*Podria haber 2 constructores mas: uno por si falla el ataque y otro por si el ataque es esquivado*/
 
     @Override
     public String toString()

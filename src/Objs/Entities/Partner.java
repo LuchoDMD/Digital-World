@@ -12,6 +12,8 @@ public class Partner extends Digimon implements Combate
     {
         super(especie,familia,atributo,etapa,peso,nivel,hp,mp,atk,def,spd);
         this.nombre=especie;
+        this.vida=hp;
+        this.mana=mp;
     }
 
     public String getNombre()
@@ -61,12 +63,12 @@ public class Partner extends Digimon implements Combate
     public int seleccionarTecnica() /*El metodo solo existe para provar cosas*/
     {
         int rta=-1; Scanner s=new Scanner(System.in);
-        System.out.println("1="+tecnicas.get(0).getNombre()+"\n2="+tecnicas.get(1).getNombre()+"\n3="+tecnicas.get(2).getNombre());
+        System.out.println("0="+tecnicas.get(0).getNombre()+"\n1="+tecnicas.get(1).getNombre()+"\n2="+tecnicas.get(2).getNombre());
         while(!s.hasNextInt())
         {
             System.out.println("Valor no válido");
             s.next();
-            System.out.println("1="+tecnicas.get(0).getNombre()+"\n2="+tecnicas.get(1).getNombre()+"\n3="+tecnicas.get(2).getNombre());
+            System.out.println("0="+tecnicas.get(0).getNombre()+"\n1="+tecnicas.get(1).getNombre()+"\n2="+tecnicas.get(2).getNombre());
         }
         rta=s.nextInt();
         return rta;
@@ -92,12 +94,12 @@ public class Partner extends Digimon implements Combate
     @Override
     public int atacar(int index)
     {
-        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/(((int)Math.random()*2)*100);
+        return (tecnicas.get(index).getPotencia()*atk*stab(tecnicas.get(index)))/100;
     }
 
     @Override
     public int defender() {
-        return (def * (peso / spd)) / (((int) Math.random()*2) * 100);
+        return (def * (peso / spd)) / 10;
     }
 
     @Override
