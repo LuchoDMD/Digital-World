@@ -1,58 +1,124 @@
 package App;
 
-public class Partner extends Digimon {
+import java.util.Map;
+import java.util.Random;
 
-    // Entero para almacenar el numero de tecnicas
+public class Partner extends Digimon implements Combate {
+    /*ATRIBUTOS*/
+    private final String nombre;
+    private int vida;/*Vida actual del Digimon*/
+    private int mana;/*Mana actual del Digimon*/
+    private int exp;/*Experiencia*/
+    //private int aptitud;
 
-    public int cantTecnicasOfensivas;
-    public int cantTecnicasDefensivas;
 
-    // Arreglo para almacenar la lista de tecnicas del Digimon
-
-    public String[] tecnicaOfensiva = {"Corte de trompa", "Patada voladora", "Coletazo infernal", "Mega rayo destructivo", "Extincion"};
-    public String[] tecnicaDefensiva = {"Piel de acero", "Barrera de luz", "Proteccion divina", "Manto de tierra", "Invisibilidad temporal"};
-
-    // Constructor para la clase Partner
-
-    public Partner(String nombre, int maxHp, int xp) {
-        super(nombre, maxHp, xp);
-        // Seteando la cantidad de tecnicas a cero.
-        this.cantTecnicasOfensivas = 0;
-        this.cantTecnicasDefensivas = 0;
-        // Elegir tecnicas
-        elegirTecnicas();
+    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
+    {
+        super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
+        this.vida = hp;
+        this.mana = mp;
+        this.exp = 0;
+        this.nombre = nombre;
     }
 
-    // Metodos especificos de la clase Partner
+    /*GETTERS AND SETTERS*/
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        nombre = nombre;
+    }
+    public int getVida() {
+        return vida;
+    }
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    public int getMana() {
+        return mana;
+    }
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+    public int getExp() {
+        return exp;
+    }
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
 
     @Override
-    public int atacar() {
-        return (int) (Math.random() * (xp/4 + cantTecnicasOfensivas * 3 + 3) + cantTecnicasOfensivas * 2 + cantTecnicasDefensivas + 1);
+    public int atacar()
+    {
+        return getAtk();
     }
 
     @Override
-    public int defender() {
-        return (int) (Math.random() * (xp/4 + cantTecnicasDefensivas * 3 + 3) + cantTecnicasDefensivas * 2 + cantTecnicasOfensivas + 1);
+    public int defender()
+    {
+        setStatus(1);
+        setDef(getDef() + 10); //aumenta la defensa en 10
+        return 0;
     }
 
-    public void elegirTecnicas() {
-        GameLogic.limpiarConsola();
-        GameLogic.imprimirEncabezado("Elija una tecnica disponible (ofensiva o defensiva): ");
-        System.out.println("1) " + tecnicaOfensiva[cantTecnicasOfensivas]);
-        System.out.println("2) " + tecnicaDefensiva[cantTecnicasDefensivas]);
-        int aux = tecnicaDefensiva.length;
+    @Override
+    public boolean checkMana(Ability ability){
+        return this.getMana() > ability.getMPcost();
+    }
 
-        int input = GameLogic.leerInput("---> ", aux);
-        GameLogic.limpiarConsola();
-
-        if (input == 1) {
-            GameLogic.imprimirEncabezado("Usted ha elegido: " + tecnicaOfensiva[cantTecnicasOfensivas] + "!");
-            cantTecnicasOfensivas++;
-        } else {
-            GameLogic.imprimirEncabezado("Usted ha elegido: " + tecnicaDefensiva[cantTecnicasDefensivas] + "!");
-            cantTecnicasDefensivas++;
+    //este método recibe el daño real y determina si es el último hit o no
+    @Override
+    public boolean killingBlow(int dmg){
+        if(this.getVida() > dmg){ //se puede conviertir en un método.
+            this.setVida(this.getVida() - dmg);
+            return false;
         }
-        GameLogic.systemPause();
+        else{
+            this.setVida(0);
+            return true;
+        }
+    }
+
+    @Override
+    public void mpRegen(){
+        setMana(getMana() + 10);
+    }
+
+    @Override
+    public int skillAttack(Ability ability){
+        Random random = new Random();
+        if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
+            return ability.getDamage();
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean esquivar()
+    {
+        int aux= (int) (Math.random()*100);
+        return aux <= getSpd();
+    }
+
+    @Override
+    public int getDmg(int dañoRecibido){
+        //formula
+        if (dañoRecibido-getDef() < 0){
+            return 0;
+        }
+
+        return dañoRecibido-getDef();
+    }
+
+    @Override
+    public String toString() {
+        return "Partner [" +
+                "Nombre: '" + nombre + '\'' +
+                ", Vida: " + vida +
+                ", Mana: " + mana +
+                ", XP: " + exp +
+                ']';
     }
 }
 
