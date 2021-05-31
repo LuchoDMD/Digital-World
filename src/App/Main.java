@@ -6,7 +6,7 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        //instanciamiento
+        //instanciamiento de clases
         Map<Integer, Ability> abilities = new HashMap<>();
         abilities.put(1, new Ability(100, 95, 20, "Ataque Relámpago"));
         abilities.put(2, new Ability(70, 100, 15, "Fuego Elemental"));
