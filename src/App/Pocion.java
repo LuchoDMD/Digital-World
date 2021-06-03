@@ -9,11 +9,11 @@ public class Pocion extends Item{
     }
 
     @Override
-    public void usar(Partner partner) {
-        if (partner.getVida() + cantRestauracion > partner.getHp()){
-            partner.setVida(partner.getHp());
+    public void usar(Companiero companiero) {
+        if (companiero.getVida() + cantRestauracion > companiero.getHp()){
+            companiero.setVida(companiero.getHp());
         } else {
-            partner.setVida(partner.getVida() + cantRestauracion);
+            companiero.setVida(companiero.getVida() + cantRestauracion);
         }
         stock--;
     }

@@ -3,7 +3,7 @@ package App;
 import java.util.Map;
 import java.util.Random;
 
-public class Partner extends Digimon implements Combate {
+public class Companiero extends Digimon implements Combate {
     /*ATRIBUTOS*/
     private final String nombre;
     private int vida;/*Vida actual del Digimon*/
@@ -12,9 +12,9 @@ public class Partner extends Digimon implements Combate {
     //private int aptitud;
 
 
-    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
+    public Companiero(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, String nombre, int peso, Map mapaHabilidades, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
+        super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         this.vida = hp;
         this.mana = mp;
         this.exp = 0;
@@ -51,27 +51,27 @@ public class Partner extends Digimon implements Combate {
     @Override
     public int atacar()
     {
-        return getAtk();
+        return getAtaque();
     }
 
     @Override
     public int defender()
     {
-        setStatus(1);
-        setDef(getDef() + 10); //aumenta la defensa en 10
+        setEstado(1);
+        setDefensa(getDefensa() + 10); //aumenta la defensa en 10
         return 0;
     }
 
     @Override
-    public boolean checkMana(Ability ability){
-        return this.getMana() > ability.getMPcost();
+    public boolean verificarMana(Habilidad habilidad){
+        return this.getMana() > habilidad.getCostoMP();
     }
 
     //este método recibe el daño real y determina si es el último hit o no
     @Override
-    public boolean killingBlow(int dmg){
-        if(this.getVida() > dmg){ //se puede conviertir en un método.
-            this.setVida(this.getVida() - dmg);
+    public boolean golpeRematador(int danio){
+        if(this.getVida() > danio){ //se puede conviertir en un método.
+            this.setVida(this.getVida() - danio);
             return false;
         }
         else{
@@ -81,15 +81,15 @@ public class Partner extends Digimon implements Combate {
     }
 
     @Override
-    public void mpRegen(){
+    public void regenerarMP(){
         setMana(getMana() + 10);
     }
 
     @Override
-    public int skillAttack(Ability ability){
+    public int habilidadAtaque(Habilidad habilidad){
         Random random = new Random();
-        if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
-            return ability.getDamage();
+        if(random.nextInt(100) <= habilidad.getPrecision()){  //agrega chances de que le erre
+            return habilidad.getDanio();
         }
         return 0;
     }
@@ -98,22 +98,22 @@ public class Partner extends Digimon implements Combate {
     public boolean esquivar()
     {
         int aux= (int) (Math.random()*100);
-        return aux <= getSpd();
+        return aux <= getVelocidad();
     }
 
     @Override
-    public int getDmg(int dañoRecibido){
+    public int getDanio(int danio){
         //formula
-        if (dañoRecibido-getDef() < 0){
+        if (danio-getDefensa() < 0){
             return 0;
         }
 
-        return dañoRecibido-getDef();
+        return danio-getDefensa();
     }
 
     @Override
     public String toString() {
-        return "Partner [" +
+        return "Companiero [" +
                 "Nombre: '" + nombre + '\'' +
                 ", Vida: " + vida +
                 ", Mana: " + mana +

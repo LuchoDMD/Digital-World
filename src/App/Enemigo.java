@@ -3,28 +3,23 @@ package App;
 import java.util.*;
 import java.util.Map;
 
-public class Enemy extends Digimon implements Combate {
+public class Enemigo extends Digimon implements Combate {
     /*ATRIBUTOS*/
     private String terreno;/*Indica en el tipo de terreno que puede aparecer*/
     private int dinero;
-    String name;
-
-
-
-    int status; // 0.normal / 1.defensa / 2...
+    String nombre;
+    int estado; // 0.normal / 1.defensa / 2...
     /*Tendria una lista de Items Dropeables()*/
 
     /*CONSTRUCTOR*/
-    public Enemy(int nivel, int hp, int mp, int atk, int def, int spd,  int dinero, String name, int peso, Map abilityMap, int[] keys)
+    public Enemigo(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int dinero, String nombre, int peso, Map mapaHabilidades, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
+        super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         //this.terreno = terreno;
-        this.name = name;
+        this.nombre = nombre;
         this.dinero = dinero;
-        this.status = 0;
+        this.estado = 0;
     }
-
-
 
     /*METODOS*/
 
@@ -50,38 +45,38 @@ public class Enemy extends Digimon implements Combate {
 
 
     @Override
-    public boolean checkMana(Ability ability){
-        return this.getMp() > ability.getMPcost();
+    public boolean verificarMana(Habilidad habilidad){
+        return this.getMp() > habilidad.getCostoMP();
     }
 
     @Override
     public int atacar() {
         //formula de daño
-        return getAtk();
+        return getAtaque();
     }
 
     @Override
-    public int getDmg(int dañoRecibido){
+    public int getDanio(int danioRecibido){
         //formula
-        if (dañoRecibido-getDef() < 0){
+        if (danioRecibido-getDefensa() < 0){
             return 0;
         }
 
-        return dañoRecibido-getDef();
+        return danioRecibido-getDefensa();
     }
 
     @Override
     public int defender() {
-        setStatus(1);
-        setDef(getDef() + 10); //aumenta la defensa en 10
+        setEstado(1);
+        setDefensa(getDefensa() + 10); //aumenta la defensa en 10
         return 0;
     }
 
     @Override
-    public int skillAttack(Ability ability){
+    public int habilidadAtaque(Habilidad habilidad){
         Random random = new Random();
-        if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
-            return ability.getDamage();
+        if(random.nextInt(100) <= habilidad.getPrecision()){  //agrega chances de que le erre
+            return habilidad.getDanio();
         }
         return 0;
     }
@@ -89,9 +84,9 @@ public class Enemy extends Digimon implements Combate {
 
     //este método recibe el daño real y determina si es el último hit o no
     @Override
-    public boolean killingBlow(int dmg){
-        if(this.getHp() > dmg){ //se puede conviertir en un método.
-            this.setHp(this.getHp() - dmg);
+    public boolean golpeRematador(int danio){
+        if(this.getHp() > danio){ //se puede conviertir en un método.
+            this.setHp(this.getHp() - danio);
             return false;
         }
         else{
@@ -101,7 +96,7 @@ public class Enemy extends Digimon implements Combate {
     }
 
     @Override
-    public void mpRegen(){
+    public void regenerarMP(){
         setMp(getMp() + 10);
     }
 
@@ -109,15 +104,15 @@ public class Enemy extends Digimon implements Combate {
     @Override
     public boolean esquivar() {
         int aux= (int) (Math.random()*100);
-        return aux <= getSpd();
+        return aux <= getVelocidad();
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
 

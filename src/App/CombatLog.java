@@ -3,23 +3,23 @@ package App;
 public class CombatLog {
     String atacante;
     String defensor;
-    int damage;
+    int danio;
     int turno;
     String ataque;
 
-    public CombatLog(String atacante, String defensor, int damage, int turno) {
+    public CombatLog(String atacante, String defensor, int danio, int turno) {
         this.atacante = atacante;
         this.defensor = defensor;
-        this.damage = damage;
+        this.danio = danio;
         this.turno = turno;
         this.ataque = "Ataque Básico";
     }
 
     //este constructor obtiene el nombre de la habilidad lanzada
-    public CombatLog(String atacante, String defensor, int damage, int turno, String ataque) {
+    public CombatLog(String atacante, String defensor, int danio, int turno, String ataque) {
         this.atacante = atacante;
         this.defensor = defensor;
-        this.damage = damage;
+        this.danio = danio;
         this.turno = turno;
         this.ataque = ataque;
     }
@@ -41,12 +41,12 @@ public class CombatLog {
         this.defensor = defensor;
     }
 
-    public int getDamage() {
-        return damage;
+    public int getDanio() {
+        return danio;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public void setDanio(int danio) {
+        this.danio = danio;
     }
 
     public int getTurno() {
@@ -59,8 +59,8 @@ public class CombatLog {
 
     @Override
     public String toString() {
-        return "CombatLog{" +
-                atacante + " atacó a " + defensor + " por un daño de: " + damage + " con " + ataque +
-                '}';
+        return "CombatLog [" +
+                atacante + " atacó a " + defensor + " por un daño de: " + danio + " con " + ataque +
+                ']';
     }
 }

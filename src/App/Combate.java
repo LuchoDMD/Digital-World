@@ -4,8 +4,8 @@ public interface Combate {
     int atacar();
     int defender();
     boolean esquivar();
-    int getDmg(int dmg);
-    int skillAttack(Ability ability);
-    void mpRegen();
+    int getDanio(int danio);
+    int habilidadAtaque(Habilidad habilidad);
+    void regenerarMP();
 
 }

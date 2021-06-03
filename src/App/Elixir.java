@@ -9,11 +9,11 @@ public class Elixir extends Item{
     }
 
     @Override
-    public void usar(Partner partner) {
-        if (partner.getMana() + cantRestauracion > partner.getMp()){
-            partner.setMana(partner.getMp());
+    public void usar(Companiero companiero) {
+        if (companiero.getMana() + cantRestauracion > companiero.getMp()){
+            companiero.setMana(companiero.getMp());
         } else {
-            partner.setMana(partner.getMana() + cantRestauracion);
+            companiero.setMana(companiero.getMana() + cantRestauracion);
         }
         stock--;
     }
