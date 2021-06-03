@@ -9,7 +9,7 @@ public class Elixir extends Item{
     }
 
     @Override
-    public void usar(Partner partner) {
+    public void usar(Compa partner) {
         if (partner.getMana() + cantRestauracion > partner.getMp()){
             partner.setMana(partner.getMp());
         } else {

@@ -1,12 +1,12 @@
 package App;
 
-public class Ability {
+public class Habilidad {
     private int damage;
     private int precision; // 0 - 100
     private int MPcost;
     private String name;
 
-    public Ability(int damage, int precision, int MPcost, String name) {
+    public Habilidad(int damage, int precision, int MPcost, String name) {
         this.damage = damage;
         this.precision = precision;
         this.MPcost = MPcost;

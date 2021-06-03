@@ -1,13 +1,13 @@
 package App;
 
-public class CombatLog {
+public class Turno {
     String atacante;
     String defensor;
     int damage;
     int turno;
     String ataque;
 
-    public CombatLog(String atacante, String defensor, int damage, int turno) {
+    public Turno(String atacante, String defensor, int damage, int turno) {
         this.atacante = atacante;
         this.defensor = defensor;
         this.damage = damage;
@@ -16,7 +16,7 @@ public class CombatLog {
     }
 
     //este constructor obtiene el nombre de la habilidad lanzada
-    public CombatLog(String atacante, String defensor, int damage, int turno, String ataque) {
+    public Turno(String atacante, String defensor, int damage, int turno, String ataque) {
         this.atacante = atacante;
         this.defensor = defensor;
         this.damage = damage;
@@ -59,7 +59,7 @@ public class CombatLog {
 
     @Override
     public String toString() {
-        return "CombatLog{" +
+        return "Turno{" +
                 atacante + " atacó a " + defensor + " por un daño de: " + damage + " con " + ataque +
                 '}';
     }

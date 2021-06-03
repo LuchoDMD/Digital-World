@@ -2,7 +2,7 @@ package App;
 
 public interface Acciones {
 
-    void usar(Partner partner); /**Compa como parametro*/
+    void usar(Compa partner); /**Compa como parametro*/
     void tirar(int cantidad);
 
 }
