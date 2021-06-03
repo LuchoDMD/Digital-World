@@ -3,7 +3,7 @@ package App;
 import java.util.Map;
 import java.util.Random;
 
-public class Partner extends Digimon implements Combate {
+public class Compa extends Digimon implements Combate {
     /*ATRIBUTOS*/
     private final String nombre;
     private int vida;/*Vida actual del Digimon*/
@@ -12,7 +12,7 @@ public class Partner extends Digimon implements Combate {
     //private int aptitud;
 
 
-    public Partner(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
+    public Compa(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
     {
         super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
         this.vida = hp;
@@ -63,7 +63,7 @@ public class Partner extends Digimon implements Combate {
     }
 
     @Override
-    public boolean checkMana(Ability ability){
+    public boolean checkMana(Habilidad ability){
         return this.getMana() > ability.getMPcost();
     }
 
@@ -86,7 +86,7 @@ public class Partner extends Digimon implements Combate {
     }
 
     @Override
-    public int skillAttack(Ability ability){
+    public int skillAttack(Habilidad ability){
         Random random = new Random();
         if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
             return ability.getDamage();

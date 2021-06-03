@@ -19,7 +19,7 @@ public abstract class Digimon {
     private int spd;/*VELOCIDAD*/ //poder de ataque
     private int status;
     private final int peso;
-    public Ability[] abilities;
+    public Habilidad[] abilities;
 
 
     public Digimon(int nivel, int hp, int mp, int atk, int def, int spd, int peso, Map abilityMap, int[] keys) {
@@ -31,13 +31,13 @@ public abstract class Digimon {
         this.def = def;
         this.spd = spd;
         this.status = 0;
-        this.abilities = new Ability[4];    //los digimon solo pueden tener 4 habilidades
+        this.abilities = new Habilidad[4];    //los digimon solo pueden tener 4 habilidades
         loadSkills(abilityMap, keys);
     }
 
     public void loadSkills(Map abilityMap, int[] keys){
         for (int i = 0 ; i < 4 ; i++){
-            abilities[i] = (Ability) abilityMap.get(keys[i]);
+            abilities[i] = (Habilidad) abilityMap.get(keys[i]);
         }
     }
 
@@ -45,7 +45,7 @@ public abstract class Digimon {
     public abstract boolean killingBlow(int dmg);
 
     //check para saber si tiene mana suficiente para lanzar el skill
-    public abstract boolean checkMana(Ability ability);
+    public abstract boolean checkMana(Habilidad ability);
 
     public void clearStatus(){    //método que se usa al terminar el turno para remover los status
         if (this.getStatus() == 1){
@@ -107,11 +107,11 @@ public abstract class Digimon {
         this.spd = spd;
     }
 
-    public Ability[] getAbilities() {
+    public Habilidad[] getAbilities() {
         return abilities;
     }
 
-    public void setAbilities(Ability[] abilities) {
+    public void setAbilities(Habilidad[] abilities) {
         this.abilities = abilities;
     }
 

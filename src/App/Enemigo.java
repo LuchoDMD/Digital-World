@@ -3,7 +3,7 @@ package App;
 import java.util.*;
 import java.util.Map;
 
-public class Enemy extends Digimon implements Combate {
+public class Enemigo extends Digimon implements Combate {
     /*ATRIBUTOS*/
     private String terreno;/*Indica en el tipo de terreno que puede aparecer*/
     private int dinero;
@@ -15,7 +15,7 @@ public class Enemy extends Digimon implements Combate {
     /*Tendria una lista de Items Dropeables()*/
 
     /*CONSTRUCTOR*/
-    public Enemy(int nivel, int hp, int mp, int atk, int def, int spd,  int dinero, String name, int peso, Map abilityMap, int[] keys)
+    public Enemigo(int nivel, int hp, int mp, int atk, int def, int spd,  int dinero, String name, int peso, Map abilityMap, int[] keys)
     {
         super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
         //this.terreno = terreno;
@@ -50,7 +50,7 @@ public class Enemy extends Digimon implements Combate {
 
 
     @Override
-    public boolean checkMana(Ability ability){
+    public boolean checkMana(Habilidad ability){
         return this.getMp() > ability.getMPcost();
     }
 
@@ -78,7 +78,7 @@ public class Enemy extends Digimon implements Combate {
     }
 
     @Override
-    public int skillAttack(Ability ability){
+    public int skillAttack(Habilidad ability){
         Random random = new Random();
         if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
             return ability.getDamage();

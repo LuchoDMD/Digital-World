@@ -5,7 +5,7 @@ public interface Combate {
     int defender();
     boolean esquivar();
     int getDmg(int dmg);
-    int skillAttack(Ability ability);
+    int skillAttack(Habilidad ability);
     void mpRegen();
 
 }

@@ -9,7 +9,7 @@ public class Pocion extends Item{
     }
 
     @Override
-    public void usar(Partner partner) {
+    public void usar(Compa partner) {
         if (partner.getVida() + cantRestauracion > partner.getHp()){
             partner.setVida(partner.getHp());
         } else {

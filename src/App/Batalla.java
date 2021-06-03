@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class Batalla
 {
     /*ATRIBUTOS*/
-    protected Partner compa;
-    protected Enemy enemigo;
-    private final List<CombatLog> log;    //logs del combate
+    protected Compa compa;
+    protected Enemigo enemigo;
+    private final List<Turno> log;    //logs del combate
 
     /*CONSTRUCTOR*/
-    public Batalla(Partner compa, Enemy enemigo)
+    public Batalla(Compa compa, Enemigo enemigo)
     {
         this.compa = compa;
         this.enemigo = enemigo;
@@ -47,7 +47,7 @@ public class Batalla
                                 System.out.println("MP insuficiente");
                             }
                             if (flag){  //lo metí adentro del bucle porque si no no me toma las variables dmg y action
-                                log.add(new CombatLog(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action-1].getName()));
+                                log.add(new Turno(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action-1].getName()));
                                 clearSrc();
                                 System.out.println("Has lanzado " + compa.abilities[action - 1]);
                             }
@@ -78,7 +78,7 @@ public class Batalla
                             int dmg = compa.getDmg(enemigo.skillAttack(enemigo.abilities[action]));
                             enemigo.setMp(enemigo.getMp() - enemigo.abilities[action].getMPcost());   //resta el mana
                             compa.killingBlow(dmg);
-                            log.add(new CombatLog(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
+                            log.add(new Turno(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
                             if(action == 0){        //si el ataque es un básico, se regenera MP
                                 enemigo.mpRegen();
                             }
@@ -108,7 +108,7 @@ public class Batalla
                         int dmg = compa.getDmg(enemigo.skillAttack(enemigo.abilities[action]));
                         enemigo.setMp(enemigo.getMp() - enemigo.abilities[action].getMPcost());   //resta el mana
                         compa.killingBlow(dmg);
-                        log.add(new CombatLog(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
+                        log.add(new Turno(enemigo.getName(), compa.getNombre(), dmg, turno, enemigo.abilities[action].getName()));
                         if(action == 0){    //si el ataque es un básico, se regenera MP
                             enemigo.mpRegen();
                         }
@@ -141,7 +141,7 @@ public class Batalla
                                 System.out.println("MP insuficiente");
                             }
                             if (flag){  //lo metí adentro del bucle porque si no no me toma las variables dmg y action
-                                log.add(new CombatLog(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action2-1].getName()));
+                                log.add(new Turno(compa.getNombre(), enemigo.getName(), dmg, turno, compa.abilities[action2-1].getName()));
                                 clearSrc();
                                 System.out.println("Has lanzado " + compa.abilities[action2 - 1]);
                             }
@@ -174,7 +174,7 @@ public class Batalla
 
     private String printLog(){
         String rda = "";
-        for(CombatLog variable : log){
+        for(Turno variable : log){
             rda = rda + variable.toString() + "\n";
         }
         return rda;
@@ -232,7 +232,7 @@ public class Batalla
 
     /*PRINTS*/
     public void printMenuStatus(){
-        System.out.println("Enemy:                      Player:");
+        System.out.println("Enemigo:                      Player:");
         System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
         System.out.println("MP: " + enemigo.getMp() + "                     MP: " + compa.getMana());
     }
