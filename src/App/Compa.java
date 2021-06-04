@@ -4,24 +4,28 @@ import java.util.Map;
 import java.util.Random;
 
 public class Compa extends Digimon implements Combate {
-    /*ATRIBUTOS*/
+
+    // ATRIBUTOS \\
+
     private final String nombre;
-    private int vida;/*Vida actual del Digimon*/
-    private int mana;/*Mana actual del Digimon*/
-    private int exp;/*Experiencia*/
+    private int vida; /*Vida actual del Digimon*/
+    private int mana; /*Mana actual del Digimon*/
+    private int experiencia; /*Experiencia*/
     //private int aptitud;
 
+    // CONSTRUCTORES \\
 
-    public Compa(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
+    public Compa(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, String nombre, int peso, Map mapaHabilidades, int[] keys)
     {
-        super(nivel, hp, mp, atk, def, spd, peso, abilityMap, keys);
+        super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         this.vida = hp;
         this.mana = mp;
-        this.exp = 0;
+        this.experiencia = 0;
         this.nombre = nombre;
     }
 
-    /*GETTERS AND SETTERS*/
+    // GETTERS Y SETTERS \\
+
     public String getNombre() {
         return nombre;
     }
@@ -40,38 +44,39 @@ public class Compa extends Digimon implements Combate {
     public void setMana(int mana) {
         this.mana = mana;
     }
-    public int getExp() {
-        return exp;
+    public int getExperiencia() {
+        return experiencia;
     }
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
     }
 
+    // METODOS \\
 
     @Override
     public int atacar()
     {
-        return getAtk();
+        return getAtaque();
     }
 
     @Override
     public int defender()
     {
-        setStatus(1);
-        setDef(getDef() + 10); //aumenta la defensa en 10
+        setEstado(1);
+        setDefensa(getDefensa() + 10); //aumenta la defensa en 10
         return 0;
     }
 
     @Override
-    public boolean checkMana(Habilidad ability){
-        return this.getMana() > ability.getMPcost();
+    public boolean verificarMana(Habilidad habilidad){
+        return this.getMana() > habilidad.getCostoMP();
     }
 
     //este método recibe el daño real y determina si es el último hit o no
     @Override
-    public boolean killingBlow(int dmg){
-        if(this.getVida() > dmg){ //se puede conviertir en un método.
-            this.setVida(this.getVida() - dmg);
+    public boolean golpeRematador(int danio){
+        if(this.getVida() > danio){ //se puede conviertir en un método.
+            this.setVida(this.getVida() - danio);
             return false;
         }
         else{
@@ -81,15 +86,15 @@ public class Compa extends Digimon implements Combate {
     }
 
     @Override
-    public void mpRegen(){
+    public void regenerarMP(){
         setMana(getMana() + 10);
     }
 
     @Override
-    public int skillAttack(Habilidad ability){
+    public int habilidadAtaque(Habilidad habilidad){
         Random random = new Random();
-        if(random.nextInt(100) <= ability.getPrecision()){  //agrega chances de que le erre
-            return ability.getDamage();
+        if(random.nextInt(100) <= habilidad.getPrecision()){  //agrega chances de que le erre
+            return habilidad.getDanio();
         }
         return 0;
     }
@@ -98,17 +103,17 @@ public class Compa extends Digimon implements Combate {
     public boolean esquivar()
     {
         int aux= (int) (Math.random()*100);
-        return aux <= getSpd();
+        return aux <= getVelocidad();
     }
 
     @Override
-    public int getDmg(int dañoRecibido){
+    public int getDanioRecibido(int danioRecibido){
         //formula
-        if (dañoRecibido-getDef() < 0){
+        if (danioRecibido-getDefensa() < 0){
             return 0;
         }
 
-        return dañoRecibido-getDef();
+        return danioRecibido-getDefensa();
     }
 
     @Override
@@ -117,7 +122,7 @@ public class Compa extends Digimon implements Combate {
                 "Nombre: '" + nombre + '\'' +
                 ", Vida: " + vida +
                 ", Mana: " + mana +
-                ", XP: " + exp +
+                ", XP: " + experiencia +
                 ']';
     }
 }

@@ -1,25 +1,31 @@
 package App;
 
 public class Habilidad {
-    private int damage;
+
+    // ATRIBUTOS \\
+
+    private int danio;
     private int precision; // 0 - 100
-    private int MPcost;
-    private String name;
+    private int costoMP;
+    private String nombre;
 
-    public Habilidad(int damage, int precision, int MPcost, String name) {
-        this.damage = damage;
+    // CONSTRUCTORES \\
+
+    public Habilidad(int danio, int precision, int costoMP, String nombre) {
+        this.danio = danio;
         this.precision = precision;
-        this.MPcost = MPcost;
-        this.name = name;
-    }
-    //private String element;
-
-    public int getDamage() {
-        return damage;
+        this.costoMP = costoMP;
+        this.nombre = nombre;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    // GETTERS Y SETTERS \\
+
+    public int getDanio() {
+        return danio;
+    }
+
+    public void setDanio(int danio) {
+        this.danio = danio;
     }
 
     public int getPrecision() {
@@ -30,40 +36,30 @@ public class Habilidad {
         this.precision = precision;
     }
 
-    public int getMPcost() {
-        return MPcost;
+    public int getCostoMP() {
+        return costoMP;
     }
 
-    public void setMPcost(int MPcost) {
-        this.MPcost = MPcost;
+    public void setCostoMP(int costoMP) {
+        this.costoMP = costoMP;
     }
 
-    /*
-    public String getElement() {
-        return element;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setElement(String element) {
-        this.element = element;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-     */
-
+    // METODOS \\
 
     @Override
     public String toString() {
-        return "Name='" + name + '\'' +
-                "damage=" + damage +
-                ", precision=" + precision +
-                ", MPcost=" + MPcost +
-                '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return "Nombre: ['" + nombre + '\'' +
+                "Daño: " + danio +
+                ", Precision: " + precision +
+                ", Costo de MP: " + costoMP +
+                ']';
     }
 }
