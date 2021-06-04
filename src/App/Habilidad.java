@@ -1,10 +1,15 @@
 package App;
 
 public class Habilidad {
+
+    // ATRIBUTOS \\
+
     private int danio;
     private int precision; // 0 - 100
     private int costoMP;
     private String nombre;
+
+    // CONSTRUCTORES \\
 
     public Habilidad(int danio, int precision, int costoMP, String nombre) {
         this.danio = danio;
@@ -12,7 +17,8 @@ public class Habilidad {
         this.costoMP = costoMP;
         this.nombre = nombre;
     }
-    //private String element;
+
+    // GETTERS Y SETTERS \\
 
     public int getDanio() {
         return danio;
@@ -38,32 +44,22 @@ public class Habilidad {
         this.costoMP = costoMP;
     }
 
-    /*
-    public String getElement() {
-        return element;
-    }
-
-    public void setElement(String element) {
-        this.element = element;
-    }
-
-     */
-
-
-    @Override
-    public String toString() {
-        return "Nombre habilidad: ['" + nombre + '\'' +
-                "Daño: " + danio +
-                ", Precision: " + precision +
-                ", Costo MP: " + costoMP +
-                ']';
-    }
-
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String name) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    // METODOS \\
+
+    @Override
+    public String toString() {
+        return "Nombre: ['" + nombre + '\'' +
+                "Daño: " + danio +
+                ", Precision: " + precision +
+                ", Costo de MP: " + costoMP +
+                ']';
     }
 }

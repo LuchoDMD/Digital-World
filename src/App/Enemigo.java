@@ -4,16 +4,18 @@ import java.util.*;
 import java.util.Map;
 
 public class Enemigo extends Digimon implements Combate {
-    /*ATRIBUTOS*/
-    private String terreno;/*Indica en el tipo de terreno que puede aparecer*/
+
+    // ATRIBUTOS \\
+
+    private String terreno; /** Indica en el tipo de terreno que puede aparecer */
     private int dinero;
     String nombre;
     int estado; // 0.normal / 1.defensa / 2...
     /*Tendria una lista de Items Dropeables()*/
 
-    /*CONSTRUCTOR*/
-    public Enemigo(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int dinero, String nombre, int peso, Map mapaHabilidades, int[] keys)
-    {
+    // CONSTRUCTOR \\
+
+    public Enemigo(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int dinero, String nombre, int peso, Map mapaHabilidades, int[] keys) {
         super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         //this.terreno = terreno;
         this.nombre = nombre;
@@ -21,7 +23,7 @@ public class Enemigo extends Digimon implements Combate {
         this.estado = 0;
     }
 
-    /*METODOS*/
+    // GETTERS Y SETTERS \\
 
     public String getTerreno()
     {
@@ -43,6 +45,15 @@ public class Enemigo extends Digimon implements Combate {
         this.dinero = dinero;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    // METODOS \\
 
     @Override
     public boolean verificarMana(Habilidad habilidad){
@@ -56,7 +67,7 @@ public class Enemigo extends Digimon implements Combate {
     }
 
     @Override
-    public int getDanio(int danioRecibido){
+    public int getDanioRecibido(int danioRecibido){
         //formula
         if (danioRecibido-getDefensa() < 0){
             return 0;
@@ -107,12 +118,6 @@ public class Enemigo extends Digimon implements Combate {
         return aux <= getVelocidad();
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }
 

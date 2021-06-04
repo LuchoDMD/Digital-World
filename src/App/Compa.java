@@ -3,25 +3,29 @@ package App;
 import java.util.Map;
 import java.util.Random;
 
-public class Companiero extends Digimon implements Combate {
-    /*ATRIBUTOS*/
+public class Compa extends Digimon implements Combate {
+
+    // ATRIBUTOS \\
+
     private final String nombre;
-    private int vida;/*Vida actual del Digimon*/
-    private int mana;/*Mana actual del Digimon*/
-    private int exp;/*Experiencia*/
+    private int vida; /*Vida actual del Digimon*/
+    private int mana; /*Mana actual del Digimon*/
+    private int experiencia; /*Experiencia*/
     //private int aptitud;
 
+    // CONSTRUCTORES \\
 
-    public Companiero(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, String nombre, int peso, Map mapaHabilidades, int[] keys)
+    public Compa(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, String nombre, int peso, Map mapaHabilidades, int[] keys)
     {
         super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         this.vida = hp;
         this.mana = mp;
-        this.exp = 0;
+        this.experiencia = 0;
         this.nombre = nombre;
     }
 
-    /*GETTERS AND SETTERS*/
+    // GETTERS Y SETTERS \\
+
     public String getNombre() {
         return nombre;
     }
@@ -40,13 +44,14 @@ public class Companiero extends Digimon implements Combate {
     public void setMana(int mana) {
         this.mana = mana;
     }
-    public int getExp() {
-        return exp;
+    public int getExperiencia() {
+        return experiencia;
     }
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
     }
 
+    // METODOS \\
 
     @Override
     public int atacar()
@@ -102,22 +107,22 @@ public class Companiero extends Digimon implements Combate {
     }
 
     @Override
-    public int getDanio(int danio){
+    public int getDanioRecibido(int danioRecibido){
         //formula
-        if (danio-getDefensa() < 0){
+        if (danioRecibido-getDefensa() < 0){
             return 0;
         }
 
-        return danio-getDefensa();
+        return danioRecibido-getDefensa();
     }
 
     @Override
     public String toString() {
-        return "Companiero [" +
+        return "Partner [" +
                 "Nombre: '" + nombre + '\'' +
                 ", Vida: " + vida +
                 ", Mana: " + mana +
-                ", XP: " + exp +
+                ", XP: " + experiencia +
                 ']';
     }
 }

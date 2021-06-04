@@ -3,7 +3,9 @@ package App;
 import java.util.Map;
 
 public abstract class Digimon {
-    /*ATRIBUTOS*/
+
+    // ATRIBUTOS \\
+
     /*
     protected String especie;
     protected String familia;//Similar al elemento en pokemon
@@ -21,6 +23,7 @@ public abstract class Digimon {
     private final int peso;
     public Habilidad[] habilidades;
 
+    // CONSTRUCTORES \\
 
     public Digimon(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int peso, Map mapaHabilidades, int[] keys) {
         this.nivel = nivel;
@@ -32,10 +35,10 @@ public abstract class Digimon {
         this.velocidad = velocidad;
         this.estado = 0;
         this.habilidades = new Habilidad[4];    //los digimon solo pueden tener 4 habilidades
-        cargarTecnicas(mapaHabilidades, keys);
+        cargarHabilidades(mapaHabilidades, keys);
     }
 
-    public void cargarTecnicas(Map mapaHabilidades, int[] keys){
+    public void cargarHabilidades(Map mapaHabilidades, int[] keys){
         for (int i = 0 ; i < 4 ; i++){
             habilidades[i] = (Habilidad) mapaHabilidades.get(keys[i]);
         }
@@ -47,15 +50,14 @@ public abstract class Digimon {
     //check para saber si tiene mana suficiente para lanzar el skill
     public abstract boolean verificarMana(Habilidad habilidad);
 
-    public void limpiarEstados(){    //método que se usa al terminar el turno para remover los status
+    public void limpiarEstado(){    //método que se usa al terminar el turno para remover los status
         if (this.getEstado() == 1){
             this.setDefensa(this.getDefensa() - 10);
             this.setEstado(0);
         }
     }
 
-    /*GETTERS AND SETTERS*/
-
+    // GETTERS Y SETTERS \\
 
     public int getNivel() {
         return nivel;
@@ -93,9 +95,7 @@ public abstract class Digimon {
         return defensa;
     }
 
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
+    public void setDefensa(int defensa) { this.defensa = defensa; }
 
     public int getVelocidad() {
         return velocidad;
