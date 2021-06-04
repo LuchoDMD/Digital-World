@@ -1,11 +1,11 @@
 package App;
 
 public class Turno {
-    String atacante;
-    String defensor;
-    int danio;
-    int turno;
-    String ataque;
+    private String atacante;
+    private String defensor;
+    private int danio;
+    private int turno;
+    private String ataque;
 
     public Turno(String atacante, String defensor, int danio, int turno) {
         this.atacante = atacante;

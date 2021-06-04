@@ -6,13 +6,6 @@ public abstract class Digimon {
 
     // ATRIBUTOS \\
 
-    /*
-    protected String especie;
-    protected String familia;//Similar al elemento en pokemon
-    protected String atributo;//TIPO: VIRUS - VACUNA - DATOS
-    protected String etapa; //Bebe - Novato - Campeon - Adulto - Perfecto
-     */
-
     private int nivel;
     private int hp;/*VIDA*/
     private int mp;/*MANA*/

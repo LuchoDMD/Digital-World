@@ -8,18 +8,16 @@ public class Enemigo extends Digimon implements Combate {
     // ATRIBUTOS \\
 
     private String terreno; /** Indica en el tipo de terreno que puede aparecer */
-    private int dinero;
-    String nombre;
-    int estado; // 0.normal / 1.defensa / 2...
+    private String nombre;
+    private int estado; // 0.normal / 1.defensa / 2...
     /*Tendria una lista de Items Dropeables()*/
 
     // CONSTRUCTOR \\
 
-    public Enemigo(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int dinero, String nombre, int peso, Map mapaHabilidades, int[] keys) {
+    public Enemigo(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, String nombre, int peso, Map mapaHabilidades, int[] keys) {
         super(nivel, hp, mp, ataque, defensa, velocidad, peso, mapaHabilidades, keys);
         //this.terreno = terreno;
         this.nombre = nombre;
-        this.dinero = dinero;
         this.estado = 0;
     }
 
@@ -33,16 +31,6 @@ public class Enemigo extends Digimon implements Combate {
     public void setTerreno(String terreno)
     {
         this.terreno = terreno;
-    }
-
-    public int getDinero()
-    {
-        return dinero;
-    }
-
-    public void setDinero(int dinero)
-    {
-        this.dinero = dinero;
     }
 
     public String getNombre() {
@@ -117,7 +105,6 @@ public class Enemigo extends Digimon implements Combate {
         int aux= (int) (Math.random()*100);
         return aux <= getVelocidad();
     }
-
 
 }
 
