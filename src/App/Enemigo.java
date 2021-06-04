@@ -8,9 +8,6 @@ public class Enemigo extends Digimon implements Combate {
     private String terreno;/*Indica en el tipo de terreno que puede aparecer*/
     private int dinero;
     String name;
-
-
-
     int status; // 0.normal / 1.defensa / 2...
     /*Tendria una lista de Items Dropeables()*/
 

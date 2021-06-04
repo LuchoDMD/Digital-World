@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Batalla
 {
     /*ATRIBUTOS*/
-    protected Compa compa;
-    protected Enemigo enemigo;
+    private Compa compa;
+    private Enemigo enemigo;
     private final List<Turno> log;    //logs del combate
 
     /*CONSTRUCTOR*/
@@ -180,9 +180,9 @@ public class Batalla
         return rda;
     }
 
-    public int botEnemy(){  //bot actúa semi aleatorio
+    private int botEnemy(){  //bot actúa semi aleatorio
         /* COMANDOS DEL BOT:
-        0 : Habilidad 1 //ataque básico
+        0 : Habilidad 1 //ataque básicoS
         1 : Habilidad 2
         2 : Habilidad 3
         3 : habilidad 4
@@ -204,7 +204,7 @@ public class Batalla
 
 
 
-    public int MenuCombate(){      //
+    private int MenuCombate(){      //
         int input = -1; //variable de control
         while(input != 1 && input != 2 && input != 3 && input != 4){
             imprimirMenuCombate();
@@ -217,7 +217,7 @@ public class Batalla
     //MenuCombate y menuSkills es distinto ya que MenuCombate va a tener más opciones en un futuro
     //mientras que menuSkills siempre va a ser del 1 al 4
 
-    public int menuSkills(){
+    private int menuSkills(){
         int input = -1; //variable de control
         while(input != 1 && input != 2 && input != 3 && input != 4){
             printMenuSkills();
@@ -231,19 +231,19 @@ public class Batalla
 
 
     /*PRINTS*/
-    public void printMenuStatus(){
+    private void printMenuStatus(){
         System.out.println("Enemigo:                      Player:");
         System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
         System.out.println("MP: " + enemigo.getMp() + "                     MP: " + compa.getMana());
     }
 
-    public static void clearSrc(){
+    private static void clearSrc(){
         for(int i = 0; i < 50 ; i++){
             System.out.println(" ");
         }
     }
 
-    public void imprimirMenuCombate(){
+    private void imprimirMenuCombate(){
         System.out.println("presione 1 para Atacar");
         System.out.println("presione 2 para Defender");
         System.out.println("presione 3 para Esquivar");
@@ -251,7 +251,7 @@ public class Batalla
 
     }
 
-    public void printMenuSkills(){
+    private void printMenuSkills(){
         System.out.println("1 :" + compa.abilities[0].toString());
         System.out.println("2 :" + compa.abilities[1].toString());
         System.out.println("3 :" + compa.abilities[2].toString());

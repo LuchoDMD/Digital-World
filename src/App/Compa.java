@@ -9,7 +9,6 @@ public class Compa extends Digimon implements Combate {
     private int vida;/*Vida actual del Digimon*/
     private int mana;/*Mana actual del Digimon*/
     private int exp;/*Experiencia*/
-    //private int aptitud;
 
 
     public Compa(int nivel, int hp, int mp, int atk, int def, int spd, String nombre, int peso, Map abilityMap, int[] keys)
