@@ -22,11 +22,11 @@ public class Main {
         Enemigo charizard = new Enemigo(5, 500,200,50,25,100, 100, "charizard", 100, abilities, charizardSkills);
         Compa pikachu = new Compa(5,300,500,100,10,150, "pikachu", 15, abilities, pikachuSkills);
 
-        pikachu.setVida(120);
-        pikachu.setMana(320);
+        //pikachu.setVida(120);
+        //pikachu.setMana(320);
 
-        //Batalla battle1 = new Batalla(pikachu, charizard);
-        //battle1.comenzarBatalla();
+        Batalla battle1 = new Batalla(pikachu, charizard);
+        battle1.comenzarBatalla();
 
         Item pocionP = new Pocion("Pocion paqueña", 10, 30);
         Item pocionM = new Pocion("Pocion mediana", 20, 70);

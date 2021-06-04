@@ -3,61 +3,53 @@ package App;
 import java.util.Map;
 
 public abstract class Digimon {
-    /*ATRIBUTOS*/
-    /*
-    protected String especie;
-    protected String familia;//Similar al elemento en pokemon
-    protected String atributo;//TIPO: VIRUS - VACUNA - DATOS
-    protected String etapa; //Bebe - Novato - Campeon - Adulto - Perfecto
-     */
-
+    
+    // ATRIBUTOS \\
     private int nivel;
     private int hp;/*VIDA*/
     private int mp;/*MANA*/
-    private int atk;/*ATAQUE*/
-    private int def;/*DEFENSA*/
-    private int spd;/*VELOCIDAD*/ //poder de ataque
-    private int status;
+    private int ataque;/*ATAQUE*/
+    private int defensa;/*DEFENSA*/
+    private int velocidad;/*VELOCIDAD*/ //poder de ataque
+    private int estado;
     private final int peso;
-    public Habilidad[] abilities;
+    public Habilidad[] habilidades;
 
+    // CONSTRUCTORES \\
 
-    public Digimon(int nivel, int hp, int mp, int atk, int def, int spd, int peso, Map abilityMap, int[] keys) {
+    public Digimon(int nivel, int hp, int mp, int ataque, int defensa, int velocidad, int peso, Map mapaHabilidades, int[] keys) {
         this.nivel = nivel;
         this.peso = peso;
         this.hp = hp;
         this.mp = mp;
-        this.atk = atk;
-        this.def = def;
-        this.spd = spd;
-        this.status = 0;
-        this.abilities = new Habilidad[4];    //los digimon solo pueden tener 4 habilidades
-        loadSkills(abilityMap, keys);
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.velocidad = velocidad;
+        this.estado = 0;
+        this.habilidades = new Habilidad[4];    //los digimon solo pueden tener 4 habilidades
+        cargarHabilidades(mapaHabilidades, keys);
     }
 
-    public void loadSkills(Map abilityMap, int[] keys){
+    public void cargarHabilidades(Map mapaHabilidades, int[] keys){
         for (int i = 0 ; i < 4 ; i++){
-            abilities[i] = (Habilidad) abilityMap.get(keys[i]);
+            habilidades[i] = (Habilidad) mapaHabilidades.get(keys[i]);
         }
     }
 
     //método para saber si el hit va a ser el que remate o no (para evitar dejarlo con vida negativa)
-    public abstract boolean killingBlow(int dmg);
+    public abstract boolean golpeRematador(int danio);
 
     //check para saber si tiene mana suficiente para lanzar el skill
-    public abstract boolean checkMana(Habilidad ability);
+    public abstract boolean verificarMana(Habilidad habilidad);
 
-    public void clearStatus(){    //método que se usa al terminar el turno para remover los status
-        if (this.getStatus() == 1){
-            this.setDef(this.getDef() - 10);
-            this.setStatus(0);
+    public void limpiarEstado(){    //método que se usa al terminar el turno para remover los status
+        if (this.getEstado() == 1){
+            this.setDefensa(this.getDefensa() - 10);
+            this.setEstado(0);
         }
     }
 
-
-
-    /*GETTERS AND SETTERS*/
-
+    // GETTERS Y SETTERS \\
 
     public int getNivel() {
         return nivel;
@@ -83,43 +75,41 @@ public abstract class Digimon {
         this.mp = mp;
     }
 
-    public int getAtk() {
-        return atk;
+    public int getAtaque() {
+        return ataque;
     }
 
-    public void setAtk(int atk) {
-        this.atk = atk;
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
     }
 
-    public int getDef() {
-        return def;
+    public int getDefensa() {
+        return defensa;
     }
 
-    public void setDef(int def) {
-        this.def = def;
+    public void setDefensa(int defensa) { this.defensa = defensa; }
+
+    public int getVelocidad() {
+        return velocidad;
     }
 
-    public int getSpd() {
-        return spd;
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
-    public void setSpd(int spd) {
-        this.spd = spd;
+    public Habilidad[] getHabilidades() {
+        return habilidades;
     }
 
-    public Habilidad[] getAbilities() {
-        return abilities;
+    public void setHabilidades(Habilidad[] habilidades) {
+        this.habilidades = habilidades;
     }
 
-    public void setAbilities(Habilidad[] abilities) {
-        this.abilities = abilities;
+    public int getEstado() {
+        return estado;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 }
