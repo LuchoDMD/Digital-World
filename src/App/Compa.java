@@ -8,10 +8,11 @@ public class Compa extends Digimon implements Combate {
     // ATRIBUTOS \\
 
     private final String nombre;
+
     private int vida; /*Vida actual del Digimon*/
     private int mana; /*Mana actual del Digimon*/
     private int experiencia; /*Experiencia*/
-    //private int aptitud;
+
 
     // CONSTRUCTORES \\
 

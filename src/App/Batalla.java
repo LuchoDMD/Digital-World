@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Batalla
 {
-    // ATRIBUTOS \\
-
     private Compa compa;
     private Enemigo enemigo;
     private final List<Turno> log;    //logs del combate
@@ -180,9 +178,9 @@ public class Batalla
         return rda;
     }
 
-    public int botEnemy(){  //bot actúa semi aleatorio
+    private int botEnemy(){  //bot actúa semi aleatorio
         /* COMANDOS DEL BOT:
-        0 : Habilidad 1 //ataque básico
+        0 : Habilidad 1 //ataque básicoS
         1 : Habilidad 2
         2 : Habilidad 3
         3 : habilidad 4
@@ -202,7 +200,7 @@ public class Batalla
         return accion;
     }
 
-    public int menuCombate(){      //
+    private int menuCombate(){      //
 
         int input = -1; //variable de control
         boolean flag = true;
@@ -226,7 +224,9 @@ public class Batalla
     //MenuCombate y menuSkills es distinto ya que MenuCombate va a tener más opciones en un futuro
     //mientras que menuSkills siempre va a ser del 1 al 4
 
-    public int menuHabilidades(){
+
+    private int menuHabilidades(){
+
         int input = -1; //variable de control
         boolean flag = true;
 
@@ -250,11 +250,12 @@ public class Batalla
 
 
     /*PRINTS*/
-    public void printMenuStatus(){
+    private void printMenuStatus(){
         System.out.println("Enemigo:                      Player:");
         System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
         System.out.println("MP: " + enemigo.getMp() + "                     MP: " + compa.getMana());
     }
+
 
     public static void limpiarPantalla(){
         for(int i = 0; i < 50 ; i++){
@@ -262,7 +263,7 @@ public class Batalla
         }
     }
 
-    public void imprimirMenuCombate(){
+    private void imprimirMenuCombate(){
         System.out.println("presione 1 para Atacar");
         System.out.println("presione 2 para Defender");
         System.out.println("presione 3 para Esquivar");
@@ -270,7 +271,8 @@ public class Batalla
 
     }
 
-    public void printMenuSkills(){
+
+    private void printMenuSkills(){
         System.out.println("1 :" + compa.habilidades[0].toString());
         System.out.println("2 :" + compa.habilidades[1].toString());
         System.out.println("3 :" + compa.habilidades[2].toString());

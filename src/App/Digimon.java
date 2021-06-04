@@ -3,9 +3,8 @@ package App;
 import java.util.Map;
 
 public abstract class Digimon {
-
+    
     // ATRIBUTOS \\
-
     private int nivel;
     private int hp;/*VIDA*/
     private int mp;/*MANA*/

@@ -6,7 +6,6 @@ import java.util.Map;
 public class Enemigo extends Digimon implements Combate {
 
     // ATRIBUTOS \\
-
     private String terreno; /** Indica en el tipo de terreno que puede aparecer */
     private String nombre;
     private int estado; // 0.normal / 1.defensa / 2...
