@@ -3,24 +3,25 @@ package App;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Main {
 
     public static void main(String[] args) {
         //instanciamiento de clases
-        Map<Integer, Habilidad> abilities = new HashMap<>();
-        abilities.put(1, new Habilidad(100, 95, 20, "Ataque Relámpago"));
-        abilities.put(2, new Habilidad(70, 100, 15, "Fuego Elemental"));
-        abilities.put(3, new Habilidad(150, 70, 25, "Misil Etéreo"));
-        abilities.put(4, new Habilidad(200, 90, 50, "Explosión Mental"));
-        abilities.put(5, new Habilidad(185, 85, 40, "Tormenta de Fuego"));
-        abilities.put(6, new Habilidad(200, 65, 30, "Tormenta Eléctrica"));
-        abilities.put(7, new Habilidad(300, 65, 50, "Descarga Eléctrica"));
-        abilities.put(8, new Habilidad(40, 100, 0, "Ataque Básico"));
+        Map<Integer, Habilidad> habilidades = new HashMap<>();
+        habilidades.put(1, new Habilidad(100, 95, 20, "Ataque Relámpago"));
+        habilidades.put(2, new Habilidad(70, 100, 15, "Fuego Elemental"));
+        habilidades.put(3, new Habilidad(150, 70, 25, "Misil Etéreo"));
+        habilidades.put(4, new Habilidad(200, 90, 50, "Explosión Mental"));
+        habilidades.put(5, new Habilidad(185, 85, 40, "Tormenta de Fuego"));
+        habilidades.put(6, new Habilidad(200, 65, 30, "Tormenta Eléctrica"));
+        habilidades.put(7, new Habilidad(300, 65, 50, "Descarga Eléctrica"));
+        habilidades.put(8, new Habilidad(40, 100, 0, "Ataque Básico"));
         int[] charizardSkills = {8, 3, 4, 5};
         int[] pikachuSkills = {8, 4, 6, 7};
         //replantear map
-        Enemigo charizard = new Enemigo(5, 500,200,50,25,100, 100, "charizard", 100, abilities, charizardSkills);
-        Compa pikachu = new Compa(5,300,500,100,10,150, "pikachu", 15, abilities, pikachuSkills);
+        Enemigo charizard = new Enemigo(5, 500,200,50,25,100, "Charizard", 100, habilidades, charizardSkills);
+        Compa pikachu = new Compa(5,300,500,100,10,150, "pikachu", 15, habilidades, pikachuSkills);
 
         //pikachu.setVida(120);
         //pikachu.setMana(320);
