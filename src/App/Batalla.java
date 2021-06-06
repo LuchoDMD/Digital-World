@@ -25,7 +25,6 @@ public class Batalla
             while ((enemigo.getHp() > 0 ) && (compa.getVida() > 0)) {    //Cuando alguno de los dos tenga 0 o menos de vida, termina el combate
                 if (esMasRapido()) {     //si el player es más rápido, ataca primero
                     compa.limpiarEstado();
-
                     switch (menuCombate()) {     //TURNO PLAYER
                         case 1:
                             boolean flag = false;   //variable de control para el MP
@@ -158,7 +157,6 @@ public class Batalla
                             break;
 
                     }
-
                 }
                 turno++;
             }
@@ -237,10 +235,4 @@ public class Batalla
 
         return input;
     }
-
-
-
-
-
-
 }
