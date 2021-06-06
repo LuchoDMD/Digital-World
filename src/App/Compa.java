@@ -59,7 +59,7 @@ public class Compa extends Digimon implements Combate {
         return (getNivel()*(getAtaque()+getDefensa()+getVelocidad()))/10;
     }
 
-    private void levelUp()/*Subida de Nivel*/
+    private void subidaNivel()/*Subida de Nivel*/
     {
         if(experiencia==rangoExperiencia())
         {
