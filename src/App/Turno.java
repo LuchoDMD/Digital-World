@@ -7,15 +7,7 @@ public class Turno {
     private int turno;
     private String ataque;
 
-    public Turno(String atacante, String defensor, int danio, int turno) {
-        this.atacante = atacante;
-        this.defensor = defensor;
-        this.danio = danio;
-        this.turno = turno;
-        this.ataque = "Ataque Básico";
-    }
-
-    //este constructor obtiene el nombre de la habilidad lanzada
+    //CONSTRUCTOR\\
     public Turno(String atacante, String defensor, int danio, int turno, String ataque) {
         this.atacante = atacante;
         this.defensor = defensor;
@@ -24,6 +16,7 @@ public class Turno {
         this.ataque = ataque;
     }
 
+    //MÉTODOS\\
 
     public String getAtacante() {
         return atacante;
@@ -56,6 +49,8 @@ public class Turno {
     public void setTurno(int turno) {
         this.turno = turno;
     }
+
+    //OVERRIDE\\
 
     @Override
     public String toString() {
