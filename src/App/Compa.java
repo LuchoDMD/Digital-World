@@ -119,7 +119,7 @@ public class Compa extends Digimon implements Combate {
 
     @Override
     public String toString() {
-        return "Partner [" +
+        return "Compa [" +
                 "Nombre: '" + nombre + '\'' +
                 ", Vida: " + vida +
                 ", Mana: " + mana +
