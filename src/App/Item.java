@@ -39,4 +39,6 @@ public abstract class Item implements Acciones {
             this.stock = this.stock - cantidad;
         }
     }
+
+
 }
