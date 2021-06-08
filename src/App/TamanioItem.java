@@ -3,7 +3,7 @@ package App;
 public enum TamanioItem {
     CHICO (30),
     MEDIANO (70),
-    GRANDE (100);
+    GRANDE (180);
 
     private int recuperacion;
 
