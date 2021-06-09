@@ -29,12 +29,12 @@ public class Main {
         Batalla battle1 = new Batalla(pikachu, charizard);
         battle1.comenzarBatalla();
 
-        Item pocionP = new Pocion("Pocion paqueña", 10, 30);
-        Item pocionM = new Pocion("Pocion mediana", 20, 70);
-        Item pocionG = new Pocion("Pocion grande", 5, 100);
-        Item elixirP = new Elixir("Elixir pequeño", 10, 30);
-        Item elixirM = new Elixir("Elixir mediano", 20, 70);
-        Item elixirG = new Elixir("Elixir grande", 5, 100);
+        Item pocionP = new Pocion("Pocion paqueña", 10, TamanioItem.CHICO.getRecuperacion());
+        Item pocionM = new Pocion("Pocion mediana", 20, TamanioItem.MEDIANO.getRecuperacion());
+        Item pocionG = new Pocion("Pocion grande", 5, TamanioItem.GRANDE.getRecuperacion());
+        Item elixirP = new Elixir("Elixir pequeño", 10, TamanioItem.CHICO.getRecuperacion());
+        Item elixirM = new Elixir("Elixir mediano", 20, TamanioItem.MEDIANO.getRecuperacion());
+        Item elixirG = new Elixir("Elixir grande", 5, TamanioItem.GRANDE.getRecuperacion());
 
         System.out.println(pikachu);
 

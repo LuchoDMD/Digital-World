@@ -6,7 +6,6 @@ public abstract class Item implements Acciones {
     protected int stock;
     protected int cantRestauracion;
 
-
     public String getDescEfecto() {
         return descEfecto;
     }
@@ -23,13 +22,6 @@ public abstract class Item implements Acciones {
         this.stock = stock;
     }
 
-    public int getCantRestauracion() {
-        return cantRestauracion;
-    }
-
-    public void setCantRestauracion(int cantRestauracion) {
-        this.cantRestauracion = cantRestauracion;
-    }
 
     @Override
     public void tirar(int cantidad) {
@@ -39,4 +31,6 @@ public abstract class Item implements Acciones {
             this.stock = this.stock - cantidad;
         }
     }
+
+
 }
