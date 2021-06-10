@@ -6,7 +6,6 @@ public abstract class Item implements Acciones {
     protected int stock;
     protected int cantRestauracion;
 
-
     public String getDescEfecto() {
         return descEfecto;
     }
@@ -20,15 +19,33 @@ public abstract class Item implements Acciones {
     }
 
     public void setStock(int stock) {
-        this.stock = stock;
+        if(this.stock < 100){
+            this.stock = stock;
+        }
+        else{
+            System.out.println("Inventario lleno");
+        }
     }
 
-    public int getCantRestauracion() {
-        return cantRestauracion;
-    }
 
-    public void setCantRestauracion(int cantRestauracion) {
-        this.cantRestauracion = cantRestauracion;
+    @Override
+    public void usar(Item item, Compa partner){
+        if (item instanceof Pocion){
+            if (partner.getVida() + cantRestauracion > partner.getHp()){
+                partner.setVida(partner.getHp());
+            } else {
+                partner.setVida(partner.getVida() + cantRestauracion);
+            }
+            stock--;
+        }
+        if (item instanceof Elixir){
+            if (partner.getMana() + cantRestauracion > partner.getMp()){
+                partner.setMana(partner.getMp());
+            } else {
+                partner.setMana(partner.getMana() + cantRestauracion);
+            }
+            stock--;
+        }
     }
 
     @Override
@@ -39,4 +56,6 @@ public abstract class Item implements Acciones {
             this.stock = this.stock - cantidad;
         }
     }
+
+
 }

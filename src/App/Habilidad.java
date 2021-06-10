@@ -56,10 +56,9 @@ public class Habilidad {
 
     @Override
     public String toString() {
-        return "Nombre: ['" + nombre + '\'' +
-                "Daño: " + danio +
+        return "Nombre: " + nombre +
+                ", Daño: " + danio +
                 ", Precision: " + precision +
-                ", Costo de MP: " + costoMP +
-                ']';
+                ", Costo de MP: " + costoMP;
     }
 }
