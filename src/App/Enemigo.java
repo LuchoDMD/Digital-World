@@ -42,6 +42,11 @@ public class Enemigo extends Digimon implements Combate {
 
     // METODOS \\
 
+    public int dropExperiencia()
+    {
+        return ((getNivel()*getAtaque())+(getDefensa()*getVelocidad()))/100;
+    }
+
     @Override
     public boolean verificarMana(Habilidad habilidad){
         return this.getMp() > habilidad.getCostoMP();
@@ -59,7 +64,6 @@ public class Enemigo extends Digimon implements Combate {
         if (danioRecibido-getDefensa() < 0){
             return 0;
         }
-
         return danioRecibido-getDefensa();
     }
 

@@ -56,7 +56,10 @@ public abstract class Digimon {
     }
 
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        if(nivel<101)
+        {
+            this.nivel = nivel;
+        }
     }
 
     public int getHp() {
@@ -64,15 +67,23 @@ public abstract class Digimon {
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        if(hp<10000)
+        {
+            this.hp = hp;
+        }
     }
 
-    public int getMp() {
+    public int getMp()
+    {
         return mp;
     }
 
-    public void setMp(int mp) {
-        this.mp = mp;
+    public void setMp(int mp)
+    {
+        if(mp<10000)
+        {
+            this.mp = mp;
+        }
     }
 
     public int getAtaque() {
@@ -80,21 +91,33 @@ public abstract class Digimon {
     }
 
     public void setAtaque(int ataque) {
-        this.ataque = ataque;
+        if(ataque<1000)
+        {
+            this.ataque = ataque;
+        }
     }
 
     public int getDefensa() {
         return defensa;
     }
 
-    public void setDefensa(int defensa) { this.defensa = defensa; }
+    public void setDefensa(int defensa)
+    {
+        if(defensa<1000)
+        {
+            this.defensa = defensa;
+        }
+    }
 
     public int getVelocidad() {
         return velocidad;
     }
 
     public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
+        if(velocidad<1000)
+        {
+            this.velocidad = velocidad;
+        }
     }
 
     public Habilidad[] getHabilidades() {

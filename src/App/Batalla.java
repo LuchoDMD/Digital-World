@@ -28,7 +28,6 @@ public class Batalla
             while ((enemigo.getHp() > 0 ) && (compa.getVida() > 0)) {    //Cuando alguno de los dos tenga 0 o menos de vida, termina el combate
                 if (esMasRapido()) {     //si el player es más rápido, ataca primero
                     compa.limpiarEstado();
-
                     switch (menuCombate()) {     //TURNO PLAYER
                         case 1:
                             boolean flag = false;   //variable de control para el MP
@@ -177,7 +176,6 @@ public class Batalla
                             Texto.huirBatalla();
                             break;
                     }
-
                 }
                 turno++;
             }
@@ -278,10 +276,43 @@ public class Batalla
 
         return input;
     }
-
-
-
-
-
-
 }
+/*
+*
+*
+* */
+
+/*FORMA I
+* //MENU HABILIDADES
+* int input = -1; //variable de control
+        boolean flag = false;
+        Scanner scan=new Scanner(System.in);
+        do {
+            while (!scan.hasNextInt()) {
+                Texto.printMenuSkills(compa);
+                scan.next();
+            }
+            input = scan.nextInt();
+            if(input>0&&input<=4)
+            {
+                flag=true;
+            }
+        } while (!flag);
+        return input;
+* //MENU COMBATE
+*       int input = -1; //variable de control
+        boolean flag = false;
+        Scanner scan = new Scanner(System.in);
+        do{
+            while(!scan.hasNextInt()) {
+                Texto.imprimirMenuCombate();
+                scan.next();
+            }
+            input = scan.nextInt();
+            if(input>0&&input<=4)
+            {
+                flag=true;
+            }
+        } while (!flag);
+        return input;
+* */

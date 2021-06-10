@@ -1,6 +1,7 @@
 package App;
 
-public interface Combate {
+public interface Combate
+{
     int atacar();
     int defender();
     boolean esquivar();
