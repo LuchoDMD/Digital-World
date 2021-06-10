@@ -23,19 +23,32 @@ public class Main {
         Enemigo charizard = new Enemigo(5, 500,200,50,25,100, "Charizard", 100, habilidades, charizardSkills);
         Compa pikachu = new Compa(5,300,500,100,10,150, "pikachu", 15, habilidades, pikachuSkills);
 
+        //Items\\
+        Item pocionP = new Pocion("Pocion paqueña", 10, TamanioItem.CHICO.getRecuperacion());
+        Item pocionM = new Pocion("Pocion mediana", 20, TamanioItem.MEDIANO.getRecuperacion());
+        Item pocionG = new Pocion("Pocion grande", 5, TamanioItem.GRANDE.getRecuperacion());
+        Item elixirP = new Elixir("Elixir pequeño", 10, TamanioItem.CHICO.getRecuperacion());
+        Item elixirM = new Elixir("Elixir mediano", 20, TamanioItem.MEDIANO.getRecuperacion());
+        Item elixirG = new Elixir("Elixir grande", 5, TamanioItem.GRANDE.getRecuperacion());
+
+        //Mochila\\
+        Mochila<Item> mochilaJugador = new Mochila<>();
+        mochilaJugador.agregarItems(pocionG);
+        mochilaJugador.agregarItems(elixirM);
+        mochilaJugador.agregarItems(elixirG);
+
+
+        //Entrenador\\
+        Entrenador entrenador = new Entrenador(mochilaJugador);
+
         //pikachu.setVida(120);
         //pikachu.setMana(320);
 
-        Batalla battle1 = new Batalla(pikachu, charizard);
+        Batalla battle1 = new Batalla(pikachu, charizard, entrenador);
         battle1.comenzarBatalla();
 
-        Item pocionP = new Pocion("Pocion paqueña", 10, 30);
-        Item pocionM = new Pocion("Pocion mediana", 20, 70);
-        Item pocionG = new Pocion("Pocion grande", 5, 100);
-        Item elixirP = new Elixir("Elixir pequeño", 10, 30);
-        Item elixirM = new Elixir("Elixir mediano", 20, 70);
-        Item elixirG = new Elixir("Elixir grande", 5, 100);
 
+        /*
         System.out.println(pikachu);
 
         pocionP.usar(pikachu);
@@ -47,12 +60,9 @@ public class Main {
 
         System.out.println(pocionP);
 
-        Mochila<Item> mochilaJugador = new Mochila<>();
+         */
 
-        mochilaJugador.agregarItems(pocionG);
-        mochilaJugador.agregarItems(elixirM);
 
-        System.out.println(mochilaJugador);
 
     }
 }

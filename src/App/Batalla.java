@@ -8,19 +8,22 @@ public class Batalla
     public Compa compa;
     public Enemigo enemigo;
     private final List<Turno> log;    //logs del combate
+    private Entrenador entrenador;
 
     // CONSTRUCTORES \\
 
-    public Batalla(Compa compa, Enemigo enemigo) {
+    public Batalla(Compa compa, Enemigo enemigo, Entrenador entrenador) {
         this.compa = compa;
         this.enemigo = enemigo;
         log = new ArrayList<>();
+        this.entrenador = entrenador;
     }
 
     // METODOS \\
 
     public void comenzarBatalla(){      //Método donde se realizará el bucle de combate
         int turno = 1;
+
         Texto.printMenuStatus(enemigo, compa);
             while ((enemigo.getHp() > 0 ) && (compa.getVida() > 0)) {    //Cuando alguno de los dos tenga 0 o menos de vida, termina el combate
                 if (esMasRapido()) {     //si el player es más rápido, ataca primero
@@ -57,8 +60,16 @@ public class Batalla
                             compa.regenerarMP();
                             break;
                         case 4:
+                            Texto.printMenuStatus(enemigo, compa);
                             break;
-
+                        case 5:
+                            int opcion = menuInventario();
+                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.mostrarItem(opcion-1), compa);
+                            System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion-1));
+                            break;
+                        case 6:
+                            Texto.huirBatalla();
+                            break;
                     }
                     if (enemigo.getHp() >= 0) {
 
@@ -69,7 +80,7 @@ public class Batalla
                             case 1:
                             case 2:
                             case 3:
-                                System.out.println("EL BOT LANZA" + enemigo.habilidades[accion]);
+                                System.out.println("El enemigo lanza " + enemigo.habilidades[accion]);
                                 int danio = compa.getDanioRecibido(enemigo.habilidadAtaque(enemigo.habilidades[accion]));
                                 enemigo.setMp(enemigo.getMp() - enemigo.habilidades[accion].getCostoMP());   //resta el mana
                                 compa.golpeRematador(danio);
@@ -80,11 +91,11 @@ public class Batalla
                                 break;
                             case 4:
                                 enemigo.defender();
-                                System.out.println("EL BOT se prepara para defender");
+                                System.out.println("El enemigo se prepara para defender");
                                 enemigo.regenerarMP();
                                 break;
                             case 5:
-                                System.out.println("EL BOT se prepara para esquivar");
+                                System.out.println("El enemigo se prepara para esquivar");
                                 enemigo.regenerarMP();
                                 enemigo.esquivar();
                                 break;
@@ -100,7 +111,7 @@ public class Batalla
                         case 1:
                         case 2:
                         case 3:
-                            System.out.println("EL BOT ATACA");
+                            System.out.println("El enemigo ataca ");
                             int danio = compa.getDanioRecibido(enemigo.habilidadAtaque(enemigo.habilidades[accion]));
                             enemigo.setMp(enemigo.getMp() - enemigo.habilidades[accion].getCostoMP());   //resta el mana
                             compa.golpeRematador(danio);
@@ -112,10 +123,10 @@ public class Batalla
                         case 4:
                             enemigo.defender();
                             enemigo.regenerarMP();
-                            System.out.println("EL BOT se prepara para defender");
+                            System.out.println("El enemigo se prepara para defender");
                             break;
                         case 5:
-                            System.out.println("EL BOT se prepara para esquivar");
+                            System.out.println("El enemigo se prepara para esquivar");
                             enemigo.regenerarMP();
                             enemigo.esquivar();
                             break;
@@ -154,8 +165,16 @@ public class Batalla
                             compa.regenerarMP();
                             break;
                         case 4:
+                            Texto.printMenuStatus(enemigo, compa);
                             break;
-
+                        case 5:
+                            int opcion = menuInventario();
+                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.mostrarItem(opcion-1), compa);
+                            System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion-1));
+                            break;
+                        case 6:
+                            Texto.huirBatalla();
+                            break;
                     }
                 }
                 turno++;
@@ -163,6 +182,7 @@ public class Batalla
             Texto.limpiarPantalla();
             Texto.printMenuStatus(enemigo, compa);
             System.out.println(Texto.printLog(log));
+            Texto.declararVencedor(enemigo, compa);
         }
 
     public boolean esMasRapido(){      //clase que compara la velocidad del compa con la velocidad del enemigo
@@ -200,8 +220,29 @@ public class Batalla
 
         do{
             try {
-                while(input != 1 && input != 2 && input != 3 && input != 4){
+                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
                     Texto.imprimirMenuCombate();
+                    Scanner scan = new Scanner(System.in);
+                    input = scan.nextInt();
+                    flag = true;
+                }
+            }
+            catch (InputMismatchException ex) {
+                System.out.println("Usted ha ingresado un valor no válido. Por favor, seleccione un numero de la lista");
+                flag = false;
+            }
+        } while (!flag);
+        return input;
+    }
+
+    private int menuInventario(){
+        int input = -1; //variable de control
+        boolean flag = false;
+
+        do{
+            try {
+                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
+                    Texto.imprimirMenuInventario(entrenador.mochila);
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
                     flag = true;
