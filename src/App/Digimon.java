@@ -56,7 +56,7 @@ public abstract class Digimon {
     }
 
     public void setNivel(int nivel) {
-        if(nivel>101)
+        if(nivel<101)
         {
             this.nivel = nivel;
         }

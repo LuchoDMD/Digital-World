@@ -65,7 +65,7 @@ public class Compa extends Digimon implements Combate {
         {
             setExperiencia(0);
             setNivel(getNivel()+1);
-            /*subeStats(int porcentaje);*/
+            /*subeStats();*/
         }
     }
 
