@@ -19,6 +19,10 @@ public class Texto
         System.out.println();
     }
 
+    public static void ingresoInvalido()
+    {
+        System.out.println("Valor ingresado No Valido, por favor ingrese otro");
+    }
 
     // Metodo para detener el juego hasta que el usuario ingrese algo por consola
     // Una improvisacion del system("pause")
@@ -70,7 +74,7 @@ public class Texto
     }
 
     public static void printMenuStatus(Enemigo enemigo, Compa compa){
-        System.out.println("Enemigo:                      Player:");
+        System.out.println("Enemigo:                    Player:");
         System.out.println("HP: " + enemigo.getHp() + "                     HP: " + compa.getVida());
         System.out.println("MP: " + enemigo.getMp() + "                     MP: " + compa.getMana());
     }

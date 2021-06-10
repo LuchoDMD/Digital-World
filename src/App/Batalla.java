@@ -192,6 +192,7 @@ public class Batalla
         }
         return accion;
     }
+
     private int menuCombate(){      //
 
         int input = -1; //variable de control
