@@ -54,6 +54,21 @@ public class Compa extends Digimon implements Combate {
 
     // METODOS \\
 
+    private int rangoExperiencia()/*Formula de Rango de experiencia de siguiente nivel*/
+    {
+        return (getNivel()*(getAtaque()+getDefensa()+getVelocidad()))/10;
+    }
+
+    private void subidaNivel()/*Subida de Nivel*/
+    {
+        if(experiencia==rangoExperiencia())
+        {
+            setExperiencia(0);
+            setNivel(getNivel()+1);
+            /*subeStats();*/
+        }
+    }
+
     @Override
     public int atacar()
     {
