@@ -76,6 +76,16 @@ public class Texto{
         System.out.print("Seleccione una opcion: ");
     }
 
+
+    public static void imprimirMenuInventario(Mochila<Item> mochila){
+        int aux = 1;
+        for (Item variable: mochila.getBolsillo()) {
+            System.out.println("presione " + aux + " para utilizar " + variable);
+            aux++;
+        }
+    }
+
+
     public static void printMenuSkills(Compa compa){
         limpiarPantalla();
         imprimirEncabezado("LISTA DE HABILIDADES DISPONIBLES:");

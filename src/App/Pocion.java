@@ -8,6 +8,7 @@ public class Pocion extends Item{
         this.cantRestauracion=cantRestauracion;
     }
 
+    /*
     @Override
     public void usar(Compa partner) {
         if (partner.getVida() + cantRestauracion > partner.getHp()){
@@ -17,6 +18,8 @@ public class Pocion extends Item{
         }
         stock--;
     }
+
+     */
 
     @Override
     public String toString() {

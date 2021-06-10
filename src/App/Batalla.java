@@ -8,13 +8,15 @@ public class Batalla
     public Compa compa;
     public Enemigo enemigo;
     private final List<Turno> log;    //logs del combate
+    private Entrenador entrenador;
 
     // CONSTRUCTORES \\
 
-    public Batalla(Compa compa, Enemigo enemigo) {
+    public Batalla(Compa compa, Enemigo enemigo, Entrenador entrenador) {
         this.compa = compa;
         this.enemigo = enemigo;
         log = new ArrayList<>();
+        this.entrenador = entrenador;
     }
 
     // METODOS \\
@@ -62,7 +64,9 @@ public class Batalla
                             Texto.printMenuStatus(enemigo, compa);
                             break;
                         case 5:
-                            // En construccion
+                            int opcion = menuInventario();
+                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.mostrarItem(opcion-1), compa);
+                            System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion-1));
                             break;
                         case 6:
                             Texto.huirBatalla();
@@ -162,8 +166,16 @@ public class Batalla
                             compa.regenerarMP();
                             break;
                         case 4:
+                            Texto.printMenuStatus(enemigo, compa);
                             break;
-
+                        case 5:
+                            int opcion = menuInventario();
+                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.mostrarItem(opcion-1), compa);
+                            System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion-1));
+                            break;
+                        case 6:
+                            Texto.huirBatalla();
+                            break;
                     }
 
                 }
@@ -212,6 +224,27 @@ public class Batalla
             try {
                 while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
                     Texto.imprimirMenuCombate();
+                    Scanner scan = new Scanner(System.in);
+                    input = scan.nextInt();
+                    flag = true;
+                }
+            }
+            catch (InputMismatchException ex) {
+                System.out.println("Usted ha ingresado un valor no válido. Por favor, seleccione un numero de la lista");
+                flag = false;
+            }
+        } while (!flag);
+        return input;
+    }
+
+    private int menuInventario(){
+        int input = -1; //variable de control
+        boolean flag = false;
+
+        do{
+            try {
+                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
+                    Texto.imprimirMenuInventario(entrenador.mochila);
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
                     flag = true;

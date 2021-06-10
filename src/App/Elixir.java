@@ -8,6 +8,7 @@ public class Elixir extends Item{
         this.cantRestauracion=cantRestauracion;
     }
 
+    /*
     @Override
     public void usar(Compa partner) {
         if (partner.getMana() + cantRestauracion > partner.getMp()){
@@ -17,6 +18,8 @@ public class Elixir extends Item{
         }
         stock--;
     }
+
+     */
 
     @Override
     public String toString() {
