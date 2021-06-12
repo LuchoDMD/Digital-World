@@ -18,6 +18,7 @@ public class Texto{
         System.out.println();
     }
 
+
     // Metodo para detener el juego hasta que el usuario ingrese algo por consola
     // Una improvisacion del system("pause")
 
