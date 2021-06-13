@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import com.mygdx.game.Utiles.Config;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.Utiles.Render;
 
 public class PantallaBatalla implements Screen {
@@ -44,9 +44,7 @@ public class PantallaBatalla implements Screen {
         huir.setWidth(ancho);
         huir.setHeight(alto);
 
-        poner(luchar);
-        poner(mochila);
-        poner(huir);
+
     }
 
     private void poner(Actor a){
@@ -54,7 +52,24 @@ public class PantallaBatalla implements Screen {
     }
 
     private void botonLuchar(){
+        luchar.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                luchar.setVisible(false);
+                mochila.setVisible(false);
+                huir.setVisible(false);
 
+
+            }
+        });
+    }
+
+    private void hubBatalla(){
+        poner(luchar);
+        poner(mochila);
+        poner(huir);
+
+        botonLuchar();
     }
 
     @Override
@@ -62,6 +77,7 @@ public class PantallaBatalla implements Screen {
         Render.limpiarPantalla(1,1,1);
         b.begin();
         stage.act();
+        hubBatalla();
         stage.draw();
         b.end();
     }
