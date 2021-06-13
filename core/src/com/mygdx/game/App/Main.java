@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import javax.xml.soap.Text;
 
 
 public class Main {
@@ -16,8 +15,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //instanciamiento de clases
 
-        /*
-        Map<Integer, Habilidad> habilidades = new HashMap<>();
+
+        /*Map<Integer, Habilidad> habilidades = new HashMap<>();
         habilidades.put(1, new Habilidad(100, 95, 20, "Ataque Relampago"));
         habilidades.put(2, new Habilidad(70, 100, 15, "Fuego Elemental"));
         habilidades.put(3, new Habilidad(150, 70, 25, "Misil Etereo"));
@@ -25,13 +24,13 @@ public class Main {
         habilidades.put(5, new Habilidad(185, 85, 40, "Tormenta de Fuego"));
         habilidades.put(6, new Habilidad(200, 65, 30, "Tormenta Elcctrica"));
         habilidades.put(7, new Habilidad(300, 65, 50, "Descarga Elcctrica"));
-        habilidades.put(8, new Habilidad(40, 100, 0, "Ataque Basico"));
-         */
+        habilidades.put(8, new Habilidad(40, 100, 0, "Ataque Basico"));*/
+
 
         //LECTURA DE ARCHIVO .JSON CON LAS HABILIDADES\\
         //Lleno de cosas raras que tuve que sacar de internet para que funcionase\\
         Gson gson = new Gson();
-        File file = new File("Habilidades.json");
+        File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         Map<Integer, Habilidad> habilidades = new HashMap<Integer, Habilidad>(gson.fromJson(bufferedReader, Map.class));
         System.out.println(habilidades);
@@ -41,18 +40,18 @@ public class Main {
 
 
         //ESCRITURA DE .JSON CON HABILIDADES\\ (queda comentado porque ya está creado el archivo)
-        /*
-        try{
+
+        /*try{
             Gson gson = new Gson();
-            File file = new File("Habilidades.json");
+            File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(habilidades, Map.class, bufferedWriter);
             bufferedWriter.close();
         }
         catch(IOException e){
             System.out.println("error");
-        }
-         */
+        }*/
+
 
 
 
@@ -84,11 +83,11 @@ public class Main {
         mochilaJugador.agregarItems(elixirG);
 
          */
-        /*
+
         //GRABADO DE ITEMS\\
-        try{
+        /*try{
             Gson gson2 = new Gson();
-            File fileItems = new File("Items.json");
+            File fileItems = new File("core/src/com/mygdx/game/Archivos/Items.json");
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileItems));
             gson2.toJson(items, List.class, bufferedWriter);
             bufferedWriter.close();
@@ -96,8 +95,8 @@ public class Main {
         }
         catch(IOException e){
             System.out.println("error");
-        }
-        */
+        }*/
+
 
         /*
         //LECTURA DE ITEMS\\ FUNCIONA PERO NO SE PORQUE SE ROMPE CUANDO SE SELECCIONA DESDE EL COMBATE
