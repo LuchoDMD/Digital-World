@@ -7,7 +7,6 @@ import com.mygdx.game.Utiles.Render;
 
 public class MiJuego extends Game {
 
-
 	@Override
 	public void create () {
 		Render.app=this;
