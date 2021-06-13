@@ -3,27 +3,33 @@ package com.mygdx.game.App;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mochila<T> {
+public class Mochila {
 
-    private List<T> bolsillo;
+    private List<Item> bolsillo;
 
-    public List<T> getBolsillo() {
-        return bolsillo;
-    }
-
-    public void setBolsillo(List<T> bolsillo) {
-        this.bolsillo = bolsillo;
-    }
 
     public Mochila() {
-        bolsillo = new ArrayList<>();
+        this.bolsillo = new ArrayList<>();
+    }
+
+    public Mochila (Mochila m){
+        int aux=0;
+        while(!m.getBolsillo().isEmpty()){
+            this.bolsillo.add(m.getBolsillo().get(aux));
+            aux++;
+        }
+    }
+
+    public Mochila(List<Item> lista){
+        this.bolsillo = new ArrayList<Item>();
+        this.bolsillo = lista;
     }
 
 
-    public void agregarItems(T item){
+    public void agregarItems(Item item){
         boolean flag = false;
         int aux = 0;
-        for(T variable : bolsillo){
+        for(Item variable : bolsillo){
             if(variable == item){
                 flag = true;
                 break;
@@ -31,7 +37,7 @@ public class Mochila<T> {
             aux ++;
         }
         if (flag){
-            Item it = (Item) bolsillo.get(aux);
+            Item it = bolsillo.get(aux);
             it.setStock(it.getStock() + 1);
         }
         else{
@@ -44,7 +50,7 @@ public class Mochila<T> {
 
     }
 
-    public T mostrarItem(int index){
+    public Item mostrarItem(int index){
         return bolsillo.get(index);
     }
 
@@ -56,4 +62,11 @@ public class Mochila<T> {
     }
 
 
+    public List<Item> getBolsillo() {
+        return bolsillo;
+    }
+
+    public void setBolsillo(List<Item> bolsillo) {
+        this.bolsillo = bolsillo;
+    }
 }
