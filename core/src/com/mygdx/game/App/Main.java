@@ -54,8 +54,6 @@ public class Main {
         }
          */
 
-
-
         int[] charizardSkills = {8, 3, 4, 5};
         int[] pikachuSkills = {8, 4, 6, 7};
         //replantear map
