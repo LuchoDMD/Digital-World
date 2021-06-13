@@ -2,12 +2,12 @@ package com.mygdx.game.App;
 
 public class Entrenador {
     //ATRIBUTOS\\
-    public Mochila<Item> mochila;
+    public Mochila mochila;
     //public double x,y; posiblemente se use en otra clase y no en esta (mapa o zona)
     public String nombre;
 
     //CONSTRUCTOR\\
-    public Entrenador(Mochila<Item> mochila) {
+    public Entrenador(Mochila mochila) {
         this.mochila = mochila;
         this.nombre = "Ash"; //nombre genérico, la idea sería que el nombre se elija al inicio de la partida
     }
@@ -18,11 +18,11 @@ public class Entrenador {
         mochila.agregarItems(item);
     }
 
-    public Mochila<Item> getMochila() {
+    public Mochila getMochila() {
         return mochila;
     }
 
-    public void setMochila(Mochila<Item> mochila) {
+    public void setMochila(Mochila mochila) {
         this.mochila = mochila;
     }
 

@@ -1,5 +1,5 @@
-com/mygdx/game/App/Texto.java
- com.mygdx.game.App.Texto
+com/mygdx/game/App/Habilidad.java
+ com.mygdx.game.App.Habilidad
 com/mygdx/game/App/TamanioItem.java
  com.mygdx.game.App.TamanioItem
 com/mygdx/game/Eventos/Entrada.java
@@ -22,8 +22,8 @@ com/mygdx/game/App/Entrenador.java
  com.mygdx.game.App.Entrenador
 com/mygdx/game/App/Elixir.java
  com.mygdx.game.App.Elixir
-com/mygdx/game/App/Main.java
- com.mygdx.game.App.Main
+com/mygdx/game/App/Turno.java
+ com.mygdx.game.App.Turno
 com/mygdx/game/App/Compa.java
  com.mygdx.game.App.Compa
 com/mygdx/game/App/Digimon.java
@@ -61,11 +61,12 @@ com/mygdx/game/Utiles/Recursos.java
  com.mygdx.game.Utiles.Recursos
 com/mygdx/game/Pantalla/PantallaMapa.java
  com.mygdx.game.Pantalla.PantallaMapa
-com/mygdx/game/App/Batalla.java
- com.mygdx.game.App.Batalla
-com/mygdx/game/App/Habilidad.java
- com.mygdx.game.App.Habilidad
 com/mygdx/game/App/Mochila.java
  com.mygdx.game.App.Mochila
-com/mygdx/game/App/Turno.java
- com.mygdx.game.App.Turno
+com/mygdx/game/App/Texto.java
+ com.mygdx.game.App.Texto
+com/mygdx/game/App/Batalla.java
+ com.mygdx.game.App.Batalla
+com/mygdx/game/App/Main.java
+ com.mygdx.game.App.Main
+ com.mygdx.game.App.Main$1

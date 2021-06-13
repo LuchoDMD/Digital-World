@@ -77,9 +77,9 @@ public class Texto{
     }
 
 
-    public static void imprimirMenuInventario(Mochila<Item> mochila){
+    public static void imprimirMenuInventario(List<Item> mochila){
         int aux = 1;
-        for (Item variable: mochila.getBolsillo()) {
+        for (Item variable: mochila) {
             System.out.println("presione " + aux + " para utilizar " + variable);
             aux++;
         }
