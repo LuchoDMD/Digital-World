@@ -53,6 +53,10 @@ public class PantallaBatalla implements Screen {
         stage.addActor(a);
     }
 
+    private void botonLuchar(){
+
+    }
+
     @Override
     public void render(float delta) {
         Render.limpiarPantalla(1,1,1);
