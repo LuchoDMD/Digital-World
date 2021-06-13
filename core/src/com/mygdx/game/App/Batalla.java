@@ -66,8 +66,8 @@ public class Batalla
                             continue label;
                         case 5:
                             int opcion = menuInventario();
-                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.mostrarItem(opcion-1), compa);
-                            System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion-1));
+                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa);
+                            System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
                             break;
                         case 6:
                             Texto.huirBatalla();
@@ -176,8 +176,8 @@ public class Batalla
                                 continue label2;
                             case 5:
                                 int opcion = menuInventario();
-                                entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.mostrarItem(opcion - 1), compa);
-                                System.out.println("Utilizaste " + entrenador.mochila.mostrarItem(opcion - 1));
+                                entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa);
+                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
                                 break;
                             case 6:
                                 Texto.huirBatalla();
@@ -251,7 +251,7 @@ public class Batalla
         do{
             try {
                 while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
-                    Texto.imprimirMenuInventario(entrenador.mochila);
+                    Texto.imprimirMenuInventario(entrenador.mochila.getBolsillo());
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
                     flag = true;

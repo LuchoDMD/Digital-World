@@ -6,13 +6,13 @@ import com.mygdx.game.Pantalla.*;
 import com.mygdx.game.Utiles.Render;
 
 public class MiJuego extends Game {
-    //Commit failed
+
 
 	@Override
 	public void create () {
 		Render.app=this;
 		Render.batch=new SpriteBatch();
-			this.setScreen(new PantallaCarga());
+			this.setScreen(new PantallaBatalla());
 	}
 
 	@Override

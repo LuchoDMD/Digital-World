@@ -18,21 +18,31 @@ public class PantallaBatalla implements Screen {
     private Stage stage;
     private TextField n;
     private Skin skin;
+    private int ancho=200, alto=30;
+
 
     @Override
     public void show() {
         b= Render.batch;
         stage= new Stage();
         skin=new Skin(Gdx.files.internal("Skin/uiskin.json"));
+        Gdx.input.setInputProcessor(stage);
         n=new TextField("",skin);
 
         luchar  = new TextButton("LUCHAR",skin);
-        mochila  = new TextButton("MOCHILA",skin);
-        huir  = new TextButton("HUIR",skin);
+        luchar.setPosition(700,150);
+        luchar.setWidth(ancho);
+        luchar.setHeight(alto);
 
-        luchar.setPosition(Config.ANCHO/2,300);
-        mochila.setPosition(Config.ANCHO+luchar.getWidth(),300);
-        huir.setPosition(Config.ANCHO,350);
+        mochila  = new TextButton("MOCHILA",skin);
+        mochila.setPosition(900,150);
+        mochila.setWidth(ancho);
+        mochila.setHeight(alto);
+
+        huir  = new TextButton("HUIR",skin);
+        huir.setPosition(700,luchar.getY()-luchar.getHeight());
+        huir.setWidth(ancho);
+        huir.setHeight(alto);
 
         poner(luchar);
         poner(mochila);
@@ -41,6 +51,10 @@ public class PantallaBatalla implements Screen {
 
     private void poner(Actor a){
         stage.addActor(a);
+    }
+
+    private void botonLuchar(){
+
     }
 
     @Override
