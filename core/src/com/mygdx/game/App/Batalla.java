@@ -66,8 +66,15 @@ public class Batalla
                             continue label;
                         case 5:
                             int opcion = menuInventario();
-                            entrenador.mochila.getBolsillo().get(opcion-1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa);
-                            System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                            if(opcion == 0){    //opcion para volver al menú anterior
+                                continue label;
+                            }
+                            if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
+                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                            }
+                            else{
+                                continue label; //si no hay stock del item seleccionado, vuelve al label para volver a elegir
+                            }
                             break;
                         case 6:
                             Texto.huirBatalla();
@@ -176,8 +183,15 @@ public class Batalla
                                 continue label2;
                             case 5:
                                 int opcion = menuInventario();
-                                entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa);
-                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                                if(opcion == 0){    //opción para volver atrás
+                                    continue label2;
+                                }
+                                if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
+                                    System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                                }
+                                else{
+                                    continue label2;  //si no hay stock del item seleccionado, vuelve al label para volver a elegir
+                                }
                                 break;
                             case 6:
                                 Texto.huirBatalla();
@@ -210,9 +224,15 @@ public class Batalla
         5 : Esquiva
          */
         Random random = new Random();
-        int accion = random.nextInt(6); // 0, 1 , 2, 3, 4, 5
+        int accion;
+        if (compa.getVida() < compa.getHp()/2){ //si el player tiene menos de la mitad de la vida, el bot va full ataque
+            accion = random.nextInt(4);
+        }
+        else{
+            accion = random.nextInt(6); // 0, 1 , 2, 3, 4, 5
+        }
         if(accion <= 3){
-            if (enemigo.verificarMana(enemigo.habilidades[accion])){
+            if (enemigo.verificarMana(enemigo.habilidades[accion])){    //verifica el maná
                 return accion;
             }
             else {
@@ -250,7 +270,7 @@ public class Batalla
 
         do{
             try {
-                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
+                while(input != 0 && input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
                     Texto.imprimirMenuInventario(entrenador.mochila.getBolsillo());
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
