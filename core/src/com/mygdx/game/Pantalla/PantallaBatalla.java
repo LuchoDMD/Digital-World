@@ -58,7 +58,25 @@ public class PantallaBatalla implements Screen {
                 luchar.setVisible(false);
                 mochila.setVisible(false);
                 huir.setVisible(false);
+            }
+        });
+    }
 
+
+
+    private void botonHuir(){
+        huir.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                System.out.println("huiste puto");
+            }
+        });
+    }
+
+    private void botonMochila(){
+        mochila.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
 
             }
         });
@@ -70,6 +88,8 @@ public class PantallaBatalla implements Screen {
         poner(huir);
 
         botonLuchar();
+        botonHuir();
+        botonMochila();
     }
 
     @Override

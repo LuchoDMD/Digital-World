@@ -10,10 +10,13 @@ com/mygdx/game/Eventos/EntradaMovimiento.java
  com.mygdx.game.Eventos.EntradaMovimiento
 com/mygdx/game/App/Acciones.java
  com.mygdx.game.App.Acciones
-com/mygdx/game/App/Mochila.java
- com.mygdx.game.App.Mochila
-com/mygdx/game/Utiles/Render.java
- com.mygdx.game.Utiles.Render
+com/mygdx/game/Pantalla/PantallaBatalla.java
+ com.mygdx.game.Pantalla.PantallaBatalla
+ com.mygdx.game.Pantalla.PantallaBatalla$1
+ com.mygdx.game.Pantalla.PantallaBatalla$2
+ com.mygdx.game.Pantalla.PantallaBatalla$3
+com/mygdx/game/Pantalla/PantallaMapa.java
+ com.mygdx.game.Pantalla.PantallaMapa
 com/mygdx/game/Elementos/Texto.java
  com.mygdx.game.Elementos.Texto
 com/mygdx/game/Utiles/Config.java
@@ -38,36 +41,35 @@ com/mygdx/game/Pantalla/PantallaCreacion.java
  com.mygdx.game.Pantalla.PantallaCreacion$1
  com.mygdx.game.Pantalla.PantallaCreacion$2
  com.mygdx.game.Pantalla.PantallaCreacion$3
-com/mygdx/game/Pantalla/PantallaHistoria.java
- com.mygdx.game.Pantalla.PantallaHistoria
-com/mygdx/game/Pantalla/PantallaMenu.java
- com.mygdx.game.Pantalla.PantallaMenu
+com/mygdx/game/App/Turno.java
+ com.mygdx.game.App.Turno
+com/mygdx/game/App/Mochila.java
+ com.mygdx.game.App.Mochila
 com/mygdx/game/Elementos/GifDecoder.java
  com.mygdx.game.Elementos.GifDecoder
  com.mygdx.game.Elementos.GifDecoder$DixieMap
  com.mygdx.game.Elementos.GifDecoder$GifFrame
-com/mygdx/game/App/Turno.java
- com.mygdx.game.App.Turno
+com/mygdx/game/App/Habilidad.java
+ com.mygdx.game.App.Habilidad
 com/mygdx/game/App/Combate.java
  com.mygdx.game.App.Combate
 com/mygdx/game/App/Item.java
  com.mygdx.game.App.Item
-com/mygdx/game/Pantalla/PantallaCarga.java
- com.mygdx.game.Pantalla.PantallaCarga
+com/mygdx/game/App/Batalla.java
+ com.mygdx.game.App.Batalla
 com/mygdx/game/Elementos/Personaje.java
  com.mygdx.game.Elementos.Personaje
 com/mygdx/game/Elementos/Imagen.java
  com.mygdx.game.Elementos.Imagen
 com/mygdx/game/Utiles/Recursos.java
  com.mygdx.game.Utiles.Recursos
-com/mygdx/game/Pantalla/PantallaMapa.java
- com.mygdx.game.Pantalla.PantallaMapa
-com/mygdx/game/App/Batalla.java
- com.mygdx.game.App.Batalla
-com/mygdx/game/App/Habilidad.java
- com.mygdx.game.App.Habilidad
+com/mygdx/game/Utiles/Render.java
+ com.mygdx.game.Utiles.Render
+com/mygdx/game/Pantalla/PantallaCarga.java
+ com.mygdx.game.Pantalla.PantallaCarga
 com/mygdx/game/MiJuego.java
  com.mygdx.game.MiJuego
-com/mygdx/game/Pantalla/PantallaBatalla.java
- com.mygdx.game.Pantalla.PantallaBatalla
- com.mygdx.game.Pantalla.PantallaBatalla$1
+com/mygdx/game/Pantalla/PantallaHistoria.java
+ com.mygdx.game.Pantalla.PantallaHistoria
+com/mygdx/game/Pantalla/PantallaMenu.java
+ com.mygdx.game.Pantalla.PantallaMenu
