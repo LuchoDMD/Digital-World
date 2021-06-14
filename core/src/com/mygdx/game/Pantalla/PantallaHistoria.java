@@ -1,10 +1,16 @@
 package com.mygdx.game.Pantalla;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Elementos.GifDecoder;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Texto;
+import com.mygdx.game.Utiles.Config;
 import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
@@ -12,32 +18,44 @@ import com.mygdx.game.Utiles.Render;
 public class PantallaHistoria implements Screen {
 
     private Texto historia;
-    private Imagen fondo;
     private SpriteBatch b;
     private float trancicion;
+    private Animation<TextureRegion> animation;
+    private float elapsed;
+    private Music lluvia, rayo;
 
 
     @Override
     public void show() {
+        lluvia= Gdx.audio.newMusic(Gdx.files.internal(Recursos.LLUVIA));
+        rayo= Gdx.audio.newMusic(Gdx.files.internal(Recursos.RAYO));
+        animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(Recursos.INTRODUCCION_FONDO).read());
         b=Render.batch;
-        historia=new Texto(Recursos.FUENTE1,50, Color.BLACK,false);
-        historia.setTexto("Inicias tu aventura seleccionando \na tu compañero Digimon y habiendolo\nbautizado con un hermoso nombre.\n" +
-                "Tu deber como entrenador  \nes derrotar a todos tus enemigos \npara alzarte con la victoria.\n" +
-                "La aventura comienza ahora!\nCuidado con las fuerzas malignas \ndel general Peron!.");
-
-        //fondo=new Imagen();
-
+        historia=new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        historia.setTexto(Recursos.INTRODUCCION);
     }
 
     @Override
     public void render(float delta) {
-        trancicion+=1f;
+        trancicion+=0.7f;
         Render.limpiarPantalla(1,1,1);
+        elapsed += Gdx.graphics.getDeltaTime();
         b.begin();
-        //fondo.dibujar();
+        lluvia.play();
+        lluvia.setVolume(0.3f);
+        b.draw(animation.getKeyFrame(elapsed),0,0, Config.ANCHO,Config.ALTO);
         historia.dibujar();
-        historia.setPosition(70,trancicion);
+        historia.setPosition(35,trancicion);
+
+        if (trancicion>350){rayo.play();rayo.setVolume(0.8F);}
+
+        if(trancicion>1580){
+            Render.app.setScreen(new PantallaCreacion());
+            rayo.stop();
+            lluvia.stop();
+        }
         b.end();
+        System.out.println(trancicion);
     }
 
     @Override

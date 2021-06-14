@@ -22,7 +22,7 @@ public class PantallaMenu implements Screen {
     private Texto titulo;
     private Texto o1,o2,o3,o4;
     private Botones botones;
-    private Music musica;;
+    private Music musica;
     private Entrada entada = new Entrada(this);
     public float tiempo;
     private int cont=0;
@@ -83,7 +83,7 @@ public class PantallaMenu implements Screen {
             if(cont==1 && entada.isEnter())
             {
                 musica.stop();
-                Render.app.setScreen(new PantallaCreacion());
+                Render.app.setScreen(new PantallaHistoria());
             }
 
             if(cont==4 && entada.isEnter()){

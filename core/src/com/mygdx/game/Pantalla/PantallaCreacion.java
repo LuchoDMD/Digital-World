@@ -24,7 +24,7 @@ public class PantallaCreacion implements Screen {
 
     private SpriteBatch b;
     private Personaje agumon,gabumon;
-    private Texto texto;
+    private Texto texto, introduccion;
     private Skin skin;
     private Stage stage;
     private String nombre;
@@ -33,38 +33,43 @@ public class PantallaCreacion implements Screen {
     private TextField n;
     private Boolean flag=false, gen=false;
     private Imagen heroeM,heroeF;
+    private float trancicion;
 
 
     @Override
     public void show() {
+
         stage=new Stage();
         Gdx.input.setInputProcessor(stage);
 
         skin=new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
+        introduccion = new Texto(Recursos.FUENTE1,20,Color.ORANGE,true);
+        introduccion.setTexto(Recursos.INTRODUCCION);
 
-        texto=new Texto(Recursos.FUENTE1,25, Color.ORANGE,true);
+        texto=new Texto(Recursos.FUENTE1,40, Color.ORANGE,true);
         texto.setTexto("Como te identificas?");
-        texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,400);
+        texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
 
 
 
         n= new TextField("",skin);
-        n.setPosition(Config.ANCHO/2-n.getWidth()/2,340);
+        n.setPosition(Config.ANCHO/2-n.getWidth()/2,500);
 
 
         ok=new TextButton("Aceptar",skin);
-        ok.setPosition(n.getX()+n.getWidth()+10,340);
+        ok.setPosition(n.getX()+n.getWidth()+10,500);
         ok.setHeight(n.getHeight());
 
 
 
         heroeM=new Imagen(Recursos.HERO_M_GRANDE);
-        heroeM.setPosition(200,220);
+        heroeM.setPosition(texto.getX()+100,350);
         heroeM.setSize(90,150);
+
         heroeF=new Imagen(Recursos.HERO_F_GRANDE);
-        heroeF.setPosition(350,215);
-        heroeF.setSize(90,150);
+        heroeF.setPosition(texto.getX()+300,345);
+        heroeF.setSize(90,165);
 
         masculino= new TextButton("MASCULINO",skin);
         masculino.setPosition(heroeM.getX(),heroeM.getY()-30);
@@ -81,8 +86,8 @@ public class PantallaCreacion implements Screen {
         gen=botonFemenino();
         flag=botonAceptar();
 
-        agumon= new Personaje(180,100, Recursos.AGUMON,5,0.15f);
-        gabumon= new Personaje(380,100, Recursos.GABUMON,5,0.15f);
+        agumon= new Personaje(450,300, Recursos.AGUMON,5,0.15f);
+        gabumon= new Personaje(680,300, Recursos.GABUMON,5,0.15f);
 
         agumonB= new TextButton("AGUMON",skin);
         agumonB.setPosition(agumon.getX(),agumon.getY()-30);
@@ -95,6 +100,7 @@ public class PantallaCreacion implements Screen {
         b= Render.batch;
 
     }
+
 
     private boolean botonAceptar(){
         ok.addListener(new ChangeListener() {
@@ -110,7 +116,7 @@ public class PantallaCreacion implements Screen {
                         texto.setTexto("Bienvenida" +" \""+ nombre +"\" "+ "\n¿estas preparada para\nla nueva aventura?.\nSelecciona tu digimon.");
 
                     }
-                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,400);
+                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
                     flag=true;
                 }
             }
@@ -123,7 +129,7 @@ public class PantallaCreacion implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 texto.setTexto("Ingresa tu Nombre");
-                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,400);
+                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
                 heroeM.setTransparencia(0);
                 heroeF.setTransparencia(0);
                 masculino.setVisible(false);
@@ -141,7 +147,7 @@ public class PantallaCreacion implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 texto.setTexto("Ingresa tu Nombre");
-                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,400);
+                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
                 heroeM.setTransparencia(0);
                 heroeF.setTransparencia(0);
                 masculino.setVisible(false);
@@ -168,9 +174,11 @@ public class PantallaCreacion implements Screen {
 
     @Override
     public void render(float delta) {
+        trancicion+=1f;
         Render.limpiarPantalla(1,1,1);
         b.begin();
         stage.act();
+        introduccion.setPosition(70,trancicion);
         stage.draw();
         texto.dibujar();
         eleccionDigimon();
