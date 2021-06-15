@@ -29,23 +29,37 @@ public abstract class Item implements Acciones {
 
 
     @Override
-    public void usar(Item item, Compa partner){
+    public boolean usar(Item item, Compa partner){
+        boolean flag = true;
         if (item instanceof Pocion){
-            if (partner.getVida() + cantRestauracion > partner.getHp()){
-                partner.setVida(partner.getHp());
-            } else {
-                partner.setVida(partner.getVida() + cantRestauracion);
+            if(item.getStock() > 0){
+                if (partner.getVida() + cantRestauracion > partner.getHp()){
+                    partner.setVida(partner.getHp());
+                } else {
+                    partner.setVida(partner.getVida() + cantRestauracion);
+                }
+                stock--;
             }
-            stock--;
+            else{
+                System.out.println("No posee más de este item");
+                flag = false;
+            }
         }
         if (item instanceof Elixir){
-            if (partner.getMana() + cantRestauracion > partner.getMp()){
-                partner.setMana(partner.getMp());
-            } else {
-                partner.setMana(partner.getMana() + cantRestauracion);
+            if(item.getStock() > 0){
+                if (partner.getMana() + cantRestauracion > partner.getMp()){
+                    partner.setMana(partner.getMp());
+                } else {
+                    partner.setMana(partner.getMana() + cantRestauracion);
+                }
+                stock--;
             }
-            stock--;
+            else{
+                System.out.println("No posee más de este item");
+                flag = false;
+            }
         }
+        return flag;
     }
 
     @Override

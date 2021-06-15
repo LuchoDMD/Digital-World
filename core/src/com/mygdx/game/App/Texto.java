@@ -83,11 +83,11 @@ public class Texto{
             System.out.println("presione " + aux + " para utilizar " + variable);
             aux++;
         }
+        System.out.println("Presione 0 para volver al menu anterior");
     }
 
 
     public static void printMenuSkills(Compa compa){
-        limpiarPantalla();
         imprimirEncabezado("LISTA DE HABILIDADES DISPONIBLES:");
         System.out.println("Habilidad 1: " + compa.habilidades[0].toString());
         System.out.println("Habilidad 2: " + compa.habilidades[1].toString());

@@ -30,13 +30,19 @@ public class Main {
         //LECTURA DE ARCHIVO .JSON CON LAS HABILIDADES\\
         //Lleno de cosas raras que tuve que sacar de internet para que funcionase\\
         Gson gson = new Gson();
-        File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        Map<Integer, Habilidad> habilidades = new HashMap<Integer, Habilidad>(gson.fromJson(bufferedReader, Map.class));
-        System.out.println(habilidades);
-        String jsonString = gson.toJson(habilidades);
-        Type type = new TypeToken<HashMap<Integer, Habilidad>>(){}.getType();
-        habilidades = gson.fromJson(jsonString, type);
+        Map<Integer, Habilidad> habilidades = null;
+        try{
+            File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            habilidades = new HashMap<Integer, Habilidad>(gson.fromJson(bufferedReader, Map.class));
+            System.out.println(habilidades);
+            String jsonString = gson.toJson(habilidades);
+            Type type = new TypeToken<HashMap<Integer, Habilidad>>(){}.getType();
+            habilidades = gson.fromJson(jsonString, type);
+        }
+        catch(IOException e){
+            System.out.println("Error de carga de habilidades");
+        }
 
 
         //ESCRITURA DE .JSON CON HABILIDADES\\ (queda comentado porque ya está creado el archivo)
@@ -51,8 +57,6 @@ public class Main {
         catch(IOException e){
             System.out.println("error");
         }*/
-
-
 
 
         int[] charizardSkills = {8, 3, 4, 5};
