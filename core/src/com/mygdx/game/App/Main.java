@@ -67,17 +67,21 @@ public class Main {
 
 
         //Items\\
-        Item pocionP = new Pocion("Pocion paqueña", 10, TamanioItem.CHICO.getRecuperacion());
-        Item pocionM = new Pocion("Pocion mediana", 20, TamanioItem.MEDIANO.getRecuperacion());
-        Item pocionG = new Pocion("Pocion grande", 5, TamanioItem.GRANDE.getRecuperacion());
-        Item elixirP = new Elixir("Elixir pequeño", 10, TamanioItem.CHICO.getRecuperacion());
-        Item elixirM = new Elixir("Elixir mediano", 20, TamanioItem.MEDIANO.getRecuperacion());
-        Item elixirG = new Elixir("Elixir grande", 5, TamanioItem.GRANDE.getRecuperacion());
+        Item pocionP = new Pocion("Pocion paqueña", TamanioItem.CHICO.getRecuperacion());
+        Item pocionM = new Pocion("Pocion mediana",  TamanioItem.MEDIANO.getRecuperacion());
+        Item pocionG = new Pocion("Pocion grande",  TamanioItem.GRANDE.getRecuperacion());
+        Item elixirP = new Elixir("Elixir pequeño",  TamanioItem.CHICO.getRecuperacion());
+        Item elixirM = new Elixir("Elixir mediano",  TamanioItem.MEDIANO.getRecuperacion());
+        Item elixirG = new Elixir("Elixir grande",  TamanioItem.GRANDE.getRecuperacion());
         List<Item> items = new ArrayList<>();
         items.add(pocionG);
         items.add(elixirG);
         items.add(elixirM);
-        Mochila mochilaJugador = new Mochila(items);
+
+        Mochila mochilaJugador = new Mochila();
+        mochilaJugador.agregarItem(pocionG);
+        mochilaJugador.agregarItem(elixirG);
+        mochilaJugador.agregarItem(elixirM);
 
         //Mochila\\
         /*

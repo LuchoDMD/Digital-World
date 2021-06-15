@@ -55,7 +55,7 @@ public class Turno {
     @Override
     public String toString() {
         return "Turno [" +
-                atacante + " ataco a " + defensor + " haciendo un daño de: " + danio + " con " + ataque +
+                atacante + " ataco a " + defensor + " haciendo un dmg de: " + danio + " con " + ataque +
                 ']';
     }
 }
