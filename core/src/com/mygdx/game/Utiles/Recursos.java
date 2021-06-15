@@ -8,6 +8,9 @@ public class Recursos {
     public static final String INTRODUCCION_FONDO = "Fondos/introduccion.gif";
     public static final String CUADRO_BATALLA = "Fondos/CUADRO_BATALLA.png";
     public static final String BATALLA = "Fondos/BATALLA.png";
+    public static final String DIALOGO = "Fondos/dialogo.png";
+    public static final String FLECHADER = "Fondos/flecha.png";
+    public static final String FLECHAIZQ = "Fondos/flechaizq.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
@@ -36,19 +39,25 @@ public class Recursos {
 
     public static final String AGUMON = "Personaje/Digimon/agumon.png";
     public static final String GABUMON = "Personaje/Digimon/gabumon.png";
-    public static final String DIALOGO = "Personaje/dialogo.png";
 
 
-    public static final String INTRODUCCION = "Te levantas en un dia tormentoso, te has dormido en\nel escritorio y has dejado el ordenador" +
-            " encendido.\nTe encuentras con el programa que habias empezado\nhace un rato, ya hecho y al momento de probarlo...\n" +
-            "Un rayo genera un apagon en todo el edificio,\ndecides ir a buscar una fuente de luz, cuando te " +
-            "das\ncuenta de que tu ordenador esta encendido con tu\nprograma sobreescribiendose de manera " +
-            "inverosimil.\nAl ejecutarse comienza a descargar una serie de\npaquetes y mostrando " +
-            "una ventana emergente con\nuna simpatica criatura (Dorimon), que con un cuadro\n de texto te incita a " +
-            "identificarla:\n" +
-            "\t-¿Quien o que eres?. El joven decide inexplicablemente\n que debia aventurarse a averiguar " +
-            "cual era el\norigen de esto, pero sin respuesta inmediata, la\ncriatura ante su duda decide ayudarle" +
-            " a despejar sus\ndudas abriendole la puerta a su mundo:";
+    public static final String INTRODUCCION = "Te levantas en un dia tormentoso, te has dormido en el escritorio\n" +
+            "y has dejado el ordenador encendido.Te encuentras con el \nprograma que habias empezado hace un rato, ya\nhecho y al momento de probarlo...";
+
+
+    public static final String INTRODUCCION1=
+            "Un rayo genera un apagon en todo el edificio, decides ir a buscar\nuna fuente de luz, cuando te " +
+            "das cuenta de que tu ordenador esta\nencendido con tu programa sobreescribiendose de manera " +
+            "inverosimil.";
+
+
+    public static final String INTRODUCCION2="Al ejecutarse comienza a descargar una serie de paquetes, mostrando\n" +
+            "una ventana emergente con una simpatica criatura (Dorimon),\nque con un cuadro de texto te incita a " +
+            "identificarla:\n";
+
+    public static final String INTRODUCCION3="\t-¿Quien o que eres?. El joven decide inexplicablemente que debia\n aventurarse a averiguar" +
+            "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
+            " a\ndespejar sus dudas abriendole la puerta a su mundo:";
 
 
 }

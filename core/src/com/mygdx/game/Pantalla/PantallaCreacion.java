@@ -68,7 +68,6 @@ public class PantallaCreacion implements Screen {
         ok.setHeight(n.getHeight());
 
 
-
         heroeM=new Imagen(Recursos.HERO_M_GRANDE);
         heroeM.setPosition(texto.getX()+100,350);
         heroeM.setSize(90,150);
@@ -104,7 +103,6 @@ public class PantallaCreacion implements Screen {
         gabumonB.setHeight(n.getHeight());
 
         b= Render.batch;
-
     }
 
     private void poner(Actor a){

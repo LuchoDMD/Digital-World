@@ -30,13 +30,17 @@ public class EntradaBatalla implements InputProcessor {
         return izquierda;
     }
 
+    public void setEnter(boolean enter) {
+        this.enter = enter;
+    }
+
     public boolean isDerecha() {
         return derecha;
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        app.tiempo = 0.08f;
+        //app.tiempo = 0.08f;
 
         if (keycode == Input.Keys.DOWN){
             abajo=true;

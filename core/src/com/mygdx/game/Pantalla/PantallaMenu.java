@@ -35,14 +35,14 @@ public class PantallaMenu implements Screen {
         botones=new Botones();
         Gdx.input.setInputProcessor(entada);
 
-        titulo=new Texto(Recursos.FUENTE1,35, Color.ORANGE,true);
+        titulo=new Texto(Recursos.FUENTE1,50, Color.ORANGE,true);
         titulo.setTexto("Digimon Sol Naranja");
         titulo.setPosition((Config.ANCHO/2f)-(titulo.getAncho()/2),Config.ALTO-100);
 
-        botones.agregarBoton(o1,"Nueva Partida",30);
-        botones.agregarBoton(o2,"Opciones",30);
-        botones.agregarBoton(o3,"Donar unos Dolares",30);
-        botones.agregarBoton(o4,"Salir",30);
+        botones.agregarBoton(o1,"Nueva Partida",40,4);
+        botones.agregarBoton(o2,"Opciones",40,4);
+        botones.agregarBoton(o3,"Donar unos Dolares",30,4);
+        botones.agregarBoton(o4,"Salir",40,4);
 
 
     }
