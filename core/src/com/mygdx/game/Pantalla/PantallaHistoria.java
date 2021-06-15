@@ -154,20 +154,16 @@ public class PantallaHistoria implements Screen {
         lluvia.setVolume(0.3f);
         b.draw(animation.getKeyFrame(elapsed),0,180, Config.ANCHO,Config.ALTO-180);
         historia.dibujar();
-
         if (trancicion>350){rayo.play();rayo.setVolume(0.8F);}
-
         if(trancicion>1580){
             Render.app.setScreen(new PantallaCreacion());
             rayo.stop();
             lluvia.stop();
         }
-
         stage.act();
         botonFlechaDer();
         botonFlechaIzq();
         transicionTexto();
-        System.out.println(op);
         stage.draw();
         b.end();
     }

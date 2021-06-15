@@ -20,7 +20,7 @@ public class PantallaMenu implements Screen {
     private float elapsed;
     private SpriteBatch b;
     private Texto titulo;
-    private Texto o1,o2,o3,o4;
+    private Texto o1,o2,o3;
     private Botones botones;
     private Music musica;
     private Entrada entada = new Entrada(this);
@@ -35,16 +35,13 @@ public class PantallaMenu implements Screen {
         botones=new Botones();
         Gdx.input.setInputProcessor(entada);
 
-        titulo=new Texto(Recursos.FUENTE1,50, Color.ORANGE,true);
+        titulo=new Texto(Recursos.FUENTE1,70, Color.ORANGE,true);
         titulo.setTexto("Digimon Sol Naranja");
         titulo.setPosition((Config.ANCHO/2f)-(titulo.getAncho()/2),Config.ALTO-100);
 
         botones.agregarBoton(o1,"Nueva Partida",40,4);
-        botones.agregarBoton(o2,"Opciones",40,4);
-        botones.agregarBoton(o3,"Donar unos Dolares",30,4);
-        botones.agregarBoton(o4,"Salir",40,4);
-
-
+        botones.agregarBoton(o2,"Donar unos Dolares",40,4);
+        botones.agregarBoton(o3,"Salir",40,4);
     }
 
 
@@ -57,14 +54,17 @@ public class PantallaMenu implements Screen {
         posicionBotonera();
         musica.setVolume(0.3f);
         musica.play();
-
         tiempo+=delta;
+        accionBotonera();
+        b.end();
+    }
 
+    public void accionBotonera(){
         if(entada.isAbajo()){
             if(tiempo>0.1f){
                 tiempo=0;
                 cont++;
-                if(cont>4){
+                if(cont>3){
                     cont=1;
                 }
             }
@@ -75,20 +75,20 @@ public class PantallaMenu implements Screen {
                 tiempo=0;
                 cont--;
                 if(cont<1){
-                    cont=4;
+                    cont=3;
                 }
             }
         }
 
-            if(cont==1 && entada.isEnter())
-            {
-                musica.stop();
-                Render.app.setScreen(new PantallaHistoria());
-            }
+        if(cont==1 && entada.isEnter())
+        {
+            musica.stop();
+            Render.app.setScreen(new PantallaHistoria());
+        }
 
-            if(cont==4 && entada.isEnter()){
-                b.dispose();
-            }
+        if(cont==3 && entada.isEnter()){
+            b.dispose();
+        }
 
 
         for (int i=0; i<botones.getBotones().size();i++){
@@ -98,14 +98,12 @@ public class PantallaMenu implements Screen {
                 botones.getBotones().get(i).setColor(Color.WHITE);
             }
         }
-
-        b.end();
     }
 
     public void posicionBotonera(){
-        float dist=40;
+        float dist=60;
         float i=0;
-        float posInY=(Config.ALTO/2f)-(botones.getBotones().get(0).getAlto()/2);
+        float posInY=(Config.ALTO/2f)-(botones.getBotones().get(0).getAlto()/2-50);
         for (Texto aux:botones.getBotones()){
             aux.setPosition((Config.ANCHO/2f)-(aux.getAncho()/2),posInY-dist*i);
             aux.dibujar();
