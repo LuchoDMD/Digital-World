@@ -6,6 +6,8 @@ public class Recursos {
     public static final String FONDO2 = "Fondos/fondoanimado.gif";
     public static final String CIRCUITOS = "Fondos/FONDO_CIRCUITO.gif";
     public static final String INTRODUCCION_FONDO = "Fondos/introduccion.gif";
+    public static final String CUADRO_BATALLA = "Fondos/CUADRO_BATALLA.png";
+    public static final String BATALLA = "Fondos/BATALLA.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";

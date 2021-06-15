@@ -39,10 +39,10 @@ public class PantallaMenu implements Screen {
         titulo.setTexto("Digimon Sol Naranja");
         titulo.setPosition((Config.ANCHO/2f)-(titulo.getAncho()/2),Config.ALTO-100);
 
-        botones.agregarBoton(o1,"Nueva Partida");
-        botones.agregarBoton(o2,"Opciones");
-        botones.agregarBoton(o3,"Donar unos Dolares");
-        botones.agregarBoton(o4,"Salir");
+        botones.agregarBoton(o1,"Nueva Partida",30);
+        botones.agregarBoton(o2,"Opciones",30);
+        botones.agregarBoton(o3,"Donar unos Dolares",30);
+        botones.agregarBoton(o4,"Salir",30);
 
 
     }
@@ -112,7 +112,6 @@ public class PantallaMenu implements Screen {
             i++;
         }
     }
-
 
     @Override
     public void resize(int width, int height) {
