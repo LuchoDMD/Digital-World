@@ -65,16 +65,28 @@ public class Batalla
                             Texto.printMenuStatus(enemigo, compa);
                             continue label;
                         case 5:
-                            int opcion = menuInventario();
-                            if(opcion == 0){    //opcion para volver al menú anterior
-                                continue label;
+                            int opcion = menuMochila();
+
+                            Mochila mochila = entrenador.getMochila();
+
+                            List<Bolsillo> bolsillo = null;
+
+                            switch (opcion) {
+                                case 1:
+                                    bolsillo = mochila.getPociones();
+                                    System.out.println(mochila.getPociones());
+                                    break;
+                                case 2:
+                                    bolsillo = mochila.getElixires();
+                                    System.out.println(mochila.getElixires());
+                                    break;
+                                case 3:
+                                    continue label;
                             }
-                            if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
-                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
-                            }
-                            else{
-                                continue label; //si no hay stock del item seleccionado, vuelve al label para volver a elegir
-                            }
+                            int tipoItem = menuInventario();
+                            assert bolsillo != null;
+                            Item item = mochila.tomarItem(bolsillo.get(tipoItem-1).getItem());
+                            item.usar(compa);
                             break;
                         case 6:
                             Texto.huirBatalla();
@@ -182,16 +194,28 @@ public class Batalla
                                 Texto.printMenuStatus(enemigo, compa);
                                 continue label2;
                             case 5:
-                                int opcion = menuInventario();
-                                if(opcion == 0){    //opción para volver atrás
-                                    continue label2;
+                                int opcion = menuMochila();
+
+                                Mochila mochila = entrenador.getMochila();
+
+                                List<Bolsillo> bolsillo = null;
+
+                                switch (opcion) {
+                                    case 1:
+                                        bolsillo = mochila.getPociones();
+                                        System.out.println(mochila.getPociones());
+                                        break;
+                                    case 2:
+                                        bolsillo = mochila.getElixires();
+                                        System.out.println(mochila.getElixires());
+                                        break;
+                                    case 3:
+                                        continue label;
                                 }
-                                if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
-                                    System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
-                                }
-                                else{
-                                    continue label2;  //si no hay stock del item seleccionado, vuelve al label para volver a elegir
-                                }
+                                int tipoItem = menuInventario();
+                                assert bolsillo != null;
+                                Item item = mochila.tomarItem(bolsillo.get(tipoItem-1).getItem());
+                                item.usar(compa);
                                 break;
                             case 6:
                                 Texto.huirBatalla();
@@ -205,7 +229,7 @@ public class Batalla
             Texto.limpiarPantalla();
             Texto.printMenuStatus(enemigo, compa);
             System.out.println(Texto.printLog(log));
-            Texto.declararVencedor(enemigo, compa);
+            Texto.declararVencedor(compa);
         }
 
     public boolean esMasRapido(){      //clase que compara la velocidad del compa con la velocidad del enemigo
@@ -224,15 +248,9 @@ public class Batalla
         5 : Esquiva
          */
         Random random = new Random();
-        int accion;
-        if (compa.getVida() < compa.getHp()/2){ //si el player tiene menos de la mitad de la vida, el bot va full ataque
-            accion = random.nextInt(4);
-        }
-        else{
-            accion = random.nextInt(6); // 0, 1 , 2, 3, 4, 5
-        }
+        int accion = random.nextInt(6); // 0, 1 , 2, 3, 4, 5
         if(accion <= 3){
-            if (enemigo.verificarMana(enemigo.habilidades[accion])){    //verifica el maná
+            if (enemigo.verificarMana(enemigo.habilidades[accion])){
                 return accion;
             }
             else {
@@ -264,14 +282,35 @@ public class Batalla
         return input;
     }
 
+    private int menuMochila() {
+        int input = -1; //variable de control
+        boolean flag = false;
+
+        do{
+            try {
+                while(input != 1 && input != 2 && input != 3){
+                    Texto.imprimirMenuMochila();
+                    Scanner scan = new Scanner(System.in);
+                    input = scan.nextInt();
+                    flag = true;
+                }
+            }
+            catch (InputMismatchException ex) {
+                System.out.println("Usted ha ingresado un valor no válido. Por favor, seleccione un numero de la lista");
+                flag = false;
+            }
+        } while (!flag);
+        return input;
+    }
+
     private int menuInventario(){
         int input = -1; //variable de control
         boolean flag = false;
 
         do{
             try {
-                while(input != 0 && input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
-                    Texto.imprimirMenuInventario(entrenador.mochila.getBolsillo());
+                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
+                    Texto.imprimirMenuInventario(entrenador.mochila);
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
                     flag = true;

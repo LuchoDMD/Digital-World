@@ -53,14 +53,14 @@ public class PantallaBatalla implements Screen {
          pikachu = new Compa(5,1000,500,100,10,150, "pikachu", 15, habilidades, pikachuSkills);
 
 
-        Item pocionG = new Pocion("Pocion grande", 5, TamanioItem.GRANDE.getRecuperacion());
-        Item elixirM = new Elixir("Elixir mediano", 20, TamanioItem.MEDIANO.getRecuperacion());
-        Item elixirG = new Elixir("Elixir grande", 5, TamanioItem.GRANDE.getRecuperacion());
+        Item pocionG = new Pocion("Pocion grande", TamanioItem.GRANDE.getRecuperacion());
+        Item elixirM = new Elixir("Elixir mediano", TamanioItem.MEDIANO.getRecuperacion());
+        Item elixirG = new Elixir("Elixir grande", TamanioItem.GRANDE.getRecuperacion());
         List<Item> items = new ArrayList<>();
         items.add(pocionG);
         items.add(elixirG);
         items.add(elixirM);
-        mochilaJugador = new Mochila(items);
+        mochilaJugador = new Mochila();
         entrenador = new Entrenador(mochilaJugador);
 
         batalla = new Batalla(pikachu, charizard, entrenador);

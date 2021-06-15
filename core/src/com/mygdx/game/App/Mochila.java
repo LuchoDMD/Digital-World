@@ -5,68 +5,83 @@ import java.util.List;
 
 public class Mochila {
 
-    private List<Item> bolsillo;
-
+    private List<Bolsillo> pociones;
+    private List<Bolsillo> elixires;
 
     public Mochila() {
-        this.bolsillo = new ArrayList<>();
+        this.pociones = new ArrayList<>();
+        this.elixires = new ArrayList<>();
     }
 
-    public Mochila (Mochila m){
-        int aux=0;
-        while(!m.getBolsillo().isEmpty()){
-            this.bolsillo.add(m.getBolsillo().get(aux));
-            aux++;
+    public List<Bolsillo> getPociones() {
+        return pociones;
+    }
+
+    public List<Bolsillo> getElixires() {
+        return elixires;
+    }
+
+    public void agregarItems(Item item) {
+        List<Bolsillo> temp = null;
+
+        if (item instanceof Pocion) {
+            temp = pociones;
         }
-    }
 
-    public Mochila(List<Item> lista){
-        this.bolsillo = new ArrayList<Item>();
-        this.bolsillo = lista;
-    }
+        if (item instanceof Elixir) {
+            temp = elixires;
+        }
 
+        if (temp != null) {
+            boolean existe = false;
 
-    public void agregarItems(Item item){
-        boolean flag = false;
-        int aux = 0;
-        for(Item variable : bolsillo){
-            if(variable == item){
-                flag = true;
-                break;
+            for (Bolsillo i : temp) {
+                if (i.getItem().getCantRestauracion() == item.getCantRestauracion()) {
+                    i.agregarItem();
+                    existe = true;
+                }
             }
-            aux ++;
-        }
-        if (flag){
-            Item it = bolsillo.get(aux);
-            it.setStock(it.getStock() + 1);
-        }
-        else{
-            bolsillo.add(item);
+            if (!existe) {
+                Bolsillo bolsillo = new Bolsillo(item);
+                temp.add(bolsillo);
+            }
         }
     }
 
+    public Item tomarItem(Item item) {
+        try {
+            List<Bolsillo> temp = null;
 
-    public void usarItem(int index){
+            if (item instanceof Pocion) {
+                temp = pociones;
+            }
 
-    }
+            if (item instanceof Elixir) {
+                temp = elixires;
+            }
 
-    public Item mostrarItem(int index){
-        return bolsillo.get(index);
+            if (temp != null) {
+                for (Bolsillo b : temp) {
+                    if (b.getItem().getCantRestauracion() == item.getCantRestauracion()) {
+                        return b.quitarItem();
+                    }
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public String toString() {
-        return "Mochila [" +
-                "Contenido: " + bolsillo +
-                ']';
-    }
-
-
-    public List<Item> getBolsillo() {
-        return bolsillo;
-    }
-
-    public void setBolsillo(List<Item> bolsillo) {
-        this.bolsillo = bolsillo;
+        return "Mochila{" +
+                "pociones=" + pociones +
+                ", elixires=" + elixires +
+                '}';
     }
 }
+
+
+

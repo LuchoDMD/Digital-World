@@ -2,13 +2,11 @@ package com.mygdx.game.App;
 
 public class Pocion extends Item{
 
-    public Pocion(String descEfecto, int stock, int cantRestauracion) {
+    public Pocion(String descEfecto, int cantRestauracion) {
         this.descEfecto=descEfecto;
-        this.stock=stock;
         this.cantRestauracion=cantRestauracion;
     }
 
-    /*
     @Override
     public void usar(Compa partner) {
         if (partner.getVida() + cantRestauracion > partner.getHp()){
@@ -16,19 +14,14 @@ public class Pocion extends Item{
         } else {
             partner.setVida(partner.getVida() + cantRestauracion);
         }
-        stock--;
     }
 
-     */
 
     @Override
     public String toString() {
         return "Pocion [" +
-                "Desc.: '" + descEfecto + '\'' +
-                ", Stock: " + stock +
+                "Desc. Efecto: '" + descEfecto + '\'' +
                 ", Cant. Restauracion: " + cantRestauracion +
                 ']';
     }
-
-
 }
