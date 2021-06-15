@@ -87,10 +87,6 @@ public class PantallaBatalla implements Screen {
     }
 
     private void cargarHabilidades(){
-        botones.agregarBoton(h1,"Habilidad 1",30);
-        botones.agregarBoton(h2,"Habilidad 2",30);
-        botones.agregarBoton(h3,"Habilidad 3",30);
-        botones.agregarBoton(h4,"Habilidad 4",30);
     }
 
     private void posicionBotonera(){
