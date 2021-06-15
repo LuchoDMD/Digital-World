@@ -39,7 +39,10 @@ public class Mochila
     }
 
     public Bolsillo getBolsillos(int index) {
-        return bolsillos.get(index);
+        if (!this.bolsillos.isEmpty()){
+            return bolsillos.get(index);
+        }
+        return null;
     }
 
     public void setBolsillos(List<Bolsillo> bolsillos) {
@@ -115,6 +118,7 @@ public class Mochila
                         partner.setMana(partner.getMana()+item.getCantRestauracion());
                     }
                 }
+                System.out.println("Utilizaste " + getBolsillos(index).toString());
                 bolsillos.remove(getBolsillos(index));
             }
         }

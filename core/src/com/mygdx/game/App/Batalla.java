@@ -68,14 +68,16 @@ public class Batalla
                             Texto.printMenuStatus(enemigo, compa);
                             continue label;
                         case 5:
+                            if(entrenador.mochila.getBolsillos(0) == null){
+                                System.out.println("Inventario vacio");
+                                continue label;
+                            }
                             int opcion = menuInventario();
                             if(opcion == 0){    //opcion para volver al menú anterior
                                 continue label;
                             }
                             if (!entrenador.mochila.getBolsillos(opcion-1).estaVacio()){
-                                //SI SE QUEDA SIN ITEMS SE ROMPE //ARREGLAR\\
                                 entrenador.mochila.getBolsillos(opcion-1).usar(compa, opcion-1);
-                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillos(opcion-1).toString());
                             }
                             else{
                                 continue label; //si no hay stock del item seleccionado, vuelve al label para volver a elegir
@@ -202,7 +204,6 @@ public class Batalla
                                 }
                                 if (!entrenador.mochila.getBolsillos(opcion-1).estaVacio()){
                                 entrenador.mochila.getBolsillos(opcion-1).usar(compa, opcion-1);
-                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillos(opcion-1).toString());
                                 }
                                 else{
                                     continue label2;  //si no hay stock del item seleccionado, vuelve al label para volver a elegir
