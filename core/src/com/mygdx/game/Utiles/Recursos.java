@@ -11,6 +11,7 @@ public class Recursos {
     public static final String DIALOGO = "Fondos/dialogo.png";
     public static final String FLECHADER = "Fondos/flecha.png";
     public static final String FLECHAIZQ = "Fondos/flechaizq.png";
+    public static final String FONDO_CREACION = "Fondos/fondoCreacion.jpg";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";

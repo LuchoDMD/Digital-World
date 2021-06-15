@@ -121,12 +121,47 @@ public class PantallaBatalla implements Screen {
         });
     }
 
-    private void botonMochila(){}
+    private void botonMochila(){
+
+    }
+
+    private void habilidad1(){
+
+    }
+
+    private void habilidad2(){
+
+    }
+
+    private void habilidad3(){
+
+    }
+
+    private void habilidad4(){
+
+    }
+
     private void botonHuir(){
         huir.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Render.app.setScreen(new PantallaMapa());
+            }
+        });
+    }
+
+    private void botonAtras(){
+        atras.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                hab1.setVisible(false);
+                hab2.setVisible(false);
+                hab3.setVisible(false);
+                hab4.setVisible(false);
+                atras.setVisible(false);
+                luchar.setVisible(true);
+                mochila.setVisible(true);
+                huir.setVisible(true);
             }
         });
     }
@@ -141,6 +176,7 @@ public class PantallaBatalla implements Screen {
         stage.draw();
         botonLuchar();
         botonHuir();
+        botonAtras();
         b.end();
     }
 
