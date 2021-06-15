@@ -14,12 +14,16 @@ public class Botones {
         botones=new ArrayList<>();
     }
 
-    public void agregarBoton(Texto boton,String texto){
-        boton=new Texto(Recursos.FUENTE1,30, Color.WHITE,true);
+    public void agregarBoton(Texto boton,String texto, int tamanio){
+        boton=new Texto(Recursos.FUENTE1,tamanio, Color.WHITE,true);
         boton.setTexto(texto);
         if (botones.size()<4){
             botones.add(boton);
         }
+    }
+
+    public void limpiar (){
+        botones.clear();
     }
 
     public ArrayList<Texto> getBotones() {

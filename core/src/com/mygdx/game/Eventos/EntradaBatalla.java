@@ -1,24 +1,17 @@
 package com.mygdx.game.Eventos;
-import com.badlogic.gdx.Input.Keys;
+
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.mygdx.game.Pantalla.PantallaBatalla;
-import com.mygdx.game.Pantalla.PantallaMenu;
 
-//TODO clase para setearle el comportamiento al menu
 
-public class Entrada implements InputProcessor {
+public class EntradaBatalla implements InputProcessor {
 
     private boolean abajo=false, arriba=false, enter=false, izquierda=false, derecha = false;
-    private PantallaMenu app;
+    private PantallaBatalla app;
 
-
-    public Entrada(PantallaMenu app){
-        this.app=app;
-    }
-
-
-    public boolean isEnter() {
-        return enter;
+    public EntradaBatalla(PantallaBatalla app) {
+        this.app = app;
     }
 
     public boolean isAbajo() {
@@ -29,23 +22,35 @@ public class Entrada implements InputProcessor {
         return arriba;
     }
 
+    public boolean isEnter() {
+        return enter;
+    }
+
+    public boolean isIzquierda() {
+        return izquierda;
+    }
+
+    public boolean isDerecha() {
+        return derecha;
+    }
+
     @Override
     public boolean keyDown(int keycode) {
         app.tiempo = 0.08f;
 
-        if (keycode == Keys.DOWN){
+        if (keycode == Input.Keys.DOWN){
             abajo=true;
         }
-        if (keycode == Keys.UP){
+        if (keycode == Input.Keys.UP){
             arriba=true;
         }
-        if(keycode==Keys.ENTER){
+        if(keycode== Input.Keys.ENTER){
             enter=true;
         }
-        if(keycode==Keys.RIGHT){
+        if(keycode== Input.Keys.RIGHT){
             derecha=true;
         }
-        if(keycode==Keys.LEFT){
+        if(keycode== Input.Keys.LEFT){
             izquierda=true;
         }
         return false;
@@ -53,19 +58,19 @@ public class Entrada implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        if (keycode == Keys.DOWN){
+        if (keycode == Input.Keys.DOWN){
             abajo=false;
         }
-        if (keycode == Keys.UP){
+        if (keycode == Input.Keys.UP){
             arriba=false;
         }
-        if (keycode == Keys.ENTER){
+        if (keycode == Input.Keys.ENTER){
             enter=false;
         }
-        if (keycode == Keys.RIGHT){
+        if (keycode == Input.Keys.RIGHT){
             derecha=false;
         }
-        if (keycode == Keys.LEFT){
+        if (keycode == Input.Keys.LEFT){
             izquierda=false;
         }
         return false;

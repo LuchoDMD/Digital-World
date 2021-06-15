@@ -1,6 +1,7 @@
 package com.mygdx.game.Eventos;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.mygdx.game.Pantalla.PantallaBatalla;
 import com.mygdx.game.Pantalla.PantallaMapa;
 
 //TODO clase para setear el comportamiento de los botones a la pantalla del mapa
@@ -10,7 +11,11 @@ public class EntradaMovimiento implements InputProcessor {
     private boolean abajo=false, arriba=false, enter=false, izquierda=false,
             derecha = false, letraE=false;
     private PantallaMapa mapa;
+    private PantallaBatalla batalla;
 
+    public EntradaMovimiento(PantallaBatalla batalla) {
+        this.batalla = batalla;
+    }
 
     public EntradaMovimiento(PantallaMapa mapa){
         this.mapa=mapa;

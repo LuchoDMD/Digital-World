@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.mygdx.game.App.Entrenador;
+import com.mygdx.game.App.Mochila;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
@@ -34,11 +36,15 @@ public class PantallaCreacion implements Screen {
     private Boolean flag=false, gen=false;
     private Imagen heroeM,heroeF;
     private float trancicion;
+    private Entrenador entrenador;
+    private Mochila mochila;
 
 
     @Override
     public void show() {
 
+        mochila=new Mochila();
+        entrenador=new Entrenador(mochila);
         stage=new Stage();
         Gdx.input.setInputProcessor(stage);
 
@@ -101,27 +107,8 @@ public class PantallaCreacion implements Screen {
 
     }
 
-
-    private boolean botonAceptar(){
-        ok.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                if (nombre==null) {
-                    nombre = n.getText();
-                    n.setVisible(false);
-                    ok.setVisible(false);
-                    if(gen){
-                        texto.setTexto("Bienvenido" +" \""+ nombre +"\" "+ "\n¿estas preparado para\nla nueva aventura?.\nSelecciona tu digimon.");
-                    }else{
-                        texto.setTexto("Bienvenida" +" \""+ nombre +"\" "+ "\n¿estas preparada para\nla nueva aventura?.\nSelecciona tu digimon.");
-
-                    }
-                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
-                    flag=true;
-                }
-            }
-        });
-        return flag;
+    private void poner(Actor a){
+        stage.addActor(a);
     }
 
     private boolean botonMasculino(){
@@ -159,8 +146,45 @@ public class PantallaCreacion implements Screen {
         return gen;
     }
 
-    private void poner(Actor a){
-        stage.addActor(a);
+    private boolean botonAceptar(){
+        ok.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if (nombre==null) {
+                    nombre = n.getText();
+                    entrenador.setNombre(nombre);
+                    n.setVisible(false);
+                    ok.setVisible(false);
+                    if(gen){
+                        texto.setTexto("Bienvenido" +" \""+ nombre +"\" "+ "\n¿estas preparado para\nla nueva aventura?.\nSelecciona tu digimon.");
+                    }else{
+                        texto.setTexto("Bienvenida" +" \""+ nombre +"\" "+ "\n¿estas preparada para\nla nueva aventura?.\nSelecciona tu digimon.");
+
+                    }
+                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
+                    flag=true;
+                }
+            }
+        });
+        return flag;
+    }
+
+    private void botonAgumon(){
+        agumonB.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Render.app.setScreen(new PantallaMapa());
+            }
+        });
+    }
+
+    private void botonGabumon(){
+        gabumonB.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                 Render.app.setScreen(new PantallaMapa());
+            }
+        });
     }
 
     private void eleccionDigimon(){
@@ -169,8 +193,12 @@ public class PantallaCreacion implements Screen {
             gabumon.render(b);
             poner(agumonB);
             poner(gabumonB);
+            botonAgumon();
+            botonGabumon();
         }
     }
+
+
 
     @Override
     public void render(float delta) {

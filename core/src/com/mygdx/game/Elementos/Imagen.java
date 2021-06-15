@@ -1,12 +1,13 @@
 package com.mygdx.game.Elementos;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Utiles.Render;
 
 
 //TODO la clase imagen esta hecha para trabajar mas comodo con las imagenes y poder personalizarlas mejor
 
-public class Imagen {
+public class Imagen extends Actor {
 
     private Texture t;
     private Sprite s;
@@ -58,6 +59,7 @@ public class Imagen {
         this.y=y;
         s.setPosition(x, y);
     }
+
 
     public float getX() {
         return x;

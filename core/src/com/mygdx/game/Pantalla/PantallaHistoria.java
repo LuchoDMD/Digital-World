@@ -55,7 +55,6 @@ public class PantallaHistoria implements Screen {
             lluvia.stop();
         }
         b.end();
-        System.out.println(trancicion);
     }
 
     @Override
