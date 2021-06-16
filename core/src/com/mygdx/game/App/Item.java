@@ -1,22 +1,45 @@
 package com.mygdx.game.App;
 
-public abstract class Item implements Acciones {
+public class Item
+{
+
 
     protected String descEfecto;
-    protected int cantRestauracion;
+    private int cantRestauracion;
 
-    public int getCantRestauracion() {
+    public Item(String descEfecto, int cantRestauracion) {
+        this.descEfecto = descEfecto;
+        this.cantRestauracion = cantRestauracion;
+    }
+
+    public Item() {
+    }
+
+    public int getCantRestauracion()
+    {
         return cantRestauracion;
     }
 
-    public String getDescEfecto() {
+    public void setCantRestauracion(int cantRestauracion)
+    {
+        this.cantRestauracion = cantRestauracion;
+    }
+    public String getDescEfecto()
+    {
         return descEfecto;
     }
 
-    public void setDescEfecto(String descEfecto) {
+    public void setDescEfecto(String descEfecto)
+    {
         this.descEfecto = descEfecto;
     }
 
     @Override
-    public abstract void usar(Compa partner);
+    public String toString() {
+        return "Item{" +
+                "descEfecto='" + descEfecto + '\'' +
+                ", cantRestauracion=" + cantRestauracion +
+                '}';
+    }
 }
+

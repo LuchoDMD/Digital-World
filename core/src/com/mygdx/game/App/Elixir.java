@@ -3,10 +3,11 @@ package com.mygdx.game.App;
 public class Elixir extends Item{
 
     public Elixir(String descEfecto, int cantRestauracion) {
-        this.descEfecto=descEfecto;
-        this.cantRestauracion=cantRestauracion;
+        setDescEfecto(descEfecto);
+        setCantRestauracion(cantRestauracion);
     }
 
+    /*
     @Override
     public void usar(Compa partner) {
         if (partner.getMana() + cantRestauracion > partner.getMp()){
@@ -14,13 +15,16 @@ public class Elixir extends Item{
         } else {
             partner.setMana(partner.getMana() + cantRestauracion);
         }
+        stock--;
     }
+
+     */
 
     @Override
     public String toString() {
-        return "Elixir [" +
-                "Desc. Efecto: '" + descEfecto + '\'' +
-                ", Cant. Restauracion: " + cantRestauracion +
+        return "Pocion [" +
+                "Desc.: '" + getDescEfecto() + '\'' +
+                ", Cant. Restauracion: " + getCantRestauracion() +
                 ']';
     }
 }

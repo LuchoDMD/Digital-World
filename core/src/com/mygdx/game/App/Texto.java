@@ -3,11 +3,11 @@ package com.mygdx.game.App;
 import java.util.List;
 import java.util.Scanner;
 
-/** Clase contenedora de todos los métodos que muestran printeos */
-
+//Clase con todos los prints
 public class Texto{
 
     static Scanner scanner = new Scanner(System.in);
+
 
     // Metodo para usar separadores de tamaño n
 
@@ -70,36 +70,30 @@ public class Texto{
         System.out.println("2) Defender.");
         System.out.println("3) Esquivar.");
         System.out.println("4) Ver estadisticas actuales.");
-        System.out.println("5) Ver contenido de la mochila.");
+        System.out.println("5) Inventario.");
         System.out.println("6) Huir del combate.");
         imprimirSeparacion(50);
         System.out.print("Seleccione una opcion: ");
     }
 
 
-    public static void imprimirMenuInventario(Mochila mochila){
-        System.out.println(mochila.toString());
-    }
-
-    public static void imprimirMenuMochila() {
-        limpiarPantalla();
-        imprimirEncabezado("SELECCIONE UN TIPO DE ITEM PARA USAR");
-        System.out.println("1) Pociones. (Restauracion de HP)");
-        System.out.println("2) Elixires. (Restauracion de MP)");
-        System.out.println("3) Volver.");
-        imprimirSeparacion(50);
-        System.out.print("Seleccione una opcion: ");
+    public static void imprimirMenuInventario(List<Mochila.Bolsillo> mochila){
+        int aux = 1;
+        for (Mochila.Bolsillo variable: mochila) {
+            System.out.println("presione " + aux + " para utilizar " + variable);
+            aux++;
+        }
+        System.out.println("Presione 0 para volver al menu anterior");
     }
 
 
     public static void printMenuSkills(Compa compa){
-        limpiarPantalla();
         imprimirEncabezado("LISTA DE HABILIDADES DISPONIBLES:");
         System.out.println("Habilidad 1: " + compa.habilidades[0].toString());
         System.out.println("Habilidad 2: " + compa.habilidades[1].toString());
         System.out.println("Habilitad 3: " + compa.habilidades[2].toString());
         System.out.println("Habilidad 4: " + compa.habilidades[3].toString());
-        System.out.println("5) Regresar al menu anterior.");
+        System.out.println("Presione 0 para Regresar al menu anterior.");
         imprimirSeparacion(50);
         System.out.print("Seleccione habilidad para lanzar: ");
     }
@@ -111,7 +105,7 @@ public class Texto{
         System.out.println("MP: " + compa.getMana() + "                       MP: " + enemigo.getMp());
     }
 
-    public static void declararVencedor(Compa compa){
+    public static void declararVencedor(Enemigo enemigo, Compa compa){
         if (compa.getVida() <= 0) {
             System.out.println("El enemigo logro destruir a tu Digimon!");
         } else {

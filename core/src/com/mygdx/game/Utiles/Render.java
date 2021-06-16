@@ -15,4 +15,11 @@ public class Render {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
+    public static void pausarPantalla(){
+        app.pause();
+    }
+
+    public static void reanudarPantalla(){
+        app.resume();
+    }
 }

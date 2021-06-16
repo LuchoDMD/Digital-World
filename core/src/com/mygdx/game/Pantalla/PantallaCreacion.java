@@ -26,7 +26,7 @@ public class PantallaCreacion implements Screen {
 
     private SpriteBatch b;
     private Personaje agumon,gabumon;
-    private Texto texto, introduccion;
+    private Texto texto;
     private Skin skin;
     private Stage stage;
     private String nombre;
@@ -38,11 +38,12 @@ public class PantallaCreacion implements Screen {
     private float trancicion;
     private Entrenador entrenador;
     private Mochila mochila;
+    private Imagen fondo;
 
 
     @Override
     public void show() {
-
+        fondo = new Imagen(Recursos.FONDO_CREACION);
         mochila=new Mochila();
         entrenador=new Entrenador(mochila);
         stage=new Stage();
@@ -50,40 +51,38 @@ public class PantallaCreacion implements Screen {
 
         skin=new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
-        introduccion = new Texto(Recursos.FUENTE1,20,Color.ORANGE,true);
-        introduccion.setTexto(Recursos.INTRODUCCION);
 
-        texto=new Texto(Recursos.FUENTE1,40, Color.ORANGE,true);
+
+        texto=new Texto(Recursos.FUENTE1,60, Color.ORANGE,true);
         texto.setTexto("Como te identificas?");
-        texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
+        texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,550);
 
 
 
         n= new TextField("",skin);
-        n.setPosition(Config.ANCHO/2-n.getWidth()/2,500);
+        n.setPosition(Config.ANCHO/2-n.getWidth()/2,400);
 
 
         ok=new TextButton("Aceptar",skin);
-        ok.setPosition(n.getX()+n.getWidth()+10,500);
+        ok.setPosition(n.getX()+n.getWidth()+10,400);
         ok.setHeight(n.getHeight());
 
 
-
         heroeM=new Imagen(Recursos.HERO_M_GRANDE);
-        heroeM.setPosition(texto.getX()+100,350);
-        heroeM.setSize(90,150);
+        heroeM.setPosition(texto.getX()+140,80);
+        heroeM.setSize(200,260);
 
         heroeF=new Imagen(Recursos.HERO_F_GRANDE);
-        heroeF.setPosition(texto.getX()+300,345);
-        heroeF.setSize(90,165);
+        heroeF.setPosition(texto.getX()+400,75);
+        heroeF.setSize(200,260);
 
         masculino= new TextButton("MASCULINO",skin);
-        masculino.setPosition(heroeM.getX(),heroeM.getY()-30);
+        masculino.setPosition(heroeM.getX()+50,heroeM.getY()-25);
         masculino.setHeight(n.getHeight());
         poner(masculino);
 
         femenino= new TextButton("FEMENINO",skin);
-        femenino.setPosition(heroeF.getX(),heroeF.getY()-25);
+        femenino.setPosition(heroeF.getX()+50,heroeF.getY()-20);
         femenino.setHeight(n.getHeight());
         poner(femenino);
 
@@ -92,19 +91,20 @@ public class PantallaCreacion implements Screen {
         gen=botonFemenino();
         flag=botonAceptar();
 
-        agumon= new Personaje(450,300, Recursos.AGUMON,5,0.15f);
-        gabumon= new Personaje(680,300, Recursos.GABUMON,5,0.15f);
+        agumon= new Personaje(masculino.getX(),90, Recursos.AGUMON,5,0.15f);
+        gabumon= new Personaje(femenino.getX(),90, Recursos.GABUMON,5,0.15f);
 
         agumonB= new TextButton("AGUMON",skin);
-        agumonB.setPosition(agumon.getX(),agumon.getY()-30);
+        agumonB.setPosition(agumon.getX()+20,agumon.getY()-30);
+        agumonB.setWidth(100);
         agumonB.setHeight(n.getHeight());
 
         gabumonB= new TextButton("GABUMON",skin);
-        gabumonB.setPosition(gabumon.getX(),gabumon.getY()-30);
+        gabumonB.setPosition(gabumon.getX()+10,gabumon.getY()-30);
+        gabumonB.setWidth(100);
         gabumonB.setHeight(n.getHeight());
 
         b= Render.batch;
-
     }
 
     private void poner(Actor a){
@@ -116,7 +116,7 @@ public class PantallaCreacion implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 texto.setTexto("Ingresa tu Nombre");
-                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
+                texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,550);
                 heroeM.setTransparencia(0);
                 heroeF.setTransparencia(0);
                 masculino.setVisible(false);
@@ -150,8 +150,9 @@ public class PantallaCreacion implements Screen {
         ok.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                if (nombre==null) {
-                    nombre = n.getText();
+                nombre=null;
+                nombre = n.getText();
+                if (nombre!=null) {
                     entrenador.setNombre(nombre);
                     n.setVisible(false);
                     ok.setVisible(false);
@@ -161,7 +162,7 @@ public class PantallaCreacion implements Screen {
                         texto.setTexto("Bienvenida" +" \""+ nombre +"\" "+ "\n¿estas preparada para\nla nueva aventura?.\nSelecciona tu digimon.");
 
                     }
-                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,600);
+                    texto.setPosition(Config.ANCHO/2-texto.getAncho()/2,550);
                     flag=true;
                 }
             }
@@ -205,10 +206,10 @@ public class PantallaCreacion implements Screen {
         trancicion+=1f;
         Render.limpiarPantalla(1,1,1);
         b.begin();
-        stage.act();
-        introduccion.setPosition(70,trancicion);
-        stage.draw();
+        fondo.dibujar();
         texto.dibujar();
+        stage.act();
+        stage.draw();
         eleccionDigimon();
         heroeM.dibujar();
         heroeF.dibujar();
