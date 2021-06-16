@@ -2,10 +2,9 @@ package com.mygdx.game.App;
 
 public class Pocion extends Item{
 
-    public Pocion(String descEfecto, int stock, int cantRestauracion) {
-        this.descEfecto=descEfecto;
-        this.stock=stock;
-        this.cantRestauracion=cantRestauracion;
+    public Pocion(String descEfecto, int cantRestauracion) {
+        setDescEfecto(descEfecto);
+        setCantRestauracion(cantRestauracion);
     }
 
     /*
@@ -24,9 +23,8 @@ public class Pocion extends Item{
     @Override
     public String toString() {
         return "Pocion [" +
-                "Desc.: '" + descEfecto + '\'' +
-                ", Stock: " + stock +
-                ", Cant. Restauracion: " + cantRestauracion +
+                "Desc.: '" + getDescEfecto() + '\'' +
+                ", Cant. Restauracion: " + getCantRestauracion() +
                 ']';
     }
 

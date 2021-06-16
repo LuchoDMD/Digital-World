@@ -32,7 +32,7 @@ public class Batalla
                             boolean flag = false;   //variable de control para el MP
                             while (!flag) {       //bucle para poder volver a elegir en caso de no tener suficiente MP para lanzar el hechizo
                                 int accion = menuHabilidades();
-                                if (accion == 5){
+                                if (accion == 0){
                                     continue label;
                                 }
                                 int danio = enemigo.getDanioRecibido(compa.habilidadAtaque(compa.habilidades[accion - 1]));
@@ -47,6 +47,9 @@ public class Batalla
                                     log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[accion - 1].getNombre()));
                                     Texto.limpiarPantalla();
                                     System.out.println("Has lanzado " + compa.habilidades[accion - 1]);
+                                    if (compa.fallo(compa.habilidades[accion - 1])) {
+                                        System.out.println("Has fallado el ataque");
+                                    }
                                 }
                                 if (accion == 1) {       //si el ataque es un básico, se regenera MP
                                     compa.regenerarMP();
@@ -65,12 +68,16 @@ public class Batalla
                             Texto.printMenuStatus(enemigo, compa);
                             continue label;
                         case 5:
+                            if(entrenador.mochila.getBolsillos(0) == null){
+                                System.out.println("Inventario vacio");
+                                continue label;
+                            }
                             int opcion = menuInventario();
                             if(opcion == 0){    //opcion para volver al menú anterior
                                 continue label;
                             }
-                            if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
-                                System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                            if (!entrenador.mochila.getBolsillos(opcion-1).estaVacio()){
+                                entrenador.mochila.getBolsillos(opcion-1).usar(compa, opcion-1);
                             }
                             else{
                                 continue label; //si no hay stock del item seleccionado, vuelve al label para volver a elegir
@@ -89,11 +96,14 @@ public class Batalla
                             case 1:
                             case 2:
                             case 3:
-                                System.out.println("El enemigo lanza " + enemigo.habilidades[accion]);
+                                System.out.println("El enemigo ha lanzado " + enemigo.habilidades[accion]);
                                 int danio = compa.getDanioRecibido(enemigo.habilidadAtaque(enemigo.habilidades[accion]));
                                 enemigo.setMp(enemigo.getMp() - enemigo.habilidades[accion].getCostoMP());   //resta el mana
                                 compa.golpeRematador(danio);
                                 log.add(new Turno(enemigo.getNombre(), compa.getNombre(), danio, turno, enemigo.habilidades[accion].getNombre()));
+                                if (danio == 0) {
+                                    System.out.println("El enemigo ha fallado el ataque");
+                                }
                                 if (accion == 0) {        //si el ataque es un básico, se regenera MP
                                     enemigo.regenerarMP();
                                 }
@@ -125,6 +135,9 @@ public class Batalla
                             enemigo.setMp(enemigo.getMp() - enemigo.habilidades[accion].getCostoMP());   //resta el mana
                             compa.golpeRematador(danio);
                             log.add(new Turno(enemigo.getNombre(), compa.getNombre(), danio, turno, enemigo.habilidades[accion].getNombre()));
+                            if (danio == 0) {
+                                System.out.println("El enemigo ha fallado el ataque");
+                            }
                             if (accion == 0) {    //si el ataque es un básico, se regenera MP
                                 enemigo.regenerarMP();
                             }
@@ -149,7 +162,7 @@ public class Batalla
                                 boolean flag = false;   //variable de control para el MP
                                 while (!flag) {       //bucle para poder volver a elegir en caso de no tener suficiente MP para lanzar el hechizo
                                     int accion2 = menuHabilidades();
-                                    if (accion2 == 5) {
+                                    if (accion2 == 0) {
                                         continue label2;
                                     }
                                     int danio = enemigo.getDanioRecibido(compa.habilidadAtaque(compa.habilidades[accion2 - 1]));
@@ -164,6 +177,9 @@ public class Batalla
                                         log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[accion2 - 1].getNombre()));
                                         Texto.limpiarPantalla();
                                         System.out.println("Has lanzado " + compa.habilidades[accion2 - 1]);
+                                    }
+                                    if (compa.fallo(compa.habilidades[accion - 1])) {
+                                        System.out.println("Has fallado el ataque");
                                     }
                                     if (accion2 == 1) {       //si el ataque es un básico, se regenera MP
                                         compa.regenerarMP();
@@ -186,8 +202,8 @@ public class Batalla
                                 if(opcion == 0){    //opción para volver atrás
                                     continue label2;
                                 }
-                                if (entrenador.mochila.getBolsillo().get(opcion - 1).usar(entrenador.mochila.getBolsillo().get(opcion-1), compa)){
-                                    System.out.println("Utilizaste " + entrenador.mochila.getBolsillo().get(opcion-1));
+                                if (!entrenador.mochila.getBolsillos(opcion-1).estaVacio()){
+                                entrenador.mochila.getBolsillos(opcion-1).usar(compa, opcion-1);
                                 }
                                 else{
                                     continue label2;  //si no hay stock del item seleccionado, vuelve al label para volver a elegir
@@ -271,7 +287,7 @@ public class Batalla
         do{
             try {
                 while(input != 0 && input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6){
-                    Texto.imprimirMenuInventario(entrenador.mochila.getBolsillo());
+                    Texto.imprimirMenuInventario(entrenador.mochila.getListaBolsillo());
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();
                     flag = true;
@@ -292,7 +308,7 @@ public class Batalla
 
         do {
             try {
-                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 5){
+                while(input != 1 && input != 2 && input != 3 && input != 4 && input != 0){
                     Texto.printMenuSkills(compa);
                     Scanner scan = new Scanner(System.in);
                     input = scan.nextInt();

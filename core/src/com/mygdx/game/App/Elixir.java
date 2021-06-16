@@ -2,10 +2,9 @@ package com.mygdx.game.App;
 
 public class Elixir extends Item{
 
-    public Elixir(String descEfecto, int stock, int cantRestauracion) {
-        this.descEfecto=descEfecto;
-        this.stock=stock;
-        this.cantRestauracion=cantRestauracion;
+    public Elixir(String descEfecto, int cantRestauracion) {
+        setDescEfecto(descEfecto);
+        setCantRestauracion(cantRestauracion);
     }
 
     /*
@@ -23,10 +22,9 @@ public class Elixir extends Item{
 
     @Override
     public String toString() {
-        return "Elixir [" +
-                "Desc.: '" + descEfecto + '\'' +
-                ", Stock: " + stock +
-                ", Cant Restauracion: " + cantRestauracion +
+        return "Pocion [" +
+                "Desc.: '" + getDescEfecto() + '\'' +
+                ", Cant. Restauracion: " + getCantRestauracion() +
                 ']';
     }
 }

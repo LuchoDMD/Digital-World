@@ -48,6 +48,14 @@ public class Enemigo extends Digimon implements Combate {
     }
 
     @Override
+    public boolean fallo(Habilidad habilidad){
+        if(habilidadAtaque(habilidad) == 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean verificarMana(Habilidad habilidad){
         return this.getMp() > habilidad.getCostoMP();
     }

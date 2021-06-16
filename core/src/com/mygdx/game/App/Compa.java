@@ -70,6 +70,14 @@ public class Compa extends Digimon implements Combate {
     }
 
     @Override
+    public boolean fallo(Habilidad habilidad){
+        if(habilidadAtaque(habilidad) == 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public int atacar()
     {
         return getAtaque();
