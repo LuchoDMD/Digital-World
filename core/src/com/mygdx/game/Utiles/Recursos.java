@@ -5,13 +5,15 @@ public class Recursos {
     public static final String CARGA = "Fondos/carga.png";
     public static final String FONDO2 = "Fondos/fondoanimado.gif";
     public static final String CIRCUITOS = "Fondos/FONDO_CIRCUITO.gif";
+    public static final String CIRCUITOS1 = "Fondos/FONDO_CIRCUITO1.gif";
     public static final String INTRODUCCION_FONDO = "Fondos/introduccion.gif";
-    public static final String CUADRO_BATALLA = "Fondos/CUADRO_BATALLA.png";
     public static final String BATALLA = "Fondos/BATALLA.png";
     public static final String DIALOGO = "Fondos/dialogo.png";
     public static final String FLECHADER = "Fondos/flecha.png";
     public static final String FLECHAIZQ = "Fondos/flechaizq.png";
     public static final String FONDO_CREACION = "Fondos/fondoCreacion.jpg";
+    public static final String AGUMON_ESPALDA = "Fondos/espalda.png";
+    public static final String MAPA = "Fondos/Mapa.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";

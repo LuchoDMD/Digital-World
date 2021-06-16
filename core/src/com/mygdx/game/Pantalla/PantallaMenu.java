@@ -30,7 +30,7 @@ public class PantallaMenu implements Screen {
     @Override
     public void show() {
         musica= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICAMENU));
-        animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(Recursos.CIRCUITOS).read());
+        animation = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(Recursos.CIRCUITOS1).read());
         b= Render.batch;
         botones=new Botones();
         Gdx.input.setInputProcessor(entada);

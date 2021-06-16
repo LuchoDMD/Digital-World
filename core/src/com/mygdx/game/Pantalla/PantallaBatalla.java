@@ -42,6 +42,7 @@ public class PantallaBatalla implements Screen {
         luchar.setWidth(200);
         poner(luchar);
 
+
         mochila= new TextButton("Mochila",skin);
         mochila.setPosition(luchar.getX()+luchar.getWidth()+10,130);
         mochila.setHeight(40);
@@ -99,6 +100,7 @@ public class PantallaBatalla implements Screen {
         descripcion=new Texto(Recursos.FUENTE1,40, Color.ORANGE,true);
         descripcion.setTexto("¿Que deberia hacer -----?");
         descripcion.setPosition(80,150);
+
     }
 
     private void poner(Actor a){

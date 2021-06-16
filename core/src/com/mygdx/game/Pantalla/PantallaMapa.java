@@ -47,7 +47,6 @@ public class PantallaMapa implements Screen {
         heroIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
         heroDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quietoH = new TextureRegion();
-
     }
 
     @Override
@@ -56,8 +55,16 @@ public class PantallaMapa implements Screen {
         Render.limpiarPantalla(1, 1, 1);
         b.begin();
         moverse();
-
+        quietoH=heroFrente.personajeEspera();
+        b.draw(quietoH,200,200);
+        colision();
         b.end();
+    }
+
+    private void colision(){
+        if (xActual==198 || yActual==198){
+            Render.app.setScreen(new PantallaBatalla());
+        }
     }
 
     private void moverse(){
@@ -67,10 +74,10 @@ public class PantallaMapa implements Screen {
             crisEspalda.render(b);
             yActual= crisEspalda.getY();
 
-            heroEspalda.setX(xActualH);
+           /* heroEspalda.setX(xActualH);
             heroEspalda.setY(yActualH+1);
             heroEspalda.render(b);
-            yActualH=heroEspalda.getY();
+            yActualH=heroEspalda.getY();*/
             op=1;
         }
 
@@ -80,10 +87,10 @@ public class PantallaMapa implements Screen {
             crisFrente.render(b);
             yActual=crisFrente.getY();
 
-            heroFrente.setX(xActualH);
+            /*heroFrente.setX(xActualH);
             heroFrente.setY(yActualH-1);
             heroFrente.render(b);
-            yActualH=heroFrente.getY();
+            yActualH=heroFrente.getY();*/
             op=2;
         }
         else if (entada.isIzquierda()){
@@ -92,10 +99,10 @@ public class PantallaMapa implements Screen {
             crisIzq.render(b);
             xActual=crisIzq.getX();
 
-            heroIzq.setX(xActualH-1);
+           /*heroIzq.setX(xActualH-1);
             heroIzq.setY(yActualH);
             heroIzq.render(b);
-            xActualH=heroIzq.getX();
+            xActualH=heroIzq.getX();*/
             op=3;
         }
         else if (entada.isDerecha()){
@@ -104,10 +111,10 @@ public class PantallaMapa implements Screen {
             crisDer.render(b);
             xActual=crisDer.getX();
 
-            heroDer.setX(xActualH+1);
+            /*heroDer.setX(xActualH+1);
             heroDer.setY(yActualH);
             heroDer.render(b);
-            xActualH=heroDer.getX();
+            xActualH=heroDer.getX();*/
 
             op=4;
         }
@@ -125,59 +132,32 @@ public class PantallaMapa implements Screen {
                     quieto= crisEspalda.personajeEspera();
                     b.draw(quieto,xActual,yActual);
 
-                    quietoH=heroEspalda.personajeEspera();
-                    b.draw(quietoH,xActualH,yActualH);
+                    //quietoH=heroEspalda.personajeEspera();
+                    //b.draw(quietoH,xActualH,yActualH);
                     break;
                 case 2:
                     quieto=crisFrente.personajeEspera();
                     b.draw(quieto,xActual,yActual);
 
-                    quietoH=heroFrente.personajeEspera();
-                    b.draw(quietoH,xActualH,yActualH);
+                    //quietoH=heroFrente.personajeEspera();
+                    //b.draw(quietoH,xActualH,yActualH);
                     break;
                 case 3:
                     quieto=crisIzq.personajeEspera();
                     b.draw(quieto,xActual,yActual);
 
-                    quietoH=heroIzq.personajeEspera();
-                    b.draw(quietoH,xActualH,yActualH);
+                    //quietoH=heroIzq.personajeEspera();
+                    //b.draw(quietoH,xActualH,yActualH);
                     break;
                 case 4:
                     quieto=crisDer.personajeEspera();
                     b.draw(quieto,xActual,yActual);
 
-                    quietoH=heroDer.personajeEspera();
-                    b.draw(quietoH,xActualH,yActualH);
+                    //quietoH=heroDer.personajeEspera();
+                    //b.draw(quietoH,xActualH,yActualH);
                     break;
             }
         }
-    }
-
-    private boolean moverAutomaticoArriba(float y){
-        if(yActual<y){
-            crisEspalda.setX(xActual);
-            crisEspalda.setY(yActual+1);
-            crisEspalda.render(b);
-            yActual= crisEspalda.getY();
-        }
-        else if(yActual==y){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean moverAutomaticoAbajo(float y){
-        if(yActual>y){
-            crisFrente.setX(xActual);
-            crisFrente.setY(yActual-1);
-            crisFrente.render(b);
-            yActual= crisFrente.getY();
-
-        }
-        else if(yActual==y){
-            return true;
-        }
-        return false;
     }
 
     @Override

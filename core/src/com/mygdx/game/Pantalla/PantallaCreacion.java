@@ -150,8 +150,9 @@ public class PantallaCreacion implements Screen {
         ok.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                if (nombre==null) {
-                    nombre = n.getText();
+                nombre=null;
+                nombre = n.getText();
+                if (nombre!=null) {
                     entrenador.setNombre(nombre);
                     n.setVisible(false);
                     ok.setVisible(false);
