@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
 import com.mygdx.game.Eventos.EntradaMovimiento;
@@ -21,12 +22,13 @@ public class PantallaMapa implements Screen {
     private Personaje heroEspalda,heroFrente,heroIzq,heroDer;
     private TextureRegion quieto;
     private TextureRegion quietoH;
-    private float xActual=100;
-    private float yActual=100;
+    private float xActual=37;
+    private float yActual=97;
     private float xActualH=xActual;
     private float yActualH=yActual-60;
     private Texto frase;
     private int op=0;
+    private Imagen mapa;
 
 
     @Override
@@ -34,13 +36,14 @@ public class PantallaMapa implements Screen {
         b = Render.batch;
         Gdx.input.setInputProcessor(entada);
 
+        mapa= new Imagen(Recursos.MAPA);
 
         crisEspalda = new Personaje(Recursos.CRIS_ESPALDA,3,0.1f);
         crisFrente  = new Personaje(Recursos.CRIS_FRENTE,3,0.1f);
         crisIzq  = new Personaje(Recursos.CRIS_IZQ,3,0.1f);
         crisDer  = new Personaje(Recursos.CRIS_DER,3,0.1f);
         quieto = new TextureRegion();
-        frase=new Texto(Recursos.FUENTE1,13, Color.BLACK,false);
+        frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
 
         heroEspalda  = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
         heroFrente  = new Personaje(Recursos.HERO_M_FRENTE,3,0.1f);
@@ -54,10 +57,12 @@ public class PantallaMapa implements Screen {
 
         Render.limpiarPantalla(1, 1, 1);
         b.begin();
+        mapa.dibujar();
         moverse();
-        quietoH=heroFrente.personajeEspera();
-        b.draw(quietoH,200,200);
-        colision();
+        //quietoH=heroFrente.personajeEspera();
+        //b.draw(quietoH,200,200);
+        //colision();
+        System.out.println("x:" + xActual + "y:" + yActual);
         b.end();
     }
 
@@ -70,7 +75,7 @@ public class PantallaMapa implements Screen {
     private void moverse(){
         if (entada.isArriba()){
             crisEspalda.setX(xActual);
-            crisEspalda.setY(yActual+1);
+            crisEspalda.setY(yActual+2);
             crisEspalda.render(b);
             yActual= crisEspalda.getY();
 
@@ -83,7 +88,7 @@ public class PantallaMapa implements Screen {
 
         else if (entada.isAbajo()){
             crisFrente.setX(xActual);
-            crisFrente.setY(yActual-1);
+            crisFrente.setY(yActual-2);
             crisFrente.render(b);
             yActual=crisFrente.getY();
 
@@ -94,7 +99,7 @@ public class PantallaMapa implements Screen {
             op=2;
         }
         else if (entada.isIzquierda()){
-            crisIzq.setX(xActual-1);
+            crisIzq.setX(xActual-2);
             crisIzq.setY(yActual);
             crisIzq.render(b);
             xActual=crisIzq.getX();
@@ -106,7 +111,7 @@ public class PantallaMapa implements Screen {
             op=3;
         }
         else if (entada.isDerecha()){
-            crisDer.setX(xActual+1);
+            crisDer.setX(xActual+2);
             crisDer.setY(yActual);
             crisDer.render(b);
             xActual=crisDer.getX();

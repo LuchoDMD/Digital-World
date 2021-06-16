@@ -105,6 +105,8 @@ public class PantallaHistoria implements Screen {
             lluvia.stop();
             rayo.stop();
             Render.app.setScreen(new PantallaCreacion());
+            rayo.stop();
+            lluvia.stop();
         }
 
         /**BOTON IZQUIERDA*/
@@ -155,11 +157,6 @@ public class PantallaHistoria implements Screen {
         b.draw(animation.getKeyFrame(elapsed),0,180, Config.ANCHO,Config.ALTO-180);
         historia.dibujar();
         if (trancicion>350){rayo.play();rayo.setVolume(0.8F);}
-        if(trancicion>1580){
-            Render.app.setScreen(new PantallaCreacion());
-            rayo.stop();
-            lluvia.stop();
-        }
         stage.act();
         botonFlechaDer();
         botonFlechaIzq();
