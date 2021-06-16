@@ -14,6 +14,7 @@ public class Recursos {
     public static final String FONDO_CREACION = "Fondos/fondoCreacion.jpg";
     public static final String AGUMON_ESPALDA = "Fondos/espalda.png";
     public static final String MAPA = "Fondos/Mapa.png";
+    public static final String NOMBRE_MAPA = "Fondos/nombreMapa.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";

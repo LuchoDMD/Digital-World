@@ -24,7 +24,8 @@ public class PantallaMapa implements Screen {
     private float yActual=97;
     private Texto frase;
     private int op=0;
-    private Imagen mapa;
+    private Imagen mapa,nombreM;
+    private float cont=0;
 
 
     @Override
@@ -33,6 +34,10 @@ public class PantallaMapa implements Screen {
         Gdx.input.setInputProcessor(entada);
 
         mapa= new Imagen(Recursos.MAPA);
+        nombreM= new Imagen(Recursos.NOMBRE_MAPA);
+        nombreM.setPosition(30,670);
+        nombreM.setSize(150,15);
+
 
         crisEspalda = new Personaje(Recursos.CRIS_ESPALDA,3,0.1f);
         crisFrente  = new Personaje(Recursos.CRIS_FRENTE,3,0.1f);
@@ -44,12 +49,19 @@ public class PantallaMapa implements Screen {
 
     @Override
     public void render(float delta) {
-
+        cont+=delta/2;
         Render.limpiarPantalla(1, 1, 1);
         b.begin();
         mapa.dibujar();
+        nombreM.dibujar();
+
+        if (cont<1){
+            nombreM.setTransparencia(1-cont);
+        }
+
         moverse();
         System.out.println("x:" + xActual + "y:" + yActual);
+        System.out.println(delta);
         b.end();
     }
 
