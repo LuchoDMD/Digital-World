@@ -1,10 +1,19 @@
 package com.mygdx.game.App;
 
-public abstract class Item
+public class Item
 {
+
 
     protected String descEfecto;
     private int cantRestauracion;
+
+    public Item(String descEfecto, int cantRestauracion) {
+        this.descEfecto = descEfecto;
+        this.cantRestauracion = cantRestauracion;
+    }
+
+    public Item() {
+    }
 
     public int getCantRestauracion()
     {
@@ -23,6 +32,14 @@ public abstract class Item
     public void setDescEfecto(String descEfecto)
     {
         this.descEfecto = descEfecto;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "descEfecto='" + descEfecto + '\'' +
+                ", cantRestauracion=" + cantRestauracion +
+                '}';
     }
 }
 

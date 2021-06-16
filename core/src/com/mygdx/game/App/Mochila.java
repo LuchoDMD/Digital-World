@@ -1,6 +1,8 @@
 package com.mygdx.game.App;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.io.*;
 
 
 public class Mochila
@@ -11,6 +13,26 @@ public class Mochila
     public Mochila()
     {
         this.bolsillos=new ArrayList<>();
+    }
+
+    public Mochila(ArrayList<Item> items){
+        this.bolsillos = new ArrayList<>();
+        for (Item variable : items){
+            System.out.println("check");
+            agregarItem(variable);
+        }
+    }
+
+    public Mochila (Map items, int[] keys){
+        this.bolsillos = new ArrayList<>();
+        for (int i = 1; i <= keys.length; i++){
+            agregarItem((Item)items.get(i));
+        }
+    }
+
+
+    public void cargarBolsillo(Item i){
+
     }
 
     public void agregarItem(Item i)
@@ -53,6 +75,13 @@ public class Mochila
         return this.bolsillos;
     }
 
+    @Override
+    public String toString() {
+        return "Mochila{" +
+                "bolsillos=" + bolsillos +
+                '}';
+    }
+
     public class Bolsillo implements Acciones
     {
         private Item item;
@@ -81,10 +110,7 @@ public class Mochila
         }
 
 
-        public Item getItem()
-        {
-            return item;
-        }
+
 
         public boolean estaVacio(){
             if (cantidad == 0){
@@ -139,6 +165,15 @@ public class Mochila
         public String toString()
         {
             return item+" \t\tx"+cantidad;
+        }
+
+        public void setItem(Item item) {
+            this.item = item;
+        }
+
+        public Item getItem()
+        {
+            return item;
         }
     }
 }
