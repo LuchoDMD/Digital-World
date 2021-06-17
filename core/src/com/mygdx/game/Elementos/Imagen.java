@@ -1,12 +1,13 @@
 package com.mygdx.game.Elementos;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Utiles.Render;
 
 
 //TODO la clase imagen esta hecha para trabajar mas comodo con las imagenes y poder personalizarlas mejor
 
-public class Imagen {
+public class Imagen extends Actor {
 
     private Texture t;
     private Sprite s;
@@ -57,6 +58,20 @@ public class Imagen {
         this.x=x;
         this.y=y;
         s.setPosition(x, y);
+    }
+
+    public void fadeOutImagen(Imagen imagen, float cont){
+        imagen.dibujar();
+        if (cont<1){
+            imagen.setTransparencia(1-cont);
+        }
+    }
+
+    public void fadeInImagen(Imagen imagen, float cont){
+        imagen.dibujar();
+        if (cont>0 && cont<1){
+            imagen.setTransparencia(0+cont);
+        }
     }
 
     public float getX() {

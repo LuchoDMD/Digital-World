@@ -5,12 +5,27 @@ public class Recursos {
     public static final String CARGA = "Fondos/carga.png";
     public static final String FONDO2 = "Fondos/fondoanimado.gif";
     public static final String CIRCUITOS = "Fondos/FONDO_CIRCUITO.gif";
+    public static final String CIRCUITOS1 = "Fondos/FONDO_CIRCUITO1.gif";
+    public static final String INTRODUCCION_FONDO = "Fondos/introduccion.gif";
+    public static final String BATALLA = "Fondos/BATALLA.png";
+    public static final String DIALOGO = "Fondos/dialogo.png";
+    public static final String FLECHADER = "Fondos/flecha.png";
+    public static final String FLECHAIZQ = "Fondos/flechaizq.png";
+    public static final String FONDO_CREACION = "Fondos/fondoCreacion.jpg";
+    public static final String AGUMON_ESPALDA = "Fondos/espalda.png";
+    public static final String MAPA = "Fondos/Mapa.png";
+    public static final String NOMBRE_MAPA = "Fondos/nombreMapa.png";
+    public static final String PANTALLA_NEGRA = "Fondos/pantalla negra.png";
+    public static final String BOSQUE = "Fondos/BOSQUE.png";
+    public static final String LABORATORIO = "Fondos/LABORATORIO.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
 
     public static final String MUSICAMENU = "Musica/menusong.mp3";
     public static final String MUSICAINTRO = "Musica/intro.mp3";
+    public static final String LLUVIA = "Musica/lluvia.mp3";
+    public static final String RAYO = "Musica/rayo.mp3";
 
     public static final String CRIS_FRENTE = "Personaje/Dr.cHalm/CRIS FRENTE.png";
     public static final String CRIS_ESPALDA = "Personaje/Dr.cHalm/CRIS ESPALDA.png";
@@ -31,7 +46,25 @@ public class Recursos {
 
     public static final String AGUMON = "Personaje/Digimon/agumon.png";
     public static final String GABUMON = "Personaje/Digimon/gabumon.png";
-    public static final String DIALOGO = "Personaje/dialogo.png";
+
+
+    public static final String INTRODUCCION = "Te levantas en un dia tormentoso, te has dormido en el escritorio\n" +
+            "y has dejado el ordenador encendido.Te encuentras con el \nprograma que habias empezado hace un rato, ya\nhecho y al momento de probarlo...";
+
+
+    public static final String INTRODUCCION1=
+            "Un rayo genera un apagon en todo el edificio, decides ir a buscar\nuna fuente de luz, cuando te " +
+            "das cuenta de que tu ordenador esta\nencendido con tu programa sobreescribiendose de manera " +
+            "inverosimil.";
+
+
+    public static final String INTRODUCCION2="Al ejecutarse comienza a descargar una serie de paquetes, mostrando\n" +
+            "una ventana emergente con una simpatica criatura (Dorimon),\nque con un cuadro de texto te incita a " +
+            "identificarla:\n";
+
+    public static final String INTRODUCCION3="\t-¿Quien o que eres?. El joven decide inexplicablemente que debia\n aventurarse a averiguar" +
+            "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
+            " a\ndespejar sus dudas abriendole la puerta a su mundo:";
 
 
 }

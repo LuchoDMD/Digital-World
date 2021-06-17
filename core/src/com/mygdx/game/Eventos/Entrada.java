@@ -1,6 +1,7 @@
 package com.mygdx.game.Eventos;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.mygdx.game.Pantalla.PantallaBatalla;
 import com.mygdx.game.Pantalla.PantallaMenu;
 
 //TODO clase para setearle el comportamiento al menu
