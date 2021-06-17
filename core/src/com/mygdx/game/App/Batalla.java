@@ -47,7 +47,7 @@ public class Batalla
                                     log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[accion - 1].getNombre()));
                                     Texto.limpiarPantalla();
                                     System.out.println("Has lanzado " + compa.habilidades[accion - 1]);
-                                    if (compa.fallo(compa.habilidades[accion - 1])) {
+                                    if (danio == 0) {
                                         System.out.println("Has fallado el ataque");
                                     }
                                 }
