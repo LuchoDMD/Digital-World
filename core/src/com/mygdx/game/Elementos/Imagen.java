@@ -60,6 +60,19 @@ public class Imagen extends Actor {
         s.setPosition(x, y);
     }
 
+    public void fadeOutImagen(Imagen imagen, float cont){
+        imagen.dibujar();
+        if (cont<1){
+            imagen.setTransparencia(1-cont);
+        }
+    }
+
+    public void fadeInImagen(Imagen imagen, float cont){
+        imagen.dibujar();
+        if (cont>0 && cont<1){
+            imagen.setTransparencia(0+cont);
+        }
+    }
 
     public float getX() {
         return x;
