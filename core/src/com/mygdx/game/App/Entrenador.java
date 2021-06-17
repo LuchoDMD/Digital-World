@@ -13,9 +13,12 @@ public class Entrenador {
 
 
     //GETTERS & SETTERS\\
+    /*
     public void nuevoItem(Item item){       //método para agregarle un item a la mochila del entrenador
         mochila.agregarItems(item);
     }
+
+     */
 
     public Mochila getMochila() {
         return mochila;

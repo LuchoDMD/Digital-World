@@ -26,6 +26,7 @@ public class Recursos {
     public static final String MUSICAINTRO = "Musica/intro.mp3";
     public static final String LLUVIA = "Musica/lluvia.mp3";
     public static final String RAYO = "Musica/rayo.mp3";
+    public static final String MUSICABATALLA = "Musica/Battle.mp3";
 
     public static final String CRIS_FRENTE = "Personaje/Dr.cHalm/CRIS FRENTE.png";
     public static final String CRIS_ESPALDA = "Personaje/Dr.cHalm/CRIS ESPALDA.png";
@@ -65,6 +66,7 @@ public class Recursos {
     public static final String INTRODUCCION3="\t-¿Quien o que eres?. El joven decide inexplicablemente que debia\n aventurarse a averiguar" +
             "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
             " a\ndespejar sus dudas abriendole la puerta a su mundo:";
+
 
 
 }
