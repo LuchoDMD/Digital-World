@@ -16,6 +16,8 @@ public class Recursos {
     public static final String MAPA = "Fondos/Mapa.png";
     public static final String NOMBRE_MAPA = "Fondos/nombreMapa.png";
     public static final String PANTALLA_NEGRA = "Fondos/pantalla negra.png";
+    public static final String BOSQUE = "Fondos/BOSQUE.png";
+    public static final String LABORATORIO = "Fondos/LABORATORIO.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";

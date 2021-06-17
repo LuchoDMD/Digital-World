@@ -26,11 +26,10 @@ public class PantallaMapa implements Screen {
     private float yActual=229;
     private Texto frase;
     private int op=0;
-    private Imagen mapa,nombreM;
+    private Imagen mapa,nombreM,laboratorio;
     private float cont=0;
     private Rectangle personaje;
-    private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,colision10,colision11,colision12,colision13,colision14,colision15;
-    private boolean colision=false;
+    private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,colision10,colision11,colision12,colision13,colision14,colision15,colision16;
 
 
 
@@ -43,6 +42,8 @@ public class PantallaMapa implements Screen {
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
+
+        laboratorio=new Imagen(Recursos.LABORATORIO);
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.CRIS_ESPALDA,3,0.1f);
@@ -70,29 +71,42 @@ public class PantallaMapa implements Screen {
         colision9 = new ColisionMapa(990,29,110,95);
         colision10 = new ColisionMapa(1135,-6,105,125);
         colision11 = new ColisionMapa(1025,159,180,160);
-        colision12 = new ColisionMapa(990,339,245,360);
+        colision12 = new ColisionMapa(1000,340,91,380);
         colision13 = new ColisionMapa(-12,0,2,720);
         colision14 = new ColisionMapa(0,-1,1280,2);
         colision15 = new ColisionMapa(1238,0,2,720);
+        colision16 = new ColisionMapa(1115,340,165,380);
     }
 
     @Override
     public void render(float delta) {
-        cont+=delta/4;
-        Render.limpiarPantalla(1, 1, 1);
+        cont+=delta/8;
+        Render.limpiarPantalla(0, 0, 0);
         b.begin();
         mapa.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
         colision();
+        cambioMapa();
+        System.out.println(xActual +" "+ yActual);
         b.end();
 
+    }
+
+    private void cambioMapa(){
+        if(xActual>=1100 && yActual>=445){
+            mapa.fadeOutImagen(mapa,cont);
+            laboratorio.fadeInImagen(laboratorio,cont);
+            quieto = crisEspalda.personajeEspera();
+            b.draw(quieto, 638, 25);
+            moverse();
+        }
     }
 
     private void colision() {
         if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision4)|| personaje.overlaps(colision5) ||
                 personaje.overlaps(colision6)|| personaje.overlaps(colision7) || personaje.overlaps(colision8)|| personaje.overlaps(colision9) || personaje.overlaps(colision10)
-                || personaje.overlaps(colision11)|| personaje.overlaps(colision12 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)){
+                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)){
             quietoS();
             switch (op){
                 case 1:
@@ -125,7 +139,7 @@ public class PantallaMapa implements Screen {
     private void movArriba() {
         if(entada.isArriba()){
         crisEspalda.setX(xActual);
-        crisEspalda.setY(yActual + 2);
+        crisEspalda.setY(yActual + 5);
         crisEspalda.render(b);
         yActual = crisEspalda.getY();
         op=1;
@@ -135,7 +149,7 @@ public class PantallaMapa implements Screen {
     private void movAbajo() {
         if (entada.isAbajo()){
         crisEspalda.setX(xActual);
-        crisEspalda.setY(yActual - 2);
+        crisEspalda.setY(yActual - 5);
         crisEspalda.render(b);
         yActual = crisEspalda.getY();
         op=2;
@@ -144,7 +158,7 @@ public class PantallaMapa implements Screen {
 
     private void movIzq() {
         if(entada.isIzquierda()){
-            crisIzq.setX(xActual - 2);
+            crisIzq.setX(xActual - 5);
             crisIzq.setY(yActual);
             crisIzq.render(b);
             xActual = crisIzq.getX();
@@ -154,7 +168,7 @@ public class PantallaMapa implements Screen {
 
     private void movDer(){
         if (entada.isDerecha()){
-            crisDer.setX(xActual + 2);
+            crisDer.setX(xActual + 5);
             crisDer.setY(yActual);
             crisDer.render(b);
             xActual = crisDer.getX();
@@ -185,7 +199,7 @@ public class PantallaMapa implements Screen {
     }
 
     private void moverse(){
-            int veloc = 2;
+            int veloc = 3;
             if (entada.isArriba()) {
                 crisEspalda.setX(xActual);
                 crisEspalda.setY(yActual + veloc);
