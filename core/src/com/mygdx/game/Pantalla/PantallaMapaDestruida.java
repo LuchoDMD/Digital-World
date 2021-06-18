@@ -229,7 +229,7 @@ public class PantallaMapaDestruida extends Stage implements Screen {
             }
             else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
                 frase.setPosition(xActual + 65, yActual + 57);
-                frase.setTexto("Donde va el padre,\nva el hijo.");
+                frase.setTexto("¿Donde va el padre,\nva el hijo?");
                 quieto = crisFrente.personajeEspera();
                 b.draw(quieto, xActual, yActual);
                 frase.dibujar();

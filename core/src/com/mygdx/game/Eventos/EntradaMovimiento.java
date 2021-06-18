@@ -1,10 +1,7 @@
 package com.mygdx.game.Eventos;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import com.mygdx.game.Pantalla.PantallaBatalla;
-import com.mygdx.game.Pantalla.PantallaHistoria;
-import com.mygdx.game.Pantalla.PantallaLaboratorio;
-import com.mygdx.game.Pantalla.PantallaMapa;
+import com.mygdx.game.Pantalla.*;
 
 //TODO clase para setear el comportamiento de los botones a la pantalla del mapa
 
@@ -15,19 +12,23 @@ public class EntradaMovimiento implements InputProcessor {
     private PantallaMapa mapa;
     private PantallaHistoria historia;
     private PantallaLaboratorio laboratorio;
-
-    public EntradaMovimiento(PantallaLaboratorio laboratorio) {
-        this.laboratorio = laboratorio;
-    }
+    private PantallaLaboratorio2 laboratorio2;
 
     public EntradaMovimiento(PantallaHistoria historia) {
         this.historia = historia;
     }
 
+    public EntradaMovimiento(PantallaLaboratorio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
+
+    public EntradaMovimiento(PantallaLaboratorio2 laboratorio2) {
+        this.laboratorio2 = laboratorio2;
+    }
+
     public EntradaMovimiento(PantallaMapa mapa){
         this.mapa=mapa;
     }
-
 
     public boolean isLetraW() {
         return letraW;}
