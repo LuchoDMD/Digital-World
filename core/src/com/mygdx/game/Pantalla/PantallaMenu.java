@@ -54,7 +54,7 @@ public class PantallaMenu implements Screen {
         posicionBotonera();
         musica.setVolume(0.3f);
         musica.play();
-        tiempo+=delta;
+        tiempo+=delta/4;
         accionBotonera();
         b.end();
     }
