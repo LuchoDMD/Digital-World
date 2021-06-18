@@ -6,4 +6,4 @@
 
 2) Seleccionar el panel de la derecha donde dice "gradle" --> Tasks --> Other --> Run
 
-no lo rompan porfi xD
+No lo rompan porfi xD
