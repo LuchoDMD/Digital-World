@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.App.*;
@@ -25,7 +26,7 @@ public class PantallaBatalla implements Screen {
 
     private SpriteBatch b;
     private int ancho=200, alto=30;
-    private Imagen fondo, chalm, agumon, gabumon, devilmon, mileniummon;
+    private Imagen fondo, chalm, agumon, gabumon, devilmon, mileniummon, omnimon;
     private Texto statsCompa,statsEnemigo,menu,aux, accionEnemigo, accionCompa;
     private Texto descripcion;
     private EntradaBatalla entrada = new EntradaBatalla(this);
@@ -99,6 +100,8 @@ public class PantallaBatalla implements Screen {
         chalm.setPosition(800, 400);
         chalm.setSize(275, 325);
 
+
+
         devilmon= new Imagen(Recursos.DEVILMON2);
         devilmon.setPosition(850, 450);
 
@@ -109,6 +112,10 @@ public class PantallaBatalla implements Screen {
         agumon= new Imagen(Recursos.AGUMON2);
         agumon.setPosition(250, 230);
         agumon.setSize(300,300);
+
+        omnimon= new Imagen(Recursos.OMNIMON2);
+        omnimon.setPosition(250, 230);
+        omnimon.setSize(300,300);
 
         gabumon = new Imagen(Recursos.GABUMON2);
         gabumon.setPosition(250, 230);
@@ -135,7 +142,6 @@ public class PantallaBatalla implements Screen {
 
         statsEnemigo=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
         statsEnemigo.setPosition(50, 650);
-        //statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
         statsEnemigo.setTexto("Chalm \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
 
         accionEnemigo = new Texto(Recursos.FUENTE1, 30, Color.RED, true);
@@ -187,7 +193,6 @@ public class PantallaBatalla implements Screen {
                             compa.regenerarMP();
                         }
                         log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[accion].getNombre()));
-                        System.out.println(log.get(turno).toString());
                         break;
                     case 4:
                         op = compa.elegirItem(entrenador.getMochila());
@@ -196,7 +201,6 @@ public class PantallaBatalla implements Screen {
                             log.add(new Turno(compa.getNombre(), turno, entrenador.mochila.getBolsillos(op).getItem()));
                             entrenador.mochila.getBolsillos(op).usar(compa, op);
                         }
-                        System.out.println(log.get(turno).toString());
                         break;
                 }
 
@@ -254,23 +258,19 @@ public class PantallaBatalla implements Screen {
             Render.app.setScreen(new PantallaMapa3());
         }
 
-         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Milenniummon")) {
+         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Mileniummon")) {
             compa.regenerar();
             setEntrenador(PantallaCreacion.itemKeys);
             musica.stop();
-            Render.app.setScreen(new PantallaLaboratorio3()); //laboratorio3
+            Render.app.setScreen(new PantallaLaboratorio3());
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Milenniummon") && compa.getNombre().equals("Omnimon")) {
             compa.regenerar();
             setEntrenador(PantallaCreacion.itemKeys);
             musica.stop();
-            Render.app.setScreen(new PantallaLaboratorio3()); //laboratorio3
+            Render.app.setScreen(new PantallaLaboratorio3()); //créditos
         }
-
-
-
-
     }
 
 
@@ -286,21 +286,23 @@ public class PantallaBatalla implements Screen {
         if(enemigo.getNombre().equals("Omnimon")){
             chalm.dibujar();
         }
+
        if(enemigo.getNombre().equals("Mileniummon")){
-            mileniummon.dibujar();
-        }
-       if(enemigo.getNombre().equals("Mileniummon2")){
             mileniummon.dibujar();
         }
        if(enemigo.getNombre().equals("Devilmon")){
             devilmon.dibujar();
         }
-
-        if(isAgumon()){
-            agumon.dibujar();
-        }
-        else{
-            gabumon.dibujar();
+       if(compa.getNombre().equals("Omnimon")){
+           omnimon.dibujar();
+       }
+       else{
+           if(isAgumon()){
+               agumon.dibujar();
+           }
+           else{
+               gabumon.dibujar();
+           }
         }
         menu();
         accionCompa.dibujar();

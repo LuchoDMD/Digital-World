@@ -25,6 +25,7 @@ public class Recursos {
     public static final String GABUMON2 = "Personaje/Digimon/gabumon2.png";
     public static final String DEVILMON2 = "Personaje/Digimon/Devilmon.png";
     public static final String MILENIUMMON2 = "Personaje/Digimon/Mileniummon.png";
+    public static final String OMNIMON2 = "Personaje/Digimon/ONMIMON.png";
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
     public static final String CHALMENEMIGO = "Personaje/chalm.png";
