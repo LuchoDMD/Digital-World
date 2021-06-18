@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.game.App.Carga;
+import com.mygdx.game.App.Compa;
+import com.mygdx.game.App.Enemigo;
 import com.mygdx.game.Elementos.ColisionMapa;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
@@ -16,7 +19,7 @@ import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
 
-public class PantallaMapaDestruida extends Stage implements Screen {
+public class PantallaMapaDestruida2 extends Stage implements Screen {
 
     private SpriteBatch b;
     private Personaje crisEspalda,crisFrente,crisIzq,crisDer;
@@ -132,7 +135,16 @@ public class PantallaMapaDestruida extends Stage implements Screen {
 
     private void colisionDevilmon(){
         if(personaje.overlaps(devilmonC)){
-            Render.app.setScreen(new PantallaBatalla());
+            if(PantallaBatalla.isAgumon()){
+                int[] gabumonskills ={15,7,10,11};
+                PantallaBatalla.setEnemigo(new Enemigo(99,500,700,90,40,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
+                Render.app.setScreen(new PantallaBatalla());
+            }else{
+                int[] agumonskills ={15,7,8,9};
+                PantallaBatalla.setEnemigo(new Enemigo(99,400,800,100,30,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
+                Render.app.setScreen(new PantallaBatalla());
+            }
+
         }
     }
 

@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.App.*;
 import com.mygdx.game.Elementos.Imagen;
-import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
 import com.mygdx.game.Utiles.Config;
 import com.mygdx.game.Utiles.Recursos;
@@ -36,7 +35,7 @@ public class PantallaCreacion implements Screen {
     private Entrenador entrenador;
     private Mochila mochila;
     private Imagen fondo;
-    int[] itemKeys = {1,2,3,4};
+    public static final int[] itemKeys = {1,2,3,4,5,6};
 
 
     @Override
@@ -170,11 +169,11 @@ public class PantallaCreacion implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 int[] agumonskills ={15,7,8,9};
-                PantallaBatalla.setCompa(new Compa(99,400,800,100,30,100, "Agumon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
+                PantallaBatalla.setCompa(new Compa(99,700,800,100,15,100, "Agumon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
                 PantallaBatalla.setEntrenador(itemKeys);
                 //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(true);
-                Render.app.setScreen(new PantallaMapa());
+                Render.app.setScreen(new PantallaMapa1());
             }
         });
     }
@@ -183,15 +182,14 @@ public class PantallaCreacion implements Screen {
         gabumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int[] itemKeys = {1,2,3,4};
                 int[] gabumonskills ={15,7,10,11};
                 int[] impmonskills ={15,12,13,14};
                 int[] milleniumskills = {15,4,5,6};
-                PantallaBatalla.setCompa(new Compa(99,500,700,90,40,100, "Gabumon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
+                PantallaBatalla.setCompa(new Compa(99,700,700,90,20,100, "Gabumon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
                 PantallaBatalla.setEntrenador(itemKeys);
                 //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(false);
-                Render.app.setScreen(new PantallaMapa());
+                Render.app.setScreen(new PantallaMapa1());
             }
         });
     }
