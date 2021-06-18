@@ -1,18 +1,9 @@
 {
-  "1":{"danio":70,"precision":95,"costoMP":20,"nombre":"Espada Trascendental"},
-  "2":{"danio":100,"precision":100,"costoMP":15,"nombre":"Rifle Supremo"},
-  "3":{"danio":190,"precision":70,"costoMP":25,"nombre":"Omega Inforce"},
-  "4":{"danio":70,"precision":90,"costoMP":50,"nombre":"Destructor Dimensional"},
-  "5":{"danio":120,"precision":85,"costoMP":40,"nombre": "Crono Paradoja"},
-  "6":{"danio":170,"precision":65,"costoMP":30,"nombre":"Gran Big Bang"},
-  "7":{"danio":40,"precision":100,"costoMP":0,"nombre":"Ataque Basico"},
-  "8":{"danio":40,"precision":100,"costoMP":0,"nombre":"Misil Etéreo"},
-  "9":{"danio":40,"precision":100,"costoMP":0,"nombre":"Descarga Eléctrica"},
-  "10":{"danio":40,"precision":100,"costoMP":0,"nombre":"Apocalipsis"},
-  "11":{"danio":40,"precision":100,"costoMP":0,"nombre":"Arañaso"},
-  "12":{"danio":40,"precision":100,"costoMP":0,"nombre":"Ataque Basico"},
-  "13":{"danio":40,"precision":100,"costoMP":0,"nombre":"Ataque Basico"},
-  "14":{"danio":40,"precision":100,"costoMP":0,"nombre":"Ataque Basico"},
-  "15":{"danio":40,"precision":100,"costoMP":0,"nombre":"Ataque Basico"},
-
+  "1":{"danio":35,"precision":95,"costoMP":20,"nombre":"Espada Trascendental"},
+  "2":{"danio":50,"precision":100,"costoMP":15,"nombre":"Rifle Supremo"},
+  "3":{"danio":95,"precision":70,"costoMP":25,"nombre":"Omega Inforce"},
+  "4":{"danio":35,"precision":90,"costoMP":50,"nombre":"Destructor Dimensional"},
+  "5":{"danio":60,"precision":85,"costoMP":40,"nombre": "Crono Paradoja"},
+  "6":{"danio":85,"precision":65,"costoMP":30,"nombre":"Gran Big Bang"},
+  "7":{"danio":20,"precision":100,"costoMP":0,"nombre":"Ataque Basico"}
 }
