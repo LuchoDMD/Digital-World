@@ -242,6 +242,8 @@ public class PantallaBatalla implements Screen {
         }
 
 
+
+
     }
 
 
