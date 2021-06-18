@@ -82,6 +82,8 @@ public class Mochila
                 '}';
     }
 
+
+    //-------------------\\
     public class Bolsillo implements Acciones
     {
         private Item item;

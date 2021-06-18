@@ -3,12 +3,13 @@ package com.mygdx.game.Eventos;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.mygdx.game.Pantalla.PantallaBatalla;
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 
 
 public class EntradaBatalla implements InputProcessor {
 
     private boolean abajo=false, arriba=false, enter=false, izquierda=false, derecha = false;
-    private boolean bot0=false,bot1=false,bot2=false,bot3=false,bot4=false,bot5=false,bot6=false, botq=false,botw=false,bote=false;
+    private boolean bot0=false,bot1=false,bot2=false,bot3=false,bot4=false,bot5=false,bot6=false, botq=false,botw=false,bote=false, botEspacio=false;
     private PantallaBatalla app;
 
     public EntradaBatalla(PantallaBatalla app) {
@@ -17,6 +18,17 @@ public class EntradaBatalla implements InputProcessor {
 
 
 
+    public boolean isBotEspacio() {
+        return botEspacio;
+    }
+
+    public void setBotEspacio(boolean botEspacio) {
+        this.botEspacio = botEspacio;
+    }
+
+    public void blockKey(){
+
+    }
 
     public boolean isBot0() {
         return bot0;
@@ -109,6 +121,10 @@ public class EntradaBatalla implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
+        if (keycode == Input.Keys.SPACE){
+            abajo=true;
+        }
+
         if (keycode == Input.Keys.DOWN){
             abajo=true;
         }
@@ -160,6 +176,10 @@ public class EntradaBatalla implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
+        if (keycode == Input.Keys.SPACE){
+            abajo=false;
+        }
+
         if (keycode == Input.Keys.DOWN){
             abajo=false;
         }
@@ -239,4 +259,6 @@ public class EntradaBatalla implements InputProcessor {
     public boolean scrolled(float amountX, float amountY) {
         return false;
     }
+
+
 }
