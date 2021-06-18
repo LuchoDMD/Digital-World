@@ -8,9 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.game.App.Carga;
-import com.mygdx.game.App.Compa;
-import com.mygdx.game.App.Enemigo;
 import com.mygdx.game.Elementos.ColisionMapa;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
@@ -19,19 +16,19 @@ import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
 
-public class PantallaMapa2 extends Stage implements Screen {
+public class PantallaMapa3 extends Stage implements Screen {
 
     private SpriteBatch b;
     private Personaje crisEspalda,crisFrente,crisIzq,crisDer;
     private TextureRegion quieto;
-    private float xActual=1096;
-    private float yActual=396;
+    private float xActual=819;
+    private float yActual=05;
     private Texto frase,zona;
-    private int op=2;
+    private int op=3;
     private Imagen mapa,nombreM;
     private float cont=0;
-    private Rectangle personaje,rocaC,devilmonC;
-    private Imagen devilmon,roca;
+    private Rectangle personaje,rocaC;
+    private Imagen roca;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
             colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
@@ -45,6 +42,10 @@ public class PantallaMapa2 extends Stage implements Screen {
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
 
+        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        zona.setTexto("NecoCity();");
+        zona.setPosition(550, 700);
+
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
@@ -53,16 +54,10 @@ public class PantallaMapa2 extends Stage implements Screen {
         crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
         frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
-        devilmon=new Imagen(Recursos.DEVILMON);
-        devilmon.setPosition(860,20);
 
         roca= new Imagen(Recursos.ROCA);
         roca.setSize(120,120);
         roca.setPosition(970,180);
-
-        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
-        zona.setTexto("NecoCity();");
-        zona.setPosition(550, 700);
 
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
@@ -74,12 +69,6 @@ public class PantallaMapa2 extends Stage implements Screen {
         rocaC.width=120;
         rocaC.height=120;
         rocaC.setPosition(roca.getX(),roca.getY());
-
-        devilmonC=new Rectangle();
-        devilmonC.width=54;
-        devilmonC.height=74;
-        devilmonC.setPosition(devilmon.getX(),devilmon.getY()-10);
-
 
 
         /**GENERANDO LAS COLISIONES*/
@@ -109,11 +98,9 @@ public class PantallaMapa2 extends Stage implements Screen {
         b.begin();
         mapa.dibujar();
         zona.dibujar();
-        devilmon.dibujar();
         roca.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
-        colisionDevilmon();
         colision();
         cambioMapa();
         mapaBosque();
@@ -131,21 +118,6 @@ public class PantallaMapa2 extends Stage implements Screen {
     private void mapaBosque(){
         if(personaje.overlaps(colision4)){
             Render.app.setScreen(new PantallaBosque());
-        }
-    }
-
-    private void colisionDevilmon(){
-        if(personaje.overlaps(devilmonC)){
-            if(PantallaBatalla.isAgumon()){
-                int[] gabumonskills ={15,7,10,11};
-                PantallaBatalla.setEnemigo(new Enemigo(99,500,700,90,40,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
-                Render.app.setScreen(new PantallaBatalla());
-            }else{
-                int[] agumonskills ={15,7,8,9};
-                PantallaBatalla.setEnemigo(new Enemigo(99,400,800,100,30,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
-                Render.app.setScreen(new PantallaBatalla());
-            }
-
         }
     }
 

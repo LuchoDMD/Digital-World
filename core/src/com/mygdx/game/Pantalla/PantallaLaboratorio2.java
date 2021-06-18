@@ -127,20 +127,20 @@ public class PantallaLaboratorio2 implements Screen {
             texto.setTexto(Recursos.DIALOGO_CHALM8);
             op1=0;
         }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM9)){
-            texto.setTexto(Recursos.DIALOGO_CHALM10);
-            op1=0;
-        }
         if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM10)){
-            texto.setTexto(Recursos.DIALOGO_CHALM11);
+            texto.setTexto(Recursos.DIALOGO_CHALM9);
             op1=0;
         }
         if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM11)){
-            texto.setTexto(Recursos.DIALOGO_CHALM12);
+            texto.setTexto(Recursos.DIALOGO_CHALM10);
             op1=0;
         }
         if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM12)){
-            texto.setTexto(Recursos.DIALOGO_CHALM13);
+            texto.setTexto(Recursos.DIALOGO_CHALM11);
+            op1=0;
+        }
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM13)){
+            texto.setTexto(Recursos.DIALOGO_CHALM12);
             op1=0;
         }
     }

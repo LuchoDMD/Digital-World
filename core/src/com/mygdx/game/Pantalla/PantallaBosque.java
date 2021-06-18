@@ -3,6 +3,7 @@ package com.mygdx.game.Pantalla;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -29,7 +30,8 @@ public class PantallaBosque implements Screen {
     private Personaje mileniunmon;
     private Rectangle personaje;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7;
-    private Texto texto;
+    private Texto texto,zona;
+    private Music bosque;
 
 
     @Override
@@ -42,6 +44,11 @@ public class PantallaBosque implements Screen {
         heroIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
         heroDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quietoH=new TextureRegion();
+        bosque = Gdx.audio.newMusic(Gdx.files.internal(Recursos.BOSQUE_MUSICA));
+
+        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        zona.setTexto("Bosque();");
+        zona.setPosition(550, 700);
 
 
         personaje=new Rectangle();
@@ -68,6 +75,8 @@ public class PantallaBosque implements Screen {
         b.begin();
         fondo.fadeInImagen(fondo,cont);
         fondo.dibujar();
+        zona.dibujar();
+        bosque.play();
         personaje.setPosition(xActual,yActual);
         mileniunmon.render(b);
         noPodesEscapar();
@@ -77,10 +86,7 @@ public class PantallaBosque implements Screen {
         System.out.println(xActual+" "+yActual);
     }
 
-    private void ponerEnMapa(){
-        quietoH=heroEspalda.personajeEspera();
-        b.draw(quietoH,xActual,yActual);
-    }
+
 
     private void moverse(){
         int veloc = 3;
@@ -141,6 +147,7 @@ public class PantallaBosque implements Screen {
         if(personaje.overlaps(colision7)){
             int[] milleniumskills = {15,4,5,6};
             PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), milleniumskills));
+            bosque.stop();
             Render.app.setScreen(new PantallaBatalla());
         }
     }

@@ -3,8 +3,6 @@ package com.mygdx.game.Utiles;
 public class Recursos {
     public static final String FONDO = "Fondos/fondo3.jpg";
     public static final String CARGA = "Fondos/carga.png";
-    public static final String FONDO2 = "Fondos/fondoanimado.gif";
-    public static final String CIRCUITOS = "Fondos/FONDO_CIRCUITO.gif";
     public static final String CIRCUITOS1 = "Fondos/FONDO_CIRCUITO1.gif";
     public static final String INTRODUCCION_FONDO = "Fondos/introduccion.gif";
     public static final String BATALLA = "Fondos/BATALLA.png";
@@ -38,13 +36,11 @@ public class Recursos {
     public static final String RAYO = "Musica/rayo.mp3";
     public static final String MUSICABATALLA = "Musica/Battle.mp3";
     public static final String MUSICANECOCITY = "Musica/NecoCity.mp3";
+    public static final String BOSQUE_MUSICA = "Musica/bosque.mp3";
 
     public static final String CRIS_FRENTE = "Personaje/Dr.cHalm/CRIS FRENTE.png";
-    public static final String CRIS_ESPALDA = "Personaje/Dr.cHalm/CRIS ESPALDA.png";
-    public static final String CRIS_IZQ =  "Personaje/Dr.cHalm/CRIS IZQ.png";
-    public static final String CRIS_DER = "Personaje/Dr.cHalm/CRIS DER.png";
 
-    public static final String HERO_BATALLA = "Personaje/Hero/HERO BATALLA.png";
+
     public static final String HERO_M_DER = "Personaje/Hero/HERO_M_DER.png";
     public static final String HERO_F_DER = "Personaje/Hero/HERO_F_DER.png";
     public static final String HERO_M_ESPALDA = "Personaje/Hero/HERO_M_ESPALDA.png";
