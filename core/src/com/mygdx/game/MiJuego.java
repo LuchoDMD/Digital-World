@@ -13,9 +13,7 @@ public class MiJuego extends Game {
 	public void create () {
 		Render.app=this;
 		Render.batch=new SpriteBatch();
-		Carga.guardarHabilidades();
-		Carga.guardarItems();
-			this.setScreen(new PantallaCarga());
+			this.setScreen(new PantallaCreacion());
 	}
 
 	@Override
