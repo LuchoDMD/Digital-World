@@ -212,8 +212,6 @@ public class PantallaBatalla implements Screen {
                 statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
                 statsCompa.setTexto(compa.getNombre() + " \nHP: " + compa.getVida() + "\nMP: " + compa.getMana());
 
-
-
                 //------------------TURNO BOT----------------------\\
                 accion2 = enemigo.botEnemigo();
                 danio2 = compa.getDanioRecibido(enemigo.habilidadAtaque(enemigo.habilidades[accion2]));
