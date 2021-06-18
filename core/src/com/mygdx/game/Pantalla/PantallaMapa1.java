@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -26,9 +27,9 @@ public class PantallaMapa1 extends Stage implements Screen {
     private TextureRegion quieto;
     private float xActual=10;
     private float yActual=229;
-    private Texto frase, zona;
+    private Texto zona;
     private int op=4;
-    private static Music NecoMusic, puerta;
+    private static Music NecoMusic;
     private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje;
@@ -46,7 +47,7 @@ public class PantallaMapa1 extends Stage implements Screen {
         b = Render.batch;
 
         NecoMusic= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICANECOCITY));
-        //puerta= Gdx.audio.newMusic(Gdx.files.internal(Recursos.PUERTASONIDO));
+
 
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
@@ -62,7 +63,6 @@ public class PantallaMapa1 extends Stage implements Screen {
         crisIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
         crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
-        frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
 
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
@@ -120,6 +120,7 @@ public class PantallaMapa1 extends Stage implements Screen {
 
     private void mapaBosque(){
         if(personaje.overlaps(colision4)){
+            NecoMusic.stop();
             Render.app.setScreen(new PantallaBosque());
         }
     }
