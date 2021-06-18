@@ -147,8 +147,6 @@ public class PantallaBatalla implements Screen {
         accionEnemigo = new Texto(Recursos.FUENTE1, 30, Color.RED, true);
         accionEnemigo.setPosition(180, 615);
         accionEnemigo.setTexto("");
-
-
     }
 
     private void menu() {
