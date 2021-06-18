@@ -19,14 +19,14 @@ com/mygdx/game/App/Acciones.java
 com/mygdx/game/App/Mochila.java
  com.mygdx.game.App.Mochila
  com.mygdx.game.App.Mochila$Bolsillo
-com/mygdx/game/Elementos/Imagen.java
- com.mygdx.game.Elementos.Imagen
+com/mygdx/game/Utiles/Render.java
+ com.mygdx.game.Utiles.Render
 com/mygdx/game/Elementos/Texto.java
  com.mygdx.game.Elementos.Texto
 com/mygdx/game/Utiles/Config.java
  com.mygdx.game.Utiles.Config
-com/mygdx/game/Elementos/ColisionMapa.java
- com.mygdx.game.Elementos.ColisionMapa
+com/mygdx/game/Pantalla/PantallaMapa3.java
+ com.mygdx.game.Pantalla.PantallaMapa3
 com/mygdx/game/App/Entrenador.java
  com.mygdx.game.App.Entrenador
 com/mygdx/game/App/Elixir.java
@@ -41,42 +41,44 @@ com/mygdx/game/App/Digimon.java
  com.mygdx.game.App.Digimon
 com/mygdx/game/Elementos/Botones.java
  com.mygdx.game.Elementos.Botones
-com/mygdx/game/Elementos/Personaje.java
- com.mygdx.game.Elementos.Personaje
+com/mygdx/game/Pantalla/PantallaMapa1.java
+ com.mygdx.game.Pantalla.PantallaMapa1
 com/mygdx/game/App/Pocion.java
  com.mygdx.game.App.Pocion
 com/mygdx/game/Pantalla/PantallaCreditos.java
  com.mygdx.game.Pantalla.PantallaCreditos
-com/mygdx/game/App/Batalla.java
- com.mygdx.game.App.Batalla
+com/mygdx/game/Pantalla/PantallaHistoria.java
+ com.mygdx.game.Pantalla.PantallaHistoria
+ com.mygdx.game.Pantalla.PantallaHistoria$1
+ com.mygdx.game.Pantalla.PantallaHistoria$2
 com/mygdx/game/Utiles/Recursos.java
  com.mygdx.game.Utiles.Recursos
-com/mygdx/game/App/Item.java
- com.mygdx.game.App.Item
+com/mygdx/game/Pantalla/PantallaMenu.java
+ com.mygdx.game.Pantalla.PantallaMenu
 com/mygdx/game/Elementos/GifDecoder.java
  com.mygdx.game.Elementos.GifDecoder
  com.mygdx.game.Elementos.GifDecoder$DixieMap
  com.mygdx.game.Elementos.GifDecoder$GifFrame
 com/mygdx/game/App/Turno.java
  com.mygdx.game.App.Turno
-com/mygdx/game/Pantalla/PantallaMapa3.java
- com.mygdx.game.Pantalla.PantallaMapa3
-com/mygdx/game/App/Combate.java
- com.mygdx.game.App.Combate
-com/mygdx/game/Utiles/Render.java
- com.mygdx.game.Utiles.Render
-com/mygdx/game/Pantalla/PantallaHistoria.java
- com.mygdx.game.Pantalla.PantallaHistoria
- com.mygdx.game.Pantalla.PantallaHistoria$1
- com.mygdx.game.Pantalla.PantallaHistoria$2
-com/mygdx/game/Pantalla/PantallaMenu.java
- com.mygdx.game.Pantalla.PantallaMenu
 com/mygdx/game/MiJuego.java
  com.mygdx.game.MiJuego
-com/mygdx/game/Pantalla/PantallaMapa1.java
- com.mygdx.game.Pantalla.PantallaMapa1
+com/mygdx/game/App/Combate.java
+ com.mygdx.game.App.Combate
+com/mygdx/game/Elementos/ColisionMapa.java
+ com.mygdx.game.Elementos.ColisionMapa
+com/mygdx/game/App/Item.java
+ com.mygdx.game.App.Item
 com/mygdx/game/Pantalla/PantallaCarga.java
  com.mygdx.game.Pantalla.PantallaCarga
+com/mygdx/game/Elementos/Personaje.java
+ com.mygdx.game.Elementos.Personaje
+com/mygdx/game/App/Batalla.java
+ com.mygdx.game.App.Batalla
+com/mygdx/game/Elementos/Imagen.java
+ com.mygdx.game.Elementos.Imagen
+com/mygdx/game/Pantalla/PantallaLaboratorio2.java
+ com.mygdx.game.Pantalla.PantallaLaboratorio2
 com/mygdx/game/Pantalla/PantallaBosque.java
  com.mygdx.game.Pantalla.PantallaBosque
 com/mygdx/game/Pantalla/PantallaCreacion.java
@@ -96,7 +98,5 @@ com/mygdx/game/Pantalla/PantallaBatalla.java
  com.mygdx.game.Pantalla.PantallaBatalla
 com/mygdx/game/Pantalla/PantallaMapa2.java
  com.mygdx.game.Pantalla.PantallaMapa2
-com/mygdx/game/Pantalla/PantallaLaboratorio2.java
- com.mygdx.game.Pantalla.PantallaLaboratorio2
 com/mygdx/game/Pantalla/PantallaTransicion.java
  com.mygdx.game.Pantalla.PantallaTransicion
