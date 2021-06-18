@@ -72,7 +72,7 @@ public class Recursos {
             "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
             " a\ndespejar sus dudas abriendole la puerta a su mundo:";
 
-    public static final String DIALOGO_CHALM = "DR. CHALM: Buenos dias, soy el Dr. Chalm, amo y señor del\nmundo digital, tu debes ser el enviado del mundo fisico\n" +
+    public static final String DIALOGO_CHALM = "???????: Buenos dias, soy el Dr. Chalm, amo y señor del\nmundo digital, tu debes ser el enviado del mundo fisico\n" +
             "donde habita el mitico Dieguito Maradona...";
 
     public static final String DIALOGO_CHALM1= "Jugador: ¿Mundo Digital?...En donde se encuentra eso.";
@@ -114,11 +114,21 @@ public class Recursos {
 
     public static final String DIALOGO_CHALM17= "Jugador: No creo posible que haya un digimon\n superior al que acabo de enfrentar";
 
-    public static final String DIALOGO_CHALM18= "Dr Chalm: No pierdas la esperanza \njoven estudiante de otro mundo!";
+    public static final String DIALOGO_CHALM18= "Dr Chalm: No pierdas la esperanza \njoven estudiante de otro mundo. Te hago entrega de los\n datos de Omnimon para que puedas derrotar a Milleniumon.";
 
-    public static final String DIALOGO_CHALM19= "Jugador: Entonces aceptare ese digimon supremo!";
+    public static final String DIALOGO_CHALM19= "Jugador: Entonces aceptare ese digimon supremo!. Gracias cHalm";
 
     public static final String DIALOGO_CHALM20= "Dr Chalm: Te hago entrega de OMNIMON!!";
+
+    public static final String TEXTO_POSTCREDITOS= "Y con un gran esfuerzo de su digimon y el poder de la confianza \nentre el Tamer y el digimon"+
+            "lograron de derrotar a al Malvado Milleniummon poniendo fin a su malvado plan de destruir todo el mundo digital. Antes de morir, nuestro"+
+            "enemigo detona una potente explosion de datos que nos envia al ciberespacios: Lugar donde aun el joven Heroe le esperaran mas aventuras\n" +
+            "CONTINUARA.";
+
+    public static final String TEXTO_CREDITOS="Producido por Usted++™\nDesarrolladores: Alejandro Bonacchio, Diego Arzondo, Yani Pontoni, Luciano Buda\n" +
+            "Diseñadores: Diego Arzondo, Luciano Buda."+"Para proyecto final de programacion de UTN. Todo los derechos reservados¸";
+
+
 
     /*14 al 20 se podria pasar a la parte donde te entrega el omnimon*/
 
