@@ -168,13 +168,14 @@ public class PantallaCreacion implements Screen {
         agumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int[] compaSkills = {8, 4, 6, 7};
-                int[] enemigoSkills = {8, 3, 4, 5};
+                int[] compaSkills = {7, 1, 2, 3};
                 int[] itemKeys = {1,2,3,4};
-                PantallaBatalla.setCompa(new Compa(5,1000,500,100,10,150, "pikachu", 15, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
-                PantallaBatalla.setEnemigo(new Enemigo(5, 500,200,50,25,100, "Charizard", 100, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+                int[] enemigoSkills = {7, 4, 5, 6};
+                PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+                PantallaBatalla.setCompa(new Compa(99,1600,1200,120,30,100, "Agumon", 60, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
                 PantallaBatalla.setEntrenador(itemKeys);
-                Render.app.setScreen(new PantallaMapa());
+                PantallaBatalla.setAgumon(true);
+                Render.app.setScreen(new PantallaBatalla());
             }
         });
     }
@@ -183,8 +184,14 @@ public class PantallaCreacion implements Screen {
         gabumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                 Render.app.setScreen(new PantallaMapa());
-
+                int[] compaSkills = {7, 1, 2, 3};
+                int[] itemKeys = {1,2,3,4};
+                int[] enemigoSkills = {7, 4, 5, 6};
+                PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+                PantallaBatalla.setCompa(new Compa(99,1600,1200,120,30,100, "Gabumon", 60, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
+                PantallaBatalla.setEntrenador(itemKeys);
+                PantallaBatalla.setAgumon(false);
+                Render.app.setScreen(new PantallaBatalla());
             }
         });
     }
@@ -207,6 +214,7 @@ public class PantallaCreacion implements Screen {
         b.begin();
         fondo.dibujar();
         texto.dibujar();
+
         stage.act();
         stage.draw();
         eleccionDigimon();
