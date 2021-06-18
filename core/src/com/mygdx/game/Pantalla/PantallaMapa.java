@@ -26,10 +26,11 @@ public class PantallaMapa implements Screen {
     private float yActual=229;
     private Texto frase;
     private int op=0;
-    private Imagen mapa,nombreM,laboratorio;
+    private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje;
-    private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,colision10,colision11,colision12,colision13,colision14,colision15,colision16;
+    private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
+            colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
 
 
@@ -43,7 +44,6 @@ public class PantallaMapa implements Screen {
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
 
-        laboratorio=new Imagen(Recursos.LABORATORIO);
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.CRIS_ESPALDA,3,0.1f);
@@ -76,6 +76,7 @@ public class PantallaMapa implements Screen {
         colision14 = new ColisionMapa(0,-1,1280,2);
         colision15 = new ColisionMapa(1238,0,2,720);
         colision16 = new ColisionMapa(1115,340,165,380);
+        colision17 = new ColisionMapa(1092,450,15,40);
     }
 
     @Override
@@ -88,18 +89,14 @@ public class PantallaMapa implements Screen {
         personaje.setPosition(xActual,yActual);
         colision();
         cambioMapa();
-        System.out.println(xActual +" "+ yActual);
         b.end();
 
     }
 
     private void cambioMapa(){
-        if(xActual>=1100 && yActual>=445){
-            mapa.fadeOutImagen(mapa,cont);
-            laboratorio.fadeInImagen(laboratorio,cont);
-            quieto = crisEspalda.personajeEspera();
-            b.draw(quieto, 638, 25);
-            moverse();
+        if(personaje.overlaps(colision17)){
+            dispose();
+            Render.app.setScreen(new PantallaLaboratorio());
         }
     }
 

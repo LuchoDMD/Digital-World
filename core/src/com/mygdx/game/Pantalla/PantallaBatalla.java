@@ -28,7 +28,7 @@ public class PantallaBatalla implements Screen {
 
     private SpriteBatch b;
     private int ancho=200, alto=30;
-    private Imagen fondo;
+    private Imagen fondo, chalm;
     private Texto statsCompa,statsEnemigo,menu,aux, accionEnemigo, accionCompa;
     private Texto descripcion = new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
     private EntradaBatalla entrada = new EntradaBatalla(this);
@@ -83,9 +83,12 @@ public class PantallaBatalla implements Screen {
         b= Render.batch;
         Gdx.input.setInputProcessor(entrada);
         fondo= new Imagen(Recursos.BATALLA);
+        chalm= new Imagen(Recursos.CHALMENEMIGO);
+        chalm.setPosition(850, 400);
 
         //descripcion=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
-        descripcion.setTexto("Presione Espacio para \niniciar la simulación de combate");
+        //descripcion.setTexto("Presione Espacio para \niniciar la simulación de combate");
+        descripcion.setTexto("UN CHALM SALVAJE HA APARECIDO!");
         descripcion.setPosition(80,150);
 
 
@@ -107,7 +110,8 @@ public class PantallaBatalla implements Screen {
 
         statsEnemigo=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
         statsEnemigo.setPosition(50, 650);
-        statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
+        //statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
+        statsEnemigo.setTexto("Chalm \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
 
         accionEnemigo = new Texto(Recursos.FUENTE1, 30, Color.RED, true);
         accionEnemigo.setPosition(180, 615);
@@ -162,9 +166,11 @@ public class PantallaBatalla implements Screen {
                         op = compa.elegirItem(entrenador.getMochila());
                         if (op != -1) {
                             accionCompa.setTexto("Has Utilizado: " + entrenador.mochila.getBolsillos(op).getItem().getDescEfecto());
+                            log.add(new Turno(compa.getNombre(), turno, entrenador.mochila.getBolsillos(op).getItem()));
                             entrenador.mochila.getBolsillos(op).usar(compa, op);
                         }
                         break;
+
                 }
 
                 //prints\\
@@ -200,9 +206,11 @@ public class PantallaBatalla implements Screen {
                     menu.setTexto("");
                     flag2 = true;
                 }
+                System.out.println(log.get(turno).toString());
+                turno++;
             }
 
-            com.mygdx.game.App.Texto.printLog(log);
+
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2) {
             Render.app.setScreen(new PantallaMapa());
@@ -218,6 +226,7 @@ public class PantallaBatalla implements Screen {
         musica.play();
         b.begin();
         fondo.dibujar();
+        chalm.dibujar();
         menu();
         accionCompa.dibujar();
         accionEnemigo.dibujar();

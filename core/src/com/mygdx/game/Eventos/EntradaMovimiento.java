@@ -3,6 +3,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.mygdx.game.Pantalla.PantallaBatalla;
 import com.mygdx.game.Pantalla.PantallaHistoria;
+import com.mygdx.game.Pantalla.PantallaLaboratorio;
 import com.mygdx.game.Pantalla.PantallaMapa;
 
 //TODO clase para setear el comportamiento de los botones a la pantalla del mapa
@@ -13,6 +14,11 @@ public class EntradaMovimiento implements InputProcessor {
             derecha = false, letraE=false;
     private PantallaMapa mapa;
     private PantallaHistoria historia;
+    private PantallaLaboratorio laboratorio;
+
+    public EntradaMovimiento(PantallaLaboratorio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
 
     public EntradaMovimiento(PantallaHistoria historia) {
         this.historia = historia;

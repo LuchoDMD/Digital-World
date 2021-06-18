@@ -20,6 +20,7 @@ public class Recursos {
     public static final String LABORATORIO = "Fondos/LABORATORIO.png";
 
 
+    public static final String CHALMENEMIGO = "Personaje/chalm.png";
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
 
     public static final String MUSICAMENU = "Musica/menusong.mp3";
