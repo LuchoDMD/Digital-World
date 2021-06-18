@@ -1,31 +1,30 @@
 package com.mygdx.game.Pantalla;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Elementos.ColisionMapa;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
-import com.mygdx.game.Eventos.EntradaMovimiento;
 import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
 
-
-public class PantallaMapa implements Screen {
+public class PantallaMapa extends Stage implements Screen {
 
     private SpriteBatch b;
-    private EntradaMovimiento entada = new EntradaMovimiento(this);
     private Personaje crisEspalda,crisFrente,crisIzq,crisDer;
     private TextureRegion quieto;
     private float xActual=10;
     private float yActual=229;
     private Texto frase;
-    private int op=0;
+    private int op=4;
     private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje;
@@ -37,7 +36,6 @@ public class PantallaMapa implements Screen {
     @Override
     public void show() {
         b = Render.batch;
-        Gdx.input.setInputProcessor(entada);
 
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
@@ -46,10 +44,10 @@ public class PantallaMapa implements Screen {
 
 
         /**SETEO DE PERSONAJE*/
-        crisEspalda = new Personaje(Recursos.CRIS_ESPALDA,3,0.1f);
-        crisFrente  = new Personaje(Recursos.CRIS_FRENTE,3,0.1f);
-        crisIzq  = new Personaje(Recursos.CRIS_IZQ,3,0.1f);
-        crisDer  = new Personaje(Recursos.CRIS_DER,3,0.1f);
+        crisEspalda = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
+        crisFrente  = new Personaje(Recursos.HERO_M_FRENTE,3,0.1f);
+        crisIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
+        crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
         frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
 
@@ -89,8 +87,8 @@ public class PantallaMapa implements Screen {
         personaje.setPosition(xActual,yActual);
         colision();
         cambioMapa();
+        mapaBosque();
         b.end();
-
     }
 
     private void cambioMapa(){
@@ -100,8 +98,14 @@ public class PantallaMapa implements Screen {
         }
     }
 
+    private void mapaBosque(){
+        if(personaje.overlaps(colision4)){
+            Render.app.setScreen(new PantallaBosque());
+        }
+    }
+
     private void colision() {
-        if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision4)|| personaje.overlaps(colision5) ||
+        if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision5) ||
                 personaje.overlaps(colision6)|| personaje.overlaps(colision7) || personaje.overlaps(colision8)|| personaje.overlaps(colision9) || personaje.overlaps(colision10)
                 || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)){
             quietoS();
@@ -134,7 +138,7 @@ public class PantallaMapa implements Screen {
     }
 
     private void movArriba() {
-        if(entada.isArriba()){
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
         crisEspalda.setX(xActual);
         crisEspalda.setY(yActual + 5);
         crisEspalda.render(b);
@@ -144,7 +148,7 @@ public class PantallaMapa implements Screen {
     }
 
     private void movAbajo() {
-        if (entada.isAbajo()){
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
         crisEspalda.setX(xActual);
         crisEspalda.setY(yActual - 5);
         crisEspalda.render(b);
@@ -154,7 +158,7 @@ public class PantallaMapa implements Screen {
     }
 
     private void movIzq() {
-        if(entada.isIzquierda()){
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
             crisIzq.setX(xActual - 5);
             crisIzq.setY(yActual);
             crisIzq.render(b);
@@ -164,7 +168,7 @@ public class PantallaMapa implements Screen {
     }
 
     private void movDer(){
-        if (entada.isDerecha()){
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             crisDer.setX(xActual + 5);
             crisDer.setY(yActual);
             crisDer.render(b);
@@ -197,32 +201,32 @@ public class PantallaMapa implements Screen {
 
     private void moverse(){
             int veloc = 3;
-            if (entada.isArriba()) {
+            if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
                 crisEspalda.setX(xActual);
                 crisEspalda.setY(yActual + veloc);
                 crisEspalda.render(b);
                 yActual = crisEspalda.getY();
                 op = 1;
-            } else if (entada.isAbajo()) {
+            } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 crisFrente.setX(xActual);
                 crisFrente.setY(yActual - veloc);
                 crisFrente.render(b);
                 yActual = crisFrente.getY();
                 op = 2;
-            } else if (entada.isIzquierda()) {
+            } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 crisIzq.setX(xActual - veloc);
                 crisIzq.setY(yActual);
                 crisIzq.render(b);
                 xActual = crisIzq.getX();
                 op = 3;
-            } else if (entada.isDerecha()) {
+            } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 crisDer.setX(xActual + veloc);
                 crisDer.setY(yActual);
                 crisDer.render(b);
                 xActual = crisDer.getX();
                 op = 4;
             }
-            else if (entada.isLetraE()) {
+            else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
                 frase.setPosition(xActual + 65, yActual + 57);
                 frase.setTexto("Donde va el padre,\nva el hijo.");
                 quieto = crisFrente.personajeEspera();
@@ -258,7 +262,6 @@ public class PantallaMapa implements Screen {
 
     @Override
     public void pause() {
-
     }
 
     @Override
