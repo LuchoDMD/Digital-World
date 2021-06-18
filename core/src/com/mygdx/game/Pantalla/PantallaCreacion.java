@@ -174,7 +174,7 @@ public class PantallaCreacion implements Screen {
                 PantallaBatalla.setCompa(new Compa(5,1000,500,100,10,150, "pikachu", 15, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
                 PantallaBatalla.setEnemigo(new Enemigo(5, 500,200,50,25,100, "Charizard", 100, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setEntrenador(itemKeys);
-                Render.app.setScreen(new PantallaBatalla());
+                Render.app.setScreen(new PantallaMapa());
             }
         });
     }

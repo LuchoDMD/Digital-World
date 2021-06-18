@@ -11,7 +11,7 @@ import com.mygdx.game.Pantalla.PantallaMapa;
 public class EntradaMovimiento implements InputProcessor {
 
     private boolean abajo=false, arriba=false, enter=false, izquierda=false,
-            derecha = false, letraE=false;
+            derecha = false, letraE=false,letraW=false;
     private PantallaMapa mapa;
     private PantallaHistoria historia;
     private PantallaLaboratorio laboratorio;
@@ -27,6 +27,10 @@ public class EntradaMovimiento implements InputProcessor {
     public EntradaMovimiento(PantallaMapa mapa){
         this.mapa=mapa;
     }
+
+
+    public boolean isLetraW() {
+        return letraW;}
 
     public boolean isIzquierda() {
         return izquierda;
@@ -73,6 +77,9 @@ public class EntradaMovimiento implements InputProcessor {
         if(keycode==Keys.E){
             letraE=true;
         }
+        if(keycode==Keys.W){
+            letraW=true;
+        }
         return false;
     }
 
@@ -95,6 +102,9 @@ public class EntradaMovimiento implements InputProcessor {
         }
         if(keycode == Keys.E){
             letraE=false;
+        }
+        if(keycode == Keys.W){
+            letraW=false;
         }
         return false;
     }

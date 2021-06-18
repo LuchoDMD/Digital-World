@@ -234,60 +234,10 @@ public class PantallaBatalla implements Screen {
                 statsCompa.dibujar();
                 }
             }
+            turnoBot();
             flagMenu = false;
         }
     }
-
-
-    public static void setPause(int seg)
-    {
-        try {
-            Thread.sleep(seg);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*private void menuHabilidades(){
-
-            if (entrada.isBot1()) {
-                boolean flag = false;
-                int danio = enemigo.getDanioRecibido(compa.habilidadAtaque(compa.habilidades[0]));
-                if (compa.verificarMana(compa.habilidades[0])) {
-                    compa.setMana(compa.getMana() - compa.habilidades[0].getCostoMP());
-                    enemigo.golpeRematador(danio);
-                    flag = true;
-                }
-                if (flag) {
-                    log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[0].getNombre()));
-                    descripcion.setTexto("Has lanzado " + compa.habilidades[0].getNombre());
-                }
-                com.mygdx.game.App.Texto.printMenuStatus(enemigo, compa);
-                statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
-                compa.regenerarMP();
-            }
-
-
-            else if (entrada.isBot2()) {
-                boolean flag = false;
-                int danio = enemigo.getDanioRecibido(compa.habilidadAtaque(compa.habilidades[1]));
-                if (compa.verificarMana(compa.habilidades[1])) {
-                    compa.setMana(compa.getMana() - compa.habilidades[1].getCostoMP());
-                    enemigo.golpeRematador(danio);
-                    flag = true;
-                } else {
-                    aux.setTexto("No tienes sufiente MP ");
-                    aux.dibujar();
-                }
-                if (flag) {
-                    log.add(new Turno(compa.getNombre(), enemigo.getNombre(), danio, turno, compa.habilidades[1].getNombre()));
-                    descripcion.setTexto("Has lanzado " + compa.habilidades[1].getNombre());
-                }
-                com.mygdx.game.App.Texto.printMenuStatus(enemigo, compa);
-                statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
-            }
-    }*/
-
 
     private void turnoBot(){
 
@@ -312,7 +262,7 @@ public class PantallaBatalla implements Screen {
         Render.limpiarPantalla(1,1,1);
         tiempo+=delta/2;
         musica.setVolume(0.3f);
-        //musica.play();
+        musica.play();
         b.begin();
         fondo.dibujar();
         descripcion.dibujar();

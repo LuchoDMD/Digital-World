@@ -18,6 +18,7 @@ public class Recursos {
     public static final String PANTALLA_NEGRA = "Fondos/pantalla negra.png";
     public static final String BOSQUE = "Fondos/BOSQUE.png";
     public static final String LABORATORIO = "Fondos/LABORATORIO.png";
+    public static final String MILENIUNMON = "Fondos/mileniunmon.png";
 
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
@@ -66,6 +67,36 @@ public class Recursos {
     public static final String INTRODUCCION3="\t-¿Quien o que eres?. El joven decide inexplicablemente que debia\n aventurarse a averiguar" +
             "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
             " a\ndespejar sus dudas abriendole la puerta a su mundo:";
+
+
+
+    public static final String DIALOGO_CHALM = "DR. CHALM: Buenos dias, soy el Dr. Chalm, amo y señor del\nmundo digital, tu debes ser el enviado del mundo fisico\n" +
+            "donde habita el mitico Dieguito Maradona...";
+
+    public static final String DIALOGO_CHALM1= "JUGADOR: ¿Mundo Digital?...En donde se encuentra eso.";
+
+    public static final String DIALOGO_CHALM2= "DR. CHALM: Se encuentra en una parte de la red oculta debajo\nde las profundidades mas obscuras del ciberespacio.\n" +
+            "En estas habitan unas entidades digitales llamadas DIGIMONS.";
+
+    public static final String DIALOGO_CHALM3="Este es el acronimo de monstruos digitales, si te lo estas\npreguntando, si, ahora nosotros al igual que ellos,\n" +
+            "estamos formados por bits.";
+
+    public static final String DIALOGO_CHALM4= "JUGADOR: Esto no puede ser posible, pero por que yo he terminado\nen este lugar.";
+
+
+    public static final String DIALOGO_CHALM5="Dr.Chalm: No se bien como responderte a esto pero, lo que se es que\ncon tu gran conocimiento sobre programacion" +
+            " y un raro giro del\ndestino hizo que te cruzaras con una de mis puertas digitales.";
+
+
+    public static final String DIALOGO_CHALM6= "JUGADOR: ¿Hay alguna manera de volver a mi hogar?";
+
+
+    public static final String DIALOGO_CHALM7= "Dr. Chalm: Si la hay pero para ello necesitamos recuperar\nun Archivo Jeison que contiene la informacion sobre la llave para\n" +
+            "abrir el portal. Asi que ve muchacho y cumple con tu destino.";
+
+
+
+
 
 
 
