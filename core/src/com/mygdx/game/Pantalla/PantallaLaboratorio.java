@@ -125,7 +125,7 @@ public class PantallaLaboratorio implements Screen {
         if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM7)){
             texto.setTexto("");
             dialogo.setTransparencia(0);
-            Render.app.setScreen(new PantallaMapa());
+            Render.app.setScreen(new PantallaMapaDestruida());
         }
 
         /**BOTON IZQUIERDA*/
