@@ -10,6 +10,8 @@ public class Main {
         Enemigo charizard = new Enemigo(5, 500,200,50,25,100, "Charizard", 100, Carga.cargarHabilidades(), charizardSkills);
         Compa pikachu = new Compa(5,1000,500,100,10,150, "pikachu", 15, Carga.cargarHabilidades(), pikachuSkills);
 
+
+
         //Entrenador\\
         int[] itemKeys = {1,2,3,4};
         Mochila mochilaJugador = new Mochila(Carga.cargarItems(), itemKeys);
