@@ -27,7 +27,8 @@ public class PantallaMapaDestruida extends Stage implements Screen {
     private int op=2;
     private Imagen mapa,nombreM;
     private float cont=0;
-    private Rectangle personaje;
+    private Rectangle personaje,rocaC,devilmonC;
+    private Imagen devilmon,roca,roca1,roca2;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
             colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
@@ -36,7 +37,6 @@ public class PantallaMapaDestruida extends Stage implements Screen {
     @Override
     public void show() {
         b = Render.batch;
-
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
         nombreM.setPosition(30,670);
@@ -50,11 +50,31 @@ public class PantallaMapaDestruida extends Stage implements Screen {
         crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
         frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
+        devilmon=new Imagen(Recursos.DEVILMON);
+        devilmon.setPosition(860,20);
+
+        roca= new Imagen(Recursos.ROCA);
+        roca.setSize(120,120);
+        roca.setPosition(970,180);
+
+        roca1= new Imagen(Recursos.ROCA);
+        roca2= new Imagen(Recursos.ROCA);
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
         personaje=new Rectangle();
         personaje.width=1;
         personaje.height=1;
+
+        rocaC=new Rectangle();
+        rocaC.width=120;
+        rocaC.height=120;
+        rocaC.setPosition(roca.getX(),roca.getY());
+
+        devilmonC=new Rectangle();
+        devilmonC.width=54;
+        devilmonC.height=74;
+        devilmonC.setPosition(devilmon.getX(),devilmon.getY()-10);
+
 
 
         /**GENERANDO LAS COLISIONES*/
@@ -83,8 +103,13 @@ public class PantallaMapaDestruida extends Stage implements Screen {
         Render.limpiarPantalla(0, 0, 0);
         b.begin();
         mapa.dibujar();
+        devilmon.dibujar();
+        roca.dibujar();
+        roca1.dibujar();
+        roca2.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
+        colisionDevilmon();
         colision();
         cambioMapa();
         mapaBosque();
@@ -105,10 +130,17 @@ public class PantallaMapaDestruida extends Stage implements Screen {
         }
     }
 
+    private void colisionDevilmon(){
+        if(personaje.overlaps(devilmonC)){
+            Render.app.setScreen(new PantallaBatalla());
+        }
+    }
+
     private void colision() {
         if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision5) ||
                 personaje.overlaps(colision6)|| personaje.overlaps(colision7) || personaje.overlaps(colision8)|| personaje.overlaps(colision9) || personaje.overlaps(colision10)
-                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)){
+                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)
+        || personaje.overlaps(rocaC)){
             quietoS();
             switch (op){
                 case 1:
@@ -226,14 +258,14 @@ public class PantallaMapaDestruida extends Stage implements Screen {
                 crisDer.render(b);
                 xActual = crisDer.getX();
                 op = 4;
-            }
-            else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+            }else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
                 frase.setPosition(xActual + 65, yActual + 57);
-                frase.setTexto("Donde va el padre,\nva el hijo.");
+                frase.setTexto("¿Donde va el padre,\nva el hijo.?");
                 quieto = crisFrente.personajeEspera();
                 b.draw(quieto, xActual, yActual);
                 frase.dibujar();
-            }else{
+            }
+            else{
                 switch (op) {
                     case 0:
                     case 1:

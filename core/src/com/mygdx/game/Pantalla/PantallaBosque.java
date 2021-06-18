@@ -139,8 +139,8 @@ public class PantallaBosque implements Screen {
     }
     private void pelea(){
         if(personaje.overlaps(colision7)){
-            int[] enemigoSkills = {7, 4, 5, 6};
-            PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+            int[] milleniumskills = {15,4,5,6};
+            PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), milleniumskills));
             Render.app.setScreen(new PantallaBatalla());
         }
     }

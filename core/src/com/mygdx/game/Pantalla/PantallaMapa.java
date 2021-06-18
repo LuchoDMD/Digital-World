@@ -3,6 +3,7 @@ package com.mygdx.game.Pantalla;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,6 +16,8 @@ import com.mygdx.game.Elementos.Texto;
 import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
+import java.lang.invoke.MutableCallSite;
+
 
 public class PantallaMapa extends Stage implements Screen {
 
@@ -23,8 +26,9 @@ public class PantallaMapa extends Stage implements Screen {
     private TextureRegion quieto;
     private float xActual=10;
     private float yActual=229;
-    private Texto frase;
+    private Texto frase, zona;
     private int op=4;
+    private static Music NecoMusic, puerta;
     private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje;
@@ -32,16 +36,25 @@ public class PantallaMapa extends Stage implements Screen {
             colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
 
+    public static void turnOff(){
+        NecoMusic.stop();
+    }
+
 
     @Override
     public void show() {
         b = Render.batch;
 
+        NecoMusic= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICANECOCITY));
+        //puerta= Gdx.audio.newMusic(Gdx.files.internal(Recursos.PUERTASONIDO));
+
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
-
+        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        zona.setTexto("NecoCity()");
+        zona.setPosition(550, 700);
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
@@ -50,6 +63,7 @@ public class PantallaMapa extends Stage implements Screen {
         crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
         frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
+
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
         personaje=new Rectangle();
@@ -82,7 +96,10 @@ public class PantallaMapa extends Stage implements Screen {
         cont+=delta/8;
         Render.limpiarPantalla(0, 0, 0);
         b.begin();
+        NecoMusic.setVolume(0.3f);
+        NecoMusic.play();
         mapa.dibujar();
+        zona.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
         colision();
@@ -225,13 +242,6 @@ public class PantallaMapa extends Stage implements Screen {
                 crisDer.render(b);
                 xActual = crisDer.getX();
                 op = 4;
-            }
-            else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-                frase.setPosition(xActual + 65, yActual + 57);
-                frase.setTexto("Donde va el padre,\nva el hijo.");
-                quieto = crisFrente.personajeEspera();
-                b.draw(quieto, xActual, yActual);
-                frase.dibujar();
             }else{
                 switch (op) {
                     case 0:
