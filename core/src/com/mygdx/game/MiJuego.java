@@ -15,7 +15,7 @@ public class MiJuego extends Game {
 		Render.batch=new SpriteBatch();
 			Carga.guardarItems();
 			Carga.guardarHabilidades();
-			this.setScreen(new PantallaCreacion());
+			this.setScreen(new PantallaCarga());
 	}
 
 	@Override
