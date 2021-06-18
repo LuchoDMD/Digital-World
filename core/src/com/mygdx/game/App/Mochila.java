@@ -126,7 +126,7 @@ public class Mochila
         {
             if(cantidad>0)
             {
-                if(item instanceof Pocion)
+                if(item.getDescEfecto().equals("Pocion"))
                 {
                     if (partner.getVida()+item.getCantRestauracion()>partner.getHp())
                     {
@@ -136,7 +136,7 @@ public class Mochila
                         partner.setVida(partner.getVida()+item.getCantRestauracion());
                     }
                 }
-                if(item instanceof Elixir)
+                if(item.getDescEfecto().equals("Elixir"))
                 {
                     if (partner.getMana()+item.getCantRestauracion()>partner.getMp())
                     {

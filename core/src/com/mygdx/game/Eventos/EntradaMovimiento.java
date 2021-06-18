@@ -13,6 +13,7 @@ public class EntradaMovimiento implements InputProcessor {
     private PantallaHistoria historia;
     private PantallaLaboratorio laboratorio;
     private PantallaLaboratorio2 laboratorio2;
+    private PantallaLaboratorio3 laboratorio3;
 
     public EntradaMovimiento(PantallaHistoria historia) {
         this.historia = historia;
@@ -24,6 +25,10 @@ public class EntradaMovimiento implements InputProcessor {
 
     public EntradaMovimiento(PantallaLaboratorio2 laboratorio2) {
         this.laboratorio2 = laboratorio2;
+    }
+
+    public EntradaMovimiento(PantallaLaboratorio3 laboratorio3) {
+        this.laboratorio3 = laboratorio3;
     }
 
     public EntradaMovimiento(PantallaMapa mapa){
