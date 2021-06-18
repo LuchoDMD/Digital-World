@@ -57,7 +57,7 @@ public class Habilidad {
     @Override
     public String toString() {
         return "Nombre: " + nombre +
-                ", Daño: " + danio +
+                ", Dmg: " + danio +
                 ", Precision: " + precision +
                 ", Costo de MP: " + costoMP;
     }

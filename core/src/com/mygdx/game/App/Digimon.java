@@ -42,6 +42,9 @@ public abstract class Digimon {
     //check para saber si tiene mana suficiente para lanzar el skill
     public abstract boolean verificarMana(Habilidad habilidad);
 
+    public abstract boolean fallo(Habilidad habilidad);
+
+
     public void limpiarEstado(){    //método que se usa al terminar el turno para remover los status
         if (this.getEstado() == 1){
             this.setDefensa(this.getDefensa() - 10);

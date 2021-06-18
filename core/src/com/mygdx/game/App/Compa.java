@@ -52,6 +52,7 @@ public class Compa extends Digimon implements Combate {
         this.experiencia = experiencia;
     }
 
+
     // METODOS \\
 
     public int elegirItem(Mochila mochila){
@@ -76,6 +77,14 @@ public class Compa extends Digimon implements Combate {
             setNivel(getNivel()+1);
             /*subeStats();*/
         }
+    }
+
+    @Override
+    public boolean fallo(Habilidad habilidad){
+        if(habilidadAtaque(habilidad) == 0){
+            return true;
+        }
+        return false;
     }
 
     @Override

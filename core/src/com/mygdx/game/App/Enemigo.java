@@ -47,6 +47,29 @@ public class Enemigo extends Digimon implements Combate {
         return ((getNivel()*getAtaque())+(getDefensa()*getVelocidad()))/100;
     }
 
+    public int botEnemigo(){  //bot actúa semi aleatorio
+        Random random = new Random();
+        int accion;
+        accion = random.nextInt(4); // 0, 1 , 2, 3
+        if(accion <= 3){
+            if (verificarMana(habilidades[accion])){    //verifica el maná
+                return accion;
+            }
+            else {
+                return 0;
+            }
+        }
+        return accion;
+    }
+
+    @Override
+    public boolean fallo(Habilidad habilidad){
+        if(habilidadAtaque(habilidad) == 0){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean verificarMana(Habilidad habilidad){
         return this.getMp() > habilidad.getCostoMP();

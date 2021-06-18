@@ -77,23 +77,23 @@ public class Texto{
     }
 
 
-    public static void imprimirMenuInventario(List<Item> mochila){
+    public static void imprimirMenuInventario(List<Mochila.Bolsillo> mochila){
         int aux = 1;
-        for (Item variable: mochila) {
+        for (Mochila.Bolsillo variable: mochila) {
             System.out.println("presione " + aux + " para utilizar " + variable);
             aux++;
         }
+        System.out.println("Presione 0 para volver al menu anterior");
     }
 
 
     public static void printMenuSkills(Compa compa){
-        limpiarPantalla();
         imprimirEncabezado("LISTA DE HABILIDADES DISPONIBLES:");
         System.out.println("Habilidad 1: " + compa.habilidades[0].toString());
         System.out.println("Habilidad 2: " + compa.habilidades[1].toString());
         System.out.println("Habilitad 3: " + compa.habilidades[2].toString());
         System.out.println("Habilidad 4: " + compa.habilidades[3].toString());
-        System.out.println("5) Regresar al menu anterior.");
+        System.out.println("Presione 0 para Regresar al menu anterior.");
         imprimirSeparacion(50);
         System.out.print("Seleccione habilidad para lanzar: ");
     }

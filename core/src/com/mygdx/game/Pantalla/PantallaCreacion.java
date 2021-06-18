@@ -10,8 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.mygdx.game.App.Entrenador;
-import com.mygdx.game.App.Mochila;
+import com.mygdx.game.App.*;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
@@ -25,7 +24,6 @@ import com.mygdx.game.Utiles.Render;
 public class PantallaCreacion implements Screen {
 
     private SpriteBatch b;
-    private Personaje agumon,gabumon;
     private Texto texto;
     private Skin skin;
     private Stage stage;
@@ -35,7 +33,6 @@ public class PantallaCreacion implements Screen {
     private TextField n;
     private Boolean flag=false, gen=false;
     private Imagen heroeM,heroeF;
-    private float trancicion;
     private Entrenador entrenador;
     private Mochila mochila;
     private Imagen fondo;
@@ -91,16 +88,13 @@ public class PantallaCreacion implements Screen {
         gen=botonFemenino();
         flag=botonAceptar();
 
-        agumon= new Personaje(masculino.getX(),90, Recursos.AGUMON,5,0.15f);
-        gabumon= new Personaje(femenino.getX(),90, Recursos.GABUMON,5,0.15f);
-
         agumonB= new TextButton("AGUMON",skin);
-        agumonB.setPosition(agumon.getX()+20,agumon.getY()-30);
+        agumonB.setPosition(450,200);
         agumonB.setWidth(100);
         agumonB.setHeight(n.getHeight());
 
         gabumonB= new TextButton("GABUMON",skin);
-        gabumonB.setPosition(gabumon.getX()+10,gabumon.getY()-30);
+        gabumonB.setPosition(650,200);
         gabumonB.setWidth(100);
         gabumonB.setHeight(n.getHeight());
 
@@ -174,7 +168,13 @@ public class PantallaCreacion implements Screen {
         agumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Render.app.setScreen(new PantallaMapa());
+                int[] compaSkills = {8, 4, 6, 7};
+                int[] enemigoSkills = {8, 3, 4, 5};
+                int[] itemKeys = {1,2,3,4};
+                PantallaBatalla.setCompa(new Compa(5,5000,500,100,10,150, "pikachu", 15, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
+                PantallaBatalla.setEnemigo(new Enemigo(5, 5000,200,50,25,100, "Charizard", 100, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+                PantallaBatalla.setEntrenador(itemKeys);
+                Render.app.setScreen(new PantallaBatalla());
             }
         });
     }
@@ -184,18 +184,18 @@ public class PantallaCreacion implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                  Render.app.setScreen(new PantallaMapa());
+
             }
         });
     }
 
     private void eleccionDigimon(){
         if(flag){
-            agumon.render(b);
-            gabumon.render(b);
             poner(agumonB);
             poner(gabumonB);
             botonAgumon();
             botonGabumon();
+            flag=false;
         }
     }
 
@@ -203,7 +203,6 @@ public class PantallaCreacion implements Screen {
 
     @Override
     public void render(float delta) {
-        trancicion+=1f;
         Render.limpiarPantalla(1,1,1);
         b.begin();
         fondo.dibujar();

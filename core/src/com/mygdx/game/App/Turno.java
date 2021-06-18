@@ -6,6 +6,7 @@ public class Turno {
     private int danio;
     private int turno;
     private String ataque;
+    private Item item;
 
     //CONSTRUCTOR\\
     public Turno(String atacante, String defensor, int danio, int turno, String ataque) {
@@ -14,6 +15,11 @@ public class Turno {
         this.danio = danio;
         this.turno = turno;
         this.ataque = ataque;
+        this.item = null;
+    }
+
+    public Turno(String atacante, int turno, Item i){
+
     }
 
     //MÉTODOS\\
@@ -54,8 +60,14 @@ public class Turno {
 
     @Override
     public String toString() {
+        if(item == null){
+            return "Turno " + turno + " [" +
+                    atacante + " ataco a " + defensor + " haciendo un dmg de: " + danio + " con " + ataque +
+                    ']';
+        }
         return "Turno [" +
-                atacante + " atacó a " + defensor + " haciendo un daño de: " + danio + " con " + ataque +
+                atacante + " usó " + item.getDescEfecto() + " curandose por " + item.getCantRestauracion() +
                 ']';
+
     }
 }
