@@ -97,14 +97,21 @@ public class Carga {
 
     public static boolean guardarHabilidades(){
         Map<Integer, Habilidad> habilidades = new HashMap<>();
-        habilidades.put(1, new Habilidad(100, 95, 20, "Ataque Relampago"));
-        habilidades.put(2, new Habilidad(70, 100, 15, "Fuego Elemental"));
-        habilidades.put(3, new Habilidad(150, 70, 25, "Misil Etereo"));
-        habilidades.put(4, new Habilidad(200, 90, 50, "Explosion Mental"));
-        habilidades.put(5, new Habilidad(185, 85, 40, "Tormenta de Fuego"));
-        habilidades.put(6, new Habilidad(200, 65, 30, "Tormenta Elcctrica"));
-        habilidades.put(7, new Habilidad(300, 65, 50, "Descarga Elcctrica"));
-        habilidades.put(8, new Habilidad(40, 100, 0, "Ataque Basico"));
+        habilidades.put(1, new Habilidad(120,95,20,"Espada Trancesdental"));
+        habilidades.put(2, new Habilidad(150,100,30,"Rifle Supremo"));
+        habilidades.put(3, new Habilidad(250,70,35,"Omega Inforce"));
+        habilidades.put(4, new Habilidad(110,95,20,"Destructor Dimensional"));
+        habilidades.put(5, new Habilidad(120,95,20,"Crono Paradoja"));
+        habilidades.put(6, new Habilidad(250,95,20,"Gran Big Bang"));
+        habilidades.put(7, new Habilidad(80,95,20,"Garra Brutal"));
+        habilidades.put(8, new Habilidad(90,95,20,"Mordisco Fugaz"));
+        habilidades.put(9, new Habilidad(120,95,20,"Flama Bebe"));
+        habilidades.put(10, new Habilidad(90,95,20,"Cornada"));
+        habilidades.put(11, new Habilidad(110,95,20,"Fuego Azul"));
+        habilidades.put(12, new Habilidad(70,95,20,"Circ. Magico"));
+        habilidades.put(13, new Habilidad(75,95,20,"Frag. Hielo"));
+        habilidades.put(14, new Habilidad(80,95,20,"Llama Infernal"));
+        habilidades.put(15, new Habilidad(60,95,20,"Ataque Basico"));
         try{
             Gson gson = new Gson();
             //File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
@@ -121,12 +128,12 @@ public class Carga {
     }
 
     public static boolean guardarItems(){
-        Item pocionP = new Pocion("Pocion paqueña", TamanioItem.CHICO.getRecuperacion());
-        Item pocionM = new Pocion("Pocion mediana",  TamanioItem.MEDIANO.getRecuperacion());
-        Item pocionG = new Pocion("Pocion grande",  TamanioItem.GRANDE.getRecuperacion());
-        Item elixirP = new Elixir("Elixir pequeño",  TamanioItem.CHICO.getRecuperacion());
-        Item elixirM = new Elixir("Elixir mediano",  TamanioItem.MEDIANO.getRecuperacion());
-        Item elixirG = new Elixir("Elixir grande",  TamanioItem.GRANDE.getRecuperacion());
+        Item pocionP = new Pocion("Pocion",  TamanioItem.GRANDE.getRecuperacion());
+        Item pocionM = new Pocion("Pocion",  TamanioItem.GRANDE.getRecuperacion());
+        Item pocionG = new Pocion("Pocion",  TamanioItem.GRANDE.getRecuperacion());
+        Item elixirP = new Elixir("Elixir",  TamanioItem.GRANDE.getRecuperacion());
+        Item elixirM = new Elixir("Elixir",  TamanioItem.GRANDE.getRecuperacion());
+        Item elixirG = new Elixir("Elixir",  TamanioItem.GRANDE.getRecuperacion());
         Map<Integer, Item> items = new HashMap<>();
         items.put(1, pocionG);
         items.put(2, elixirG);

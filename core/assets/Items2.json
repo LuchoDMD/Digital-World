@@ -1,6 +1,6 @@
 {"1":{"descEfecto":"Pocion","cantRestauracion":1000},
-  "2":{"descEfecto":"Elixir","cantRestauracion":1400},
-  "3":{"descEfecto":"Elixir","cantRestauracion":1200},
-  "4":{"descEfecto":"Elixir","cantRestauracion":1100},
-  "5":{"descEfecto":"Pocion","cantRestauracion":1300},
-  "6":{"descEfecto":"Pocion","cantRestauracion":1200}}
+  "2":{"descEfecto":"Elixir","cantRestauracion":1000},
+  "3":{"descEfecto":"Elixir","cantRestauracion":1000},
+  "4":{"descEfecto":"Elixir","cantRestauracion":1000},
+  "5":{"descEfecto":"Pocion","cantRestauracion":1000},
+  "6":{"descEfecto":"Pocion","cantRestauracion":1000}}
