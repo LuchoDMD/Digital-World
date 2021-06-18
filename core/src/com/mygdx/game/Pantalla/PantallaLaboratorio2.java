@@ -122,6 +122,7 @@ public class PantallaLaboratorio2 implements Screen {
             dialogo.setTransparencia(0);
             Render.app.setScreen(new PantallaMapa2());
         }
+
         /**BOTON IZQUIERDA*/
         if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM9)){
             texto.setTexto(Recursos.DIALOGO_CHALM8);

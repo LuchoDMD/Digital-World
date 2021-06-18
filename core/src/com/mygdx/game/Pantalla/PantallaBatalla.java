@@ -249,14 +249,23 @@ public class PantallaBatalla implements Screen {
 
          if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Devilmon")) {
             compa.regenerar();
+            setEntrenador(PantallaCreacion.itemKeys);
             musica.stop();
-            Render.app.setScreen(new PantallaBosque());
+            Render.app.setScreen(new PantallaMapa3());
         }
 
          if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Milenniummon")) {
             compa.regenerar();
+            setEntrenador(PantallaCreacion.itemKeys);
             musica.stop();
-            Render.app.setScreen(new PantallaBosque()); //laboratorio3
+            Render.app.setScreen(new PantallaLaboratorio3()); //laboratorio3
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Milenniummon") && compa.getNombre().equals("Omnimon")) {
+            compa.regenerar();
+            setEntrenador(PantallaCreacion.itemKeys);
+            musica.stop();
+            Render.app.setScreen(new PantallaLaboratorio3()); //laboratorio3
         }
 
 

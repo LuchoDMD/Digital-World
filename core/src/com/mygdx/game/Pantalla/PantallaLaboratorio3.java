@@ -6,6 +6,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.App.Carga;
+import com.mygdx.game.App.Compa;
+import com.mygdx.game.App.Enemigo;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
@@ -125,6 +128,8 @@ public class PantallaLaboratorio3 implements Screen {
         {
             texto.setTexto("");
             dialogo.setTransparencia(0);
+            int[] omnimonskills = {15,1,2,3};
+            PantallaBatalla.setCompa(new Compa(99, 1200,1500,250,40,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
             Render.app.setScreen(new PantallaBosque());
         }
         /**BOTON IZQUIERDA*/

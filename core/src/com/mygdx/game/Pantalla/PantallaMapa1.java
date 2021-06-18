@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -26,14 +27,14 @@ public class PantallaMapa1 extends Stage implements Screen {
     private TextureRegion quieto;
     private float xActual=10;
     private float yActual=229;
-    private Texto frase, zona;
+    private Texto zona;
     private int op=4;
-    private static Music NecoMusic, puerta;
+    private static Music NecoMusic;
     private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
-            colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
+            colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17,colision18;
 
 
     public static void turnOff(){
@@ -46,14 +47,14 @@ public class PantallaMapa1 extends Stage implements Screen {
         b = Render.batch;
 
         NecoMusic= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICANECOCITY));
-        //puerta= Gdx.audio.newMusic(Gdx.files.internal(Recursos.PUERTASONIDO));
+
 
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
         zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
-        zona.setTexto("NecoCity()");
+        zona.setTexto("NecoCity();");
         zona.setPosition(550, 700);
 
         /**SETEO DE PERSONAJE*/
@@ -62,7 +63,6 @@ public class PantallaMapa1 extends Stage implements Screen {
         crisIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
         crisDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quieto = new TextureRegion();
-        frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
 
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
@@ -89,6 +89,7 @@ public class PantallaMapa1 extends Stage implements Screen {
         colision15 = new ColisionMapa(1238,0,2,720);
         colision16 = new ColisionMapa(1115,340,165,380);
         colision17 = new ColisionMapa(1092,450,15,40);
+        colision18 = new ColisionMapa(118,249,200,100);
     }
 
     @Override
@@ -104,7 +105,8 @@ public class PantallaMapa1 extends Stage implements Screen {
         personaje.setPosition(xActual,yActual);
         colision();
         cambioMapa();
-        mapaBosque();
+        todaviaNoPuedoPasar();
+        System.out.println(xActual +""+ yActual);
         b.end();
     }
 
@@ -115,20 +117,19 @@ public class PantallaMapa1 extends Stage implements Screen {
         }
     }
 
-
-
-    private void mapaBosque(){
-        if(personaje.overlaps(colision4)){
-            Render.app.setScreen(new PantallaBosque());
+    private void todaviaNoPuedoPasar(){
+        if(personaje.overlaps(colision18)){
+            Texto advertencia = new Texto(Recursos.FUENTE1,15,Color.WHITE,true);
+            advertencia.setTexto("Deberia ir primero\na ese laboratorio");
+            advertencia.setPosition(xActual,yActual);
+            advertencia.dibujar();
         }
     }
-
-
 
     private void colision() {
         if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision5) ||
                 personaje.overlaps(colision6)|| personaje.overlaps(colision7) || personaje.overlaps(colision8)|| personaje.overlaps(colision9) || personaje.overlaps(colision10)
-                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)){
+                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)||personaje.overlaps(colision18)){
             quietoS();
             switch (op){
                 case 1:
