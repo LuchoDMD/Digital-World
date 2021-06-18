@@ -75,7 +75,6 @@ public class PantallaLaboratorio2 implements Screen {
 
     private void pasarTextoAdelante(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.E)){
-            System.out.println(op1);
             op1=1;
         }
     }

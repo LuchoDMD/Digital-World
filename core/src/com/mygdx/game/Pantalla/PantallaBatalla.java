@@ -92,6 +92,17 @@ public class PantallaBatalla implements Screen {
         if(enemigo.getNombre().equals("Omnimon")){
             descripcion.setTexto("Te enseñaré lo básico que debés saber para el combate\nPRESIONA ESPACIO PARA INICIAR");
         }
+        if(enemigo.getNombre().equals("Devilmon")){
+            descripcion.setTexto("Un Devilmon Salvaje ha aparecido");
+        }
+        if(enemigo.getNombre().equals("Mileniummon")){
+            descripcion.setTexto("¿Qué es está criatura mítica?");
+        }
+        if(enemigo.getNombre().equals("Mileniummon") && compa.getNombre().equals("Omnimon")){
+            descripcion.setTexto("Ahora sí te derrotaré maldito");
+        }
+
+
 
 
         Gdx.input.setInputProcessor(entrada);
@@ -99,8 +110,6 @@ public class PantallaBatalla implements Screen {
         chalm= new Imagen(Recursos.CHALMENEMIGO);
         chalm.setPosition(800, 400);
         chalm.setSize(275, 325);
-
-
 
         devilmon= new Imagen(Recursos.DEVILMON2);
         devilmon.setPosition(850, 450);
@@ -121,9 +130,6 @@ public class PantallaBatalla implements Screen {
         gabumon.setPosition(250, 230);
         gabumon.setSize(300,300);
 
-
-
-
         aux=new Texto(Recursos.FUENTE1,40, Color.ORANGE,true);
         aux.setTexto("");
         aux.setPosition(80,120);
@@ -142,13 +148,11 @@ public class PantallaBatalla implements Screen {
 
         statsEnemigo=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
         statsEnemigo.setPosition(50, 650);
-        statsEnemigo.setTexto("Chalm \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
+        statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
 
         accionEnemigo = new Texto(Recursos.FUENTE1, 30, Color.RED, true);
         accionEnemigo.setPosition(180, 615);
         accionEnemigo.setTexto("");
-
-
     }
 
     private void menu() {
@@ -227,7 +231,6 @@ public class PantallaBatalla implements Screen {
                 //prints\\
                 statsEnemigo.setTexto(enemigo.getNombre() + " \nHP: " + enemigo.getHp() + "\nMP: " + enemigo.getMp());
                 statsCompa.setTexto(compa.getNombre() + " \nHP: " + compa.getVida() + "\nMP: " + compa.getMana());
-                System.out.println(log.get(turno).toString());
                 turno++;
 
                 if (enemigo.getHp() == 0) {
@@ -265,11 +268,11 @@ public class PantallaBatalla implements Screen {
             Render.app.setScreen(new PantallaLaboratorio3());
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Milenniummon") && compa.getNombre().equals("Omnimon")) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Mileniummon") && compa.getNombre().equals("Omnimon")) {
             compa.regenerar();
             setEntrenador(PantallaCreacion.itemKeys);
             musica.stop();
-            Render.app.setScreen(new PantallaLaboratorio3()); //créditos
+            Render.app.setScreen(new PantallaCreditos());
         }
     }
 

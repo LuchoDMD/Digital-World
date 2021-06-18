@@ -104,7 +104,6 @@ public class PantallaMapa3 extends Stage implements Screen {
         colision();
         cambioMapa();
         mapaBosque();
-        System.out.println(xActual +""+ yActual);
         b.end();
     }
 

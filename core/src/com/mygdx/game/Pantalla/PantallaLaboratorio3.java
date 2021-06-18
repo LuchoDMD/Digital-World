@@ -78,7 +78,6 @@ public class PantallaLaboratorio3 implements Screen {
 
     private void pasarTextoAdelante(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.E)){
-            System.out.println(op1);
             op1=1;
         }
     }
@@ -129,7 +128,7 @@ public class PantallaLaboratorio3 implements Screen {
             texto.setTexto("");
             dialogo.setTransparencia(0);
             int[] omnimonskills = {15,1,2,3};
-            PantallaBatalla.setCompa(new Compa(99, 1200,1500,250,40,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
+            PantallaBatalla.setCompa(new Compa(99, 2150,1500,250,40,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
             Render.app.setScreen(new PantallaBosque());
         }
         /**BOTON IZQUIERDA*/
