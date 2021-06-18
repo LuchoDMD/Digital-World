@@ -138,11 +138,11 @@ public class PantallaMapa2 extends Stage implements Screen {
         if(personaje.overlaps(devilmonC)){
             if(PantallaBatalla.isAgumon()){
                 int[] gabumonskills ={15,7,10,11};
-                PantallaBatalla.setEnemigo(new Enemigo(99,500,700,90,40,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
+                PantallaBatalla.setEnemigo(new Enemigo(99,300,700,90,40,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
                 Render.app.setScreen(new PantallaBatalla());
             }else{
                 int[] agumonskills ={15,7,8,9};
-                PantallaBatalla.setEnemigo(new Enemigo(99,400,800,100,30,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
+                PantallaBatalla.setEnemigo(new Enemigo(99,300,800,100,30,100, "Devilmon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
                 Render.app.setScreen(new PantallaBatalla());
             }
 
