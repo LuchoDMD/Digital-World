@@ -21,19 +21,12 @@ public class Carga {
         File file = new File("core/src/com/mygdx/game/Archivos/Habilidades.json");
         Map<Integer, Habilidad> habilidades = null;
         try{
-            System.out.println("check1");
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            System.out.println("check2");
             habilidades = new HashMap<Integer, Habilidad>(gson.fromJson(bufferedReader, Map.class));
-            System.out.println("check3");
             String jsonString = gson.toJson(habilidades);
-            System.out.println("check4");
             Type type = new TypeToken<HashMap<Integer, Habilidad>>(){}.getType();
-            System.out.println("check5");
             habilidades = gson.fromJson(jsonString, type);
-            System.out.println("check6");
             bufferedReader.close();
-            System.out.println("check7");
             return habilidades;
         }
         catch(IOException e){
@@ -144,7 +137,7 @@ public class Carga {
 
         try{
             Gson gson2 = new Gson();
-            File fileItems = new File("core/src/com/mygdx/game/Archivos/Items2.json");
+            File fileItems = new File("Items2.json");
             BufferedWriter bufferedWriter2 = new BufferedWriter(new FileWriter(fileItems));
             gson2.toJson(items, Map.class, bufferedWriter2);
             bufferedWriter2.close();

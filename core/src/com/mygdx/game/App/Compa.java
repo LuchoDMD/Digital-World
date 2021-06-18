@@ -52,7 +52,17 @@ public class Compa extends Digimon implements Combate {
         this.experiencia = experiencia;
     }
 
+
     // METODOS \\
+
+    public int elegirItem(Mochila mochila){
+        if(!mochila.getListaBolsillo().isEmpty()){
+            int bound = mochila.getListaBolsillo().size();
+            Random random = new Random();
+            return random.nextInt(bound);
+        }
+        return -1;
+    }
 
     private int rangoExperiencia()/*Formula de Rango de experiencia de siguiente nivel*/
     {

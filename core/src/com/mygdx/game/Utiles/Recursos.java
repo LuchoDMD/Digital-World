@@ -14,14 +14,20 @@ public class Recursos {
     public static final String FONDO_CREACION = "Fondos/fondoCreacion.jpg";
     public static final String AGUMON_ESPALDA = "Fondos/espalda.png";
     public static final String MAPA = "Fondos/Mapa.png";
+    public static final String NOMBRE_MAPA = "Fondos/nombreMapa.png";
+    public static final String PANTALLA_NEGRA = "Fondos/pantalla negra.png";
+    public static final String BOSQUE = "Fondos/BOSQUE.png";
+    public static final String LABORATORIO = "Fondos/LABORATORIO.png";
 
 
+    public static final String CHALMENEMIGO = "Personaje/chalm.png";
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
 
     public static final String MUSICAMENU = "Musica/menusong.mp3";
     public static final String MUSICAINTRO = "Musica/intro.mp3";
     public static final String LLUVIA = "Musica/lluvia.mp3";
     public static final String RAYO = "Musica/rayo.mp3";
+    public static final String MUSICABATALLA = "Musica/Battle.mp3";
 
     public static final String CRIS_FRENTE = "Personaje/Dr.cHalm/CRIS FRENTE.png";
     public static final String CRIS_ESPALDA = "Personaje/Dr.cHalm/CRIS ESPALDA.png";
@@ -61,6 +67,7 @@ public class Recursos {
     public static final String INTRODUCCION3="\t-¿Quien o que eres?. El joven decide inexplicablemente que debia\n aventurarse a averiguar" +
             "cual era el origen de esto, pero sin\nrespuesta inmediata, la criatura ante su duda decide ayudarle" +
             " a\ndespejar sus dudas abriendole la puerta a su mundo:";
+
 
 
 }
