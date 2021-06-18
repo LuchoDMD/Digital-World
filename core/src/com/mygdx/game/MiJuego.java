@@ -12,7 +12,7 @@ public class MiJuego extends Game {
 	public void create () {
 		Render.app=this;
 		Render.batch=new SpriteBatch();
-			this.setScreen(new PantallaCreacion());
+			this.setScreen(new PantallaBosque());
 	}
 
 	@Override

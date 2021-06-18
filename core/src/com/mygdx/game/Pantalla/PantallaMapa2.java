@@ -16,19 +16,19 @@ import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
 
-public class PantallaMapaDestruida extends Stage implements Screen {
+public class PantallaMapa2 extends Stage implements Screen {
 
     private SpriteBatch b;
     private Personaje crisEspalda,crisFrente,crisIzq,crisDer;
     private TextureRegion quieto;
     private float xActual=1096;
     private float yActual=396;
-    private Texto frase;
+    private Texto frase,zona;
     private int op=2;
     private Imagen mapa,nombreM;
     private float cont=0;
     private Rectangle personaje,rocaC,devilmonC;
-    private Imagen devilmon,roca,roca1,roca2;
+    private Imagen devilmon,roca;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
             colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
@@ -57,8 +57,10 @@ public class PantallaMapaDestruida extends Stage implements Screen {
         roca.setSize(120,120);
         roca.setPosition(970,180);
 
-        roca1= new Imagen(Recursos.ROCA);
-        roca2= new Imagen(Recursos.ROCA);
+        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        zona.setTexto("NecoCity();");
+        zona.setPosition(550, 700);
+
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
         personaje=new Rectangle();
@@ -103,10 +105,9 @@ public class PantallaMapaDestruida extends Stage implements Screen {
         Render.limpiarPantalla(0, 0, 0);
         b.begin();
         mapa.dibujar();
+        zona.dibujar();
         devilmon.dibujar();
         roca.dibujar();
-        roca1.dibujar();
-        roca2.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
         colisionDevilmon();

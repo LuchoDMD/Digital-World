@@ -29,7 +29,7 @@ public class PantallaBosque implements Screen {
     private Personaje mileniunmon;
     private Rectangle personaje;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7;
-    private Texto texto;
+    private Texto texto,zona;
 
 
     @Override
@@ -42,6 +42,10 @@ public class PantallaBosque implements Screen {
         heroIzq  = new Personaje(Recursos.HERO_M_IZQ,3,0.1f);
         heroDer  = new Personaje(Recursos.HERO_M_DER,3,0.1f);
         quietoH=new TextureRegion();
+
+        zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
+        zona.setTexto("Bosque();");
+        zona.setPosition(550, 700);
 
 
         personaje=new Rectangle();
@@ -68,6 +72,7 @@ public class PantallaBosque implements Screen {
         b.begin();
         fondo.fadeInImagen(fondo,cont);
         fondo.dibujar();
+        zona.dibujar();
         personaje.setPosition(xActual,yActual);
         mileniunmon.render(b);
         noPodesEscapar();
@@ -77,10 +82,7 @@ public class PantallaBosque implements Screen {
         System.out.println(xActual+" "+yActual);
     }
 
-    private void ponerEnMapa(){
-        quietoH=heroEspalda.personajeEspera();
-        b.draw(quietoH,xActual,yActual);
-    }
+
 
     private void moverse(){
         int veloc = 3;

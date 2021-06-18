@@ -129,7 +129,7 @@ public class PantallaLaboratorio implements Screen {
             dialogo.setTransparencia(0);
             int[] omnimonskills = {15,1,2,3};
             PantallaBatalla.setEnemigo(new Enemigo(99, 1200,1500,250,100,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
-            Render.app.setScreen(new PantallaMapaDestruida());
+            Render.app.setScreen(new PantallaMapa2());
         }
 
         /**BOTON IZQUIERDA*/

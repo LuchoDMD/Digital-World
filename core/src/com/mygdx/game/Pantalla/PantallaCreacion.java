@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.App.*;
 import com.mygdx.game.Elementos.Imagen;
-import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
 import com.mygdx.game.Utiles.Config;
 import com.mygdx.game.Utiles.Recursos;
@@ -174,7 +173,7 @@ public class PantallaCreacion implements Screen {
                 PantallaBatalla.setEntrenador(itemKeys);
                 //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(true);
-                Render.app.setScreen(new PantallaMapa());
+                Render.app.setScreen(new PantallaMapa1());
             }
         });
     }
@@ -191,7 +190,7 @@ public class PantallaCreacion implements Screen {
                 PantallaBatalla.setEntrenador(itemKeys);
                 //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(false);
-                Render.app.setScreen(new PantallaMapa());
+                Render.app.setScreen(new PantallaMapa1());
             }
         });
     }

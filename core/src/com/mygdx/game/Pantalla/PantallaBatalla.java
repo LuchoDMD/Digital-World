@@ -9,9 +9,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.App.*;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Texto;
@@ -85,7 +82,7 @@ public class PantallaBatalla implements Screen {
 
     @Override
     public void show() {
-        PantallaMapa.turnOff();
+        PantallaMapa1.turnOff();
         musica= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICABATALLA));
 
         b= Render.batch;
@@ -232,7 +229,7 @@ public class PantallaBatalla implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Omnimon")) {
             compa.regenerar();
             musica.stop();
-            Render.app.setScreen(new PantallaMapa());
+            Render.app.setScreen(new PantallaMapa1());
         }
 
          if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("asdasd")) {

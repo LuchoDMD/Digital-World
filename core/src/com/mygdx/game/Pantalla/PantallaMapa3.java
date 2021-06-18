@@ -3,7 +3,6 @@ package com.mygdx.game.Pantalla;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,45 +15,37 @@ import com.mygdx.game.Elementos.Texto;
 import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
-import java.lang.invoke.MutableCallSite;
 
-
-public class PantallaMapa extends Stage implements Screen {
+public class PantallaMapa3 extends Stage implements Screen {
 
     private SpriteBatch b;
     private Personaje crisEspalda,crisFrente,crisIzq,crisDer;
     private TextureRegion quieto;
-    private float xActual=10;
-    private float yActual=229;
-    private Texto frase, zona;
-    private int op=4;
-    private static Music NecoMusic, puerta;
+    private float xActual=819;
+    private float yActual=05;
+    private Texto frase,zona;
+    private int op=3;
     private Imagen mapa,nombreM;
     private float cont=0;
-    private Rectangle personaje;
+    private Rectangle personaje,rocaC;
+    private Imagen roca;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
             colision10,colision11,colision12,colision13,colision14,colision15,colision16,colision17;
 
-
-    public static void turnOff(){
-        NecoMusic.stop();
-    }
 
 
     @Override
     public void show() {
         b = Render.batch;
-
-        NecoMusic= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICANECOCITY));
-        //puerta= Gdx.audio.newMusic(Gdx.files.internal(Recursos.PUERTASONIDO));
-
         mapa= new Imagen(Recursos.MAPA);
         nombreM= new Imagen(Recursos.NOMBRE_MAPA);
         nombreM.setPosition(30,670);
         nombreM.setSize(150,15);
+
         zona = new Texto(Recursos.FUENTE1,40, Color.WHITE,true);
-        zona.setTexto("NecoCity()");
+        zona.setTexto("NecoCity();");
         zona.setPosition(550, 700);
+
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
@@ -64,11 +55,20 @@ public class PantallaMapa extends Stage implements Screen {
         quieto = new TextureRegion();
         frase=new Texto(Recursos.FUENTE1,13, Color.WHITE,false);
 
+        roca= new Imagen(Recursos.ROCA);
+        roca.setSize(120,120);
+        roca.setPosition(970,180);
+
 
         /**SETEO DE RECTANGULO DE COLISION PARA PERSONAJE*/
         personaje=new Rectangle();
         personaje.width=1;
         personaje.height=1;
+
+        rocaC=new Rectangle();
+        rocaC.width=120;
+        rocaC.height=120;
+        rocaC.setPosition(roca.getX(),roca.getY());
 
 
         /**GENERANDO LAS COLISIONES*/
@@ -96,15 +96,15 @@ public class PantallaMapa extends Stage implements Screen {
         cont+=delta/8;
         Render.limpiarPantalla(0, 0, 0);
         b.begin();
-        NecoMusic.setVolume(0.3f);
-        NecoMusic.play();
         mapa.dibujar();
         zona.dibujar();
+        roca.dibujar();
         nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
         colision();
         cambioMapa();
         mapaBosque();
+        System.out.println(xActual +""+ yActual);
         b.end();
     }
 
@@ -124,7 +124,8 @@ public class PantallaMapa extends Stage implements Screen {
     private void colision() {
         if(personaje.overlaps(colision1) || personaje.overlaps(colision2) || personaje.overlaps(colision3) || personaje.overlaps(colision5) ||
                 personaje.overlaps(colision6)|| personaje.overlaps(colision7) || personaje.overlaps(colision8)|| personaje.overlaps(colision9) || personaje.overlaps(colision10)
-                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)){
+                || personaje.overlaps(colision12)|| personaje.overlaps(colision11 )|| personaje.overlaps(colision13)|| personaje.overlaps(colision14 )|| personaje.overlaps(colision15)||personaje.overlaps(colision16)
+        || personaje.overlaps(rocaC)){
             quietoS();
             switch (op){
                 case 1:
@@ -242,7 +243,14 @@ public class PantallaMapa extends Stage implements Screen {
                 crisDer.render(b);
                 xActual = crisDer.getX();
                 op = 4;
-            }else{
+            }else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+                frase.setPosition(xActual + 65, yActual + 57);
+                frase.setTexto("¿Donde va el padre,\nva el hijo.?");
+                quieto = crisFrente.personajeEspera();
+                b.draw(quieto, xActual, yActual);
+                frase.dibujar();
+            }
+            else{
                 switch (op) {
                     case 0:
                     case 1:
