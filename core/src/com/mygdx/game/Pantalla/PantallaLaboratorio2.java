@@ -6,8 +6,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.mygdx.game.App.Carga;
-import com.mygdx.game.App.Enemigo;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
 import com.mygdx.game.Elementos.Texto;
@@ -15,7 +13,7 @@ import com.mygdx.game.Eventos.EntradaMovimiento;
 import com.mygdx.game.Utiles.Recursos;
 import com.mygdx.game.Utiles.Render;
 
-public class PantallaLaboratorio implements Screen {
+public class PantallaLaboratorio2 implements Screen {
     private SpriteBatch b;
     private Imagen laboratorio;
     private TextureRegion quieto,quietoH;
@@ -23,12 +21,10 @@ public class PantallaLaboratorio implements Screen {
     private EntradaMovimiento entada = new EntradaMovimiento(this);
     private Personaje heroEspalda,heroFrente,heroIzq,heroDer,crisFrente;
     private float xActual=638;
-    private float yActual=70;
+    private float yActual=220;
     private int op=0, op1=0;
     private Imagen dialogo;
     private Texto texto;
-
-
 
     @Override
     public void show() {
@@ -45,7 +41,7 @@ public class PantallaLaboratorio implements Screen {
         quietoH=new TextureRegion();
         quieto = new TextureRegion();
         texto=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
-        texto.setTexto(Recursos.DIALOGO_CHALM);
+        texto.setTexto(Recursos.DIALOGO_CHALM8);
         texto.setPosition(50,120);
     }
 
@@ -94,72 +90,57 @@ public class PantallaLaboratorio implements Screen {
     private void transicionTexto(){
         pasarTextoAdelante();
         pasarTextoAtras();
-
         /**BOTON DERECHA*/
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM)){
-            texto.setTexto(Recursos.DIALOGO_CHALM1);
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM8))
+        {
+            texto.setTexto(Recursos.DIALOGO_CHALM9);
             op1=0;
         }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM1)){
-            texto.setTexto(Recursos.DIALOGO_CHALM2);
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM9))
+        {
+            texto.setTexto(Recursos.DIALOGO_CHALM10);
             op1=0;
         }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM2)){
-            texto.setTexto(Recursos.DIALOGO_CHALM3);
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM10))
+        {
+            texto.setTexto(Recursos.DIALOGO_CHALM11);
             op1=0;
         }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM3)){
-            texto.setTexto(Recursos.DIALOGO_CHALM4);
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM11))
+        {
+            texto.setTexto(Recursos.DIALOGO_CHALM12);
             op1=0;
         }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM4)){
-            texto.setTexto(Recursos.DIALOGO_CHALM5);
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM12))
+        {
+            texto.setTexto(Recursos.DIALOGO_CHALM13);
             op1=0;
         }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM5)){
-            texto.setTexto(Recursos.DIALOGO_CHALM6);
-            op1=0;
-        }
-        if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM6)){
-            texto.setTexto(Recursos.DIALOGO_CHALM7);
-            op1=0;
-        }
-        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM7)){
+        if(op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM13))
+        {
             texto.setTexto("");
             dialogo.setTransparencia(0);
-            int[] omnimonskills = {15,1,2,3};
-            PantallaBatalla.setEnemigo(new Enemigo(99, 1200,1500,250,100,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
             Render.app.setScreen(new PantallaMapaDestruida());
         }
-
         /**BOTON IZQUIERDA*/
-
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM1)){
-            texto.setTexto(Recursos.DIALOGO_CHALM);
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM9)){
+            texto.setTexto(Recursos.DIALOGO_CHALM8);
             op1=0;
         }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM2)){
-            texto.setTexto(Recursos.DIALOGO_CHALM1);
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM9)){
+            texto.setTexto(Recursos.DIALOGO_CHALM10);
             op1=0;
         }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM3)){
-            texto.setTexto(Recursos.DIALOGO_CHALM2);
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM10)){
+            texto.setTexto(Recursos.DIALOGO_CHALM11);
             op1=0;
         }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM4)){
-            texto.setTexto(Recursos.DIALOGO_CHALM3);
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM11)){
+            texto.setTexto(Recursos.DIALOGO_CHALM12);
             op1=0;
         }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM5)){
-            texto.setTexto(Recursos.DIALOGO_CHALM4);
-            op1=0;
-        }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM6)){
-            texto.setTexto(Recursos.DIALOGO_CHALM5);
-            op1=0;
-        }
-        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM7)){
-            texto.setTexto(Recursos.DIALOGO_CHALM6);
+        if (op1==2 && texto.getTexto().equals(Recursos.DIALOGO_CHALM12)){
+            texto.setTexto(Recursos.DIALOGO_CHALM13);
             op1=0;
         }
     }
