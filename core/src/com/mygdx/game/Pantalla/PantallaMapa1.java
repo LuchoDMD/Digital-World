@@ -106,7 +106,6 @@ public class PantallaMapa1 extends Stage implements Screen {
         colision();
         cambioMapa();
         todaviaNoPuedoPasar();
-        System.out.println(xActual +""+ yActual);
         b.end();
     }
 

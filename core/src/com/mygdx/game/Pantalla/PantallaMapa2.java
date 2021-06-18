@@ -115,18 +115,10 @@ public class PantallaMapa2 extends Stage implements Screen {
         personaje.setPosition(xActual,yActual);
         colisionDevilmon();
         colision();
-        cambioMapa();
         mapaBosque();
-        System.out.println(xActual +""+ yActual);
         b.end();
     }
 
-    private void cambioMapa(){
-        if(personaje.overlaps(colision17)){
-            dispose();
-            Render.app.setScreen(new PantallaLaboratorio());
-        }
-    }
 
     private void mapaBosque(){
         if(personaje.overlaps(colision4)){

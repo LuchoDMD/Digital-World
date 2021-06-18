@@ -79,7 +79,6 @@ public class PantallaLaboratorio implements Screen {
 
     private void pasarTextoAdelante(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.E)){
-            System.out.println(op1);
             op1=1;
         }
     }
@@ -128,7 +127,7 @@ public class PantallaLaboratorio implements Screen {
             texto.setTexto("");
             dialogo.setTransparencia(0);
             int[] omnimonskills = {15,1,2,3};
-            PantallaBatalla.setEnemigo(new Enemigo(99, 1200,1500,250,40,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
+            PantallaBatalla.setEnemigo(new Enemigo(99, 2150,1500,250,40,60, "Omnimon", 75, Carga.cargarHabilidades("Habilidades.json"), omnimonskills));
             Render.app.setScreen(new PantallaBatalla());
         }
 

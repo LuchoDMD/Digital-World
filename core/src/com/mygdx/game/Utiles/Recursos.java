@@ -26,6 +26,8 @@ public class Recursos {
     public static final String GABUMON2 = "Personaje/Digimon/gabumon2.png";
     public static final String DEVILMON2 = "Personaje/Digimon/Devilmon.png";
     public static final String MILENIUMMON2 = "Personaje/Digimon/Mileniummon.png";
+    public static final String OMNIMON2 = "Personaje/Digimon/ONMIMON.png";
+
 
     public static final String FUENTE1 = "Fuentes/Pixel Digivolve Italic.otf";
     public static final String CHALMENEMIGO = "Personaje/chalm.png";
@@ -130,8 +132,9 @@ public class Recursos {
             " enemigo detona\nuna potente explosion de datos que\nnos envia al ciberespacio:\n Lugar donde aun al joven\nHeroe le esperaran mas aventuras\n" +
             "               CONTINUARA.";
 
-    public static final String TEXTO_CREDITOS="Producido por Usted++™\n  Desarrolladores:\n    Alejandro Bonacchio\n    Diego Arzondo\n    Yani Pontoni\n    Luciano Buda\n" +
-            "  Diseñadores:\n    Diego Arzondo\n    Luciano Buda.\n"+"Para proyecto final de\nla materia laboratorio\nde programacion 3,\nUniversidad UTN MDP.\nTodos los derechos\nreservados.";
+    public static final String TEXTO_CREDITOS="Producido por Usted++™\n  Desarrolladores:\n    Alejandro Bocchicchio\n    Diego Arzondo\n    Yani Pontoni\n    Luciano Buda\n" +
+            "  Diseñadores:\n    Diego Arzondo\n    Luciano Buda.\n"+"Para proyecto final de\nla materia laboratorio\nde programacion 3,\nUniversidad UTN MDP.\nTodos los derechos\nreservados.\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+            "Presione Alt+F4 para salir";
 
 
 

@@ -83,7 +83,6 @@ public class PantallaBosque implements Screen {
         pelea();
         colision();
         b.end();
-        System.out.println(xActual+" "+yActual);
     }
 
 
