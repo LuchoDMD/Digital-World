@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.mygdx.game.App.Carga;
+import com.mygdx.game.App.Enemigo;
 import com.mygdx.game.Elementos.ColisionMapa;
 import com.mygdx.game.Elementos.Imagen;
 import com.mygdx.game.Elementos.Personaje;
@@ -137,6 +139,8 @@ public class PantallaBosque implements Screen {
     }
     private void pelea(){
         if(personaje.overlaps(colision7)){
+            int[] enemigoSkills = {7, 4, 5, 6};
+            PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
             Render.app.setScreen(new PantallaBatalla());
         }
     }

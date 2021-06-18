@@ -28,7 +28,7 @@ public class PantallaBatalla implements Screen {
 
     private SpriteBatch b;
     private int ancho=200, alto=30;
-    private Imagen fondo, chalm;
+    private Imagen fondo, chalm, agumon, gabumon;
     private Texto statsCompa,statsEnemigo,menu,aux, accionEnemigo, accionCompa;
     private Texto descripcion = new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
     private EntradaBatalla entrada = new EntradaBatalla(this);
@@ -41,6 +41,7 @@ public class PantallaBatalla implements Screen {
     private int turno = 1;
     public float tiempo;
     private Music musica;
+    private static boolean isAgumon;
     int op;
     int danio = 0;
     int danio2 = 0;
@@ -48,6 +49,13 @@ public class PantallaBatalla implements Screen {
     int accion = 0;
     Random random = new Random();
 
+    public static boolean isAgumon() {
+        return isAgumon;
+    }
+
+    public static void setAgumon(boolean agumon) {
+        isAgumon = agumon;
+    }
 
     public Compa getCompa() {
         return compa;
@@ -83,13 +91,20 @@ public class PantallaBatalla implements Screen {
         b= Render.batch;
         Gdx.input.setInputProcessor(entrada);
         fondo= new Imagen(Recursos.BATALLA);
+        agumon= new Imagen(Recursos.AGUMON2);
+        agumon.setPosition(250, 230 + descripcion.getAlto());
+        agumon.setSize(300,300);
+        gabumon = new Imagen(Recursos.GABUMON2);
+        gabumon.setSize(300, 300);
+        gabumon.setPosition(250, 230 + descripcion.getAlto());
         chalm= new Imagen(Recursos.CHALMENEMIGO);
-        chalm.setPosition(850, 400);
+        descripcion.setTexto("UN CHALM SALVAJE HA APARECIDO!");
+        descripcion.setPosition(80,150);
+        chalm.setPosition(850, 450);
 
         //descripcion=new Texto(Recursos.FUENTE1,30, Color.ORANGE,true);
         //descripcion.setTexto("Presione Espacio para \niniciar la simulación de combate");
-        descripcion.setTexto("UN CHALM SALVAJE HA APARECIDO!");
-        descripcion.setPosition(80,150);
+
 
 
         aux=new Texto(Recursos.FUENTE1,40, Color.ORANGE,true);
@@ -227,6 +242,13 @@ public class PantallaBatalla implements Screen {
         b.begin();
         fondo.dibujar();
         chalm.dibujar();
+
+        if(isAgumon()){
+            agumon.dibujar();
+        }
+        else{
+            gabumon.dibujar();
+        }
         menu();
         accionCompa.dibujar();
         accionEnemigo.dibujar();
@@ -290,4 +312,6 @@ public class PantallaBatalla implements Screen {
     public void dispose() {
 
     }
+
+
 }
