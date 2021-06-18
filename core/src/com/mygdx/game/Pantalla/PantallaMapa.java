@@ -25,7 +25,7 @@ public class PantallaMapa extends Stage implements Screen {
     private float yActual=229;
     private Texto frase;
     private int op=4;
-    private Imagen mapa,nombreM;
+    private Imagen mapa;
     private float cont=0;
     private Rectangle personaje;
     private ColisionMapa colision1,colision2,colision3,colision4,colision5,colision6,colision7,colision8,colision9,
@@ -38,10 +38,6 @@ public class PantallaMapa extends Stage implements Screen {
         b = Render.batch;
 
         mapa= new Imagen(Recursos.MAPA);
-        nombreM= new Imagen(Recursos.NOMBRE_MAPA);
-        nombreM.setPosition(30,670);
-        nombreM.setSize(150,15);
-
 
         /**SETEO DE PERSONAJE*/
         crisEspalda = new Personaje(Recursos.HERO_M_ESPALDA,3,0.1f);
@@ -83,7 +79,6 @@ public class PantallaMapa extends Stage implements Screen {
         Render.limpiarPantalla(0, 0, 0);
         b.begin();
         mapa.dibujar();
-        nombreM.fadeOutImagen(nombreM,cont);
         personaje.setPosition(xActual,yActual);
         colision();
         cambioMapa();
@@ -226,13 +221,7 @@ public class PantallaMapa extends Stage implements Screen {
                 xActual = crisDer.getX();
                 op = 4;
             }
-            else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-                frase.setPosition(xActual + 65, yActual + 57);
-                frase.setTexto("Donde va el padre,\nva el hijo.");
-                quieto = crisFrente.personajeEspera();
-                b.draw(quieto, xActual, yActual);
-                frase.dibujar();
-            }else{
+            else{
                 switch (op) {
                     case 0:
                     case 1:
