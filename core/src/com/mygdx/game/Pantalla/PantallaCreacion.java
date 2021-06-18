@@ -36,6 +36,7 @@ public class PantallaCreacion implements Screen {
     private Entrenador entrenador;
     private Mochila mochila;
     private Imagen fondo;
+    int[] itemKeys = {1,2,3,4};
 
 
     @Override
@@ -168,14 +169,12 @@ public class PantallaCreacion implements Screen {
         agumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int[] compaSkills = {7, 1, 2, 3};
-                int[] itemKeys = {1,2,3,4};
-                int[] enemigoSkills = {7, 4, 5, 6};
-                PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
-                PantallaBatalla.setCompa(new Compa(99,1600,1200,120,30,100, "Agumon", 60, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
+                int[] agumonskills ={15,7,8,9};
+                PantallaBatalla.setCompa(new Compa(99,400,800,100,30,100, "Agumon", 20, Carga.cargarHabilidades("Habilidades.json"), agumonskills));
                 PantallaBatalla.setEntrenador(itemKeys);
+                //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(true);
-                Render.app.setScreen(new PantallaBatalla());
+                Render.app.setScreen(new PantallaMapa());
             }
         });
     }
@@ -184,14 +183,15 @@ public class PantallaCreacion implements Screen {
         gabumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int[] compaSkills = {7, 1, 2, 3};
                 int[] itemKeys = {1,2,3,4};
-                int[] enemigoSkills = {7, 4, 5, 6};
-                PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
-                PantallaBatalla.setCompa(new Compa(99,1600,1200,120,30,100, "Gabumon", 60, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
+                int[] gabumonskills ={15,7,10,11};
+                int[] impmonskills ={15,12,13,14};
+                int[] milleniumskills = {15,4,5,6};
+                PantallaBatalla.setCompa(new Compa(99,500,700,90,40,100, "Gabumon", 20, Carga.cargarHabilidades("Habilidades.json"), gabumonskills));
                 PantallaBatalla.setEntrenador(itemKeys);
+                //PantallaBatalla.setEnemigo(new Enemigo(99, 1600,1250,80,50,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setAgumon(false);
-                Render.app.setScreen(new PantallaBatalla());
+                Render.app.setScreen(new PantallaMapa());
             }
         });
     }

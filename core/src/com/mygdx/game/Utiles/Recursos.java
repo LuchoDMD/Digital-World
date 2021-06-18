@@ -32,6 +32,7 @@ public class Recursos {
     public static final String LLUVIA = "Musica/lluvia.mp3";
     public static final String RAYO = "Musica/rayo.mp3";
     public static final String MUSICABATALLA = "Musica/Battle.mp3";
+    public static final String MUSICANECOCITY = "Musica/NecoCity.mp3";
 
     public static final String CRIS_FRENTE = "Personaje/Dr.cHalm/CRIS FRENTE.png";
     public static final String CRIS_ESPALDA = "Personaje/Dr.cHalm/CRIS ESPALDA.png";

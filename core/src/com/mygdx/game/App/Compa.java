@@ -54,6 +54,11 @@ public class Compa extends Digimon implements Combate {
 
     // METODOS \\
 
+    public void regenerar(){
+        this.vida = getHp();
+        this.mana = getMp();
+    }
+
     public int elegirItem(Mochila mochila){
         if(!mochila.getListaBolsillo().isEmpty()){
             int bound = mochila.getListaBolsillo().size();

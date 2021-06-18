@@ -40,7 +40,7 @@ public class PantallaBatalla implements Screen {
     public List<Turno> log = new ArrayList<>();
     private int turno = 1;
     public float tiempo;
-    private Music musica;
+    private Music musica, efecto1, efecto2, efecto3;
     private static boolean isAgumon;
     int op;
     int danio = 0;
@@ -85,7 +85,7 @@ public class PantallaBatalla implements Screen {
 
     @Override
     public void show() {
-
+        PantallaMapa.turnOff();
         musica= Gdx.audio.newMusic(Gdx.files.internal(Recursos.MUSICABATALLA));
 
         b= Render.batch;
@@ -98,7 +98,10 @@ public class PantallaBatalla implements Screen {
         gabumon.setSize(300, 300);
         gabumon.setPosition(250, 230 + descripcion.getAlto());
         chalm= new Imagen(Recursos.CHALMENEMIGO);
-        descripcion.setTexto("UN CHALM SALVAJE HA APARECIDO!");
+        if(enemigo.getNombre().equals("Omnimon")){
+            descripcion.setTexto("UN CHALM");
+        }
+
         descripcion.setPosition(80,150);
         chalm.setPosition(850, 450);
 
@@ -224,12 +227,21 @@ public class PantallaBatalla implements Screen {
                 System.out.println(log.get(turno).toString());
                 turno++;
             }
-
-
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2) {
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("Omnimon")) {
+            compa.regenerar();
+            musica.stop();
             Render.app.setScreen(new PantallaMapa());
         }
+
+         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && flag2 && enemigo.getNombre().equals("asdasd")) {
+            compa.regenerar();
+            musica.stop();
+            Render.app.setScreen(new PantallaBosque());
+        }
+
+
     }
 
 
@@ -239,6 +251,8 @@ public class PantallaBatalla implements Screen {
         tiempo+=delta/2;
         musica.setVolume(0.3f);
         musica.play();
+
+
         b.begin();
         fondo.dibujar();
         chalm.dibujar();
