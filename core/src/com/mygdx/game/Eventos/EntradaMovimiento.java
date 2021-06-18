@@ -9,10 +9,11 @@ public class EntradaMovimiento implements InputProcessor {
 
     private boolean abajo=false, arriba=false, enter=false, izquierda=false,
             derecha = false, letraE=false,letraW=false;
-    private PantallaMapa1 mapa;
+    private PantallaMapa mapa;
     private PantallaHistoria historia;
     private PantallaLaboratorio laboratorio;
     private PantallaLaboratorio2 laboratorio2;
+    private PantallaLaboratorio3 laboratorio3;
 
     public EntradaMovimiento(PantallaHistoria historia) {
         this.historia = historia;
@@ -26,7 +27,11 @@ public class EntradaMovimiento implements InputProcessor {
         this.laboratorio2 = laboratorio2;
     }
 
-    public EntradaMovimiento(PantallaMapa1 mapa){
+    public EntradaMovimiento(PantallaLaboratorio3 laboratorio3) {
+        this.laboratorio3 = laboratorio3;
+    }
+
+    public EntradaMovimiento(PantallaMapa mapa){
         this.mapa=mapa;
     }
 

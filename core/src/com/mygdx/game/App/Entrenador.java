@@ -9,6 +9,7 @@ public class Entrenador {
     //CONSTRUCTOR\\
     public Entrenador(Mochila mochila) {
         this.mochila = mochila;
+        this.nombre = "Ash"; //nombre genérico, la idea sería que el nombre se elija al inicio de la partida
     }
 
 

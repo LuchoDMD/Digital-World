@@ -110,6 +110,20 @@ public class Recursos {
 
     public static final String DIALOGO_CHALM13= "Dr Chalm: Esa es la actitud joven heroe, ahora ve y cumple con \ntu destino y recuerda mi enseñanza: \"A donde va un padre va un \nhijo.\"";
 
+    public static final String DIALOGO_CHALM14= "Dr Chalm: Era de esperarse que no pudieras vencerlo";
+
+    public static final String DIALOGO_CHALM15= "Jugador: Y ahora que sucedera???";
+
+    public static final String DIALOGO_CHALM16= "Dr Chalm: Ahora tendremos que probar \ncon nuestro ultimo recurso: \nTe hare entrega del digimon supremo";
+
+    public static final String DIALOGO_CHALM17= "Jugador: No creo posible que haya un digimon\n superior al que acabo de enfrentar";
+
+    public static final String DIALOGO_CHALM18= "Dr Chalm: No pierdas la esperanza \njoven estudiante de otro mundo!";
+
+    public static final String DIALOGO_CHALM19= "Jugador: Entonces aceptare ese digimon supremo!";
+
+    public static final String DIALOGO_CHALM20= "Dr Chalm: Te hago entrega de OMNIMON!!";
+
     /*14 al 20 se podria pasar a la parte donde te entrega el omnimon*/
 
 
