@@ -168,13 +168,13 @@ public class PantallaCreacion implements Screen {
         agumonB.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int[] compaSkills = {7, 1, 2, 3};
-                int[] enemigoSkills = {7, 4, 5, 6};
+                int[] compaSkills = {8, 4, 6, 7};
+                int[] enemigoSkills = {8, 3, 4, 5};
                 int[] itemKeys = {1,2,3,4};
-                PantallaBatalla.setCompa(new Compa(99,3200,1200,120,60,100, "Omnimon", 60, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
-                PantallaBatalla.setEnemigo(new Enemigo(99, 3200,1250,80,100,60, "Milleniummon", 75, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
+                PantallaBatalla.setCompa(new Compa(5,1000,500,100,10,150, "pikachu", 15, Carga.cargarHabilidades("Habilidades.json"), compaSkills));
+                PantallaBatalla.setEnemigo(new Enemigo(5, 500,200,50,25,100, "Charizard", 100, Carga.cargarHabilidades("Habilidades.json"), enemigoSkills));
                 PantallaBatalla.setEntrenador(itemKeys);
-                Render.app.setScreen(new PantallaBatalla());
+                Render.app.setScreen(new PantallaMapa());
             }
         });
     }

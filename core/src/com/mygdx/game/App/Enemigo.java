@@ -50,7 +50,7 @@ public class Enemigo extends Digimon implements Combate {
     public int botEnemigo(){  //bot actúa semi aleatorio
         Random random = new Random();
         int accion;
-        accion = random.nextInt(4); // 0, 1 , 2, 3
+        accion = random.nextInt(4); // 0, 1 , 2, 3, 4, 5
         if(accion <= 3){
             if (verificarMana(habilidades[accion])){    //verifica el maná
                 return accion;
