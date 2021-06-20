@@ -25,7 +25,7 @@ public class PantallaLaboratorio implements Screen {
     private float xActual=638;
     private float yActual=70;
     private int op=0, op1=0;
-    private Imagen dialogo;
+    private Imagen dialogo,tomi;
     private Texto texto;
 
 
@@ -58,8 +58,29 @@ public class PantallaLaboratorio implements Screen {
         laboratorio.dibujar();
         personaje();
         ponerEnMapa();
+        caraTomi();
         b.end();
     }
+
+    /**CAMBIAR LA CARA DE TOMI Y PONER LO QUE VA*/
+    private void caraTomi(){
+        if(texto.getTexto().equals(Recursos.DIALOGO_CHALM1)||texto.getTexto().equals(Recursos.DIALOGO_CHALM3)||texto.getTexto().equals(Recursos.DIALOGO_CHALM5)){
+            tomi.setPosition(50,150);
+            tomi.setSize(100,150);
+            tomi.dibujar();
+        }
+    }
+
+    /**PONER BIEN EL MENSAJE, AHI NO ME GUSTO DONDE QUEDO XD*/
+    private void indicaciones(){
+        Texto indicacion = new Texto(Recursos.FUENTE1,20,Color.ORANGE,true);
+        indicacion.setPosition(50,180);
+        indicacion.setTexto("Presiones E  para adelantar\nW para retroceder los dialgos");
+        indicacion.dibujar();
+    }
+
+
+
 
     private void ponerEnMapa(){
         quieto=crisFrente.personajeEspera();
@@ -94,7 +115,7 @@ public class PantallaLaboratorio implements Screen {
     private void transicionTexto(){
         pasarTextoAdelante();
         pasarTextoAtras();
-
+        indicaciones();
         /**BOTON DERECHA*/
         if (op1==1 && texto.getTexto().equals(Recursos.DIALOGO_CHALM)){
             texto.setTexto(Recursos.DIALOGO_CHALM1);
